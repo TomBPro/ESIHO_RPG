@@ -1,0 +1,82 @@
+// ICI SERA NOTÉ LES MODIFICATIONS FAITES (si elles sont assez pertinentes) AU CODE !
+// Exemple :
+
+#TomRobette#04/03/2020#
+- Ajout d'un changelog
+- Modification de machin
+- Ajout de bidule
+
+// Merci de mettre les ajouts <strong>EN HAUT !!!</strong> du reste. Comme ça on descendra pour trouver les plus anciens 
+// changements.
+// Veuillez déposer à partir d'ici :
+
+#TomRobette#05/03/2020#
+-Ajout d'un diagramme de classe avec celles qui sont déjà faites
+-Ajout sur le diagramme des classes items, map, inventaire, la plupart des affichages UI, décor, pnj, etc. Il reste à compléter certaines
+
+#TomRobette#06/03/2020#
+-Réorganisation des classes d'affichage en une seule
+-Création d'un MainActivity
+-CREATION DE LA STRUCTURE DU PROJET : ESIHO
+
+#TomRobette#08/03/2020#
+-Réorganisation de la structure du projet
+-Ajout des Librairies Default et Contenu (voir les README dans chacun)
+-Ajout des débuts de classes comme inventaire, objets, teams, etc
+
+#TomRobette#10/03/2020#
+-Réorganisation de la librairie Ressources
+-Ajout des débuts de classe pour Map, Decor et Pnj
+-Début du MainActivity, du Controller, et des FXML
+
+#TomRobette#11/03/2020#
+-Modifications des ID en String
+-Ajout des coefficients d'armure et armes dans les modifiers du combat
+-Correction des attributs de la classe Entity
+
+#ThomasDegave#11/03/2020#
+-Réorganisation de la classe Pnj avec une liste d'image a la place d'une image
+-Remplis la méthode initPnjs() avec les Pnj qui seront dans le jeu
+-Commencer à completer la classe Entity
+!InitContenu Entity pas terminé
+
+#ThomasDegave#12/03/2020#
+-Création d'un package Test, qui contient un fichier par personne pour faire des test.
+
+#TomRobette#16/03/2020#
+-Ajout d'une librairie Cheat
+-Ajout d'un moteur aux cheats
+-Ajout de Classes en fonction du type de cheat (Enlever, Ajouter, Téleporter, etc)
+-Ajout d'un système d'analyse du code de cheat
+-Classes Enlever et Ajouter terminées
+-Ajout de Id dans la classe Team
+-Modification de la listeentity de la classe Team en listePNJ
+-Ajout des méthodes get et set Id, addPnj, removePnj et getInventaire à la classe Team
+-Ajout de listeTeam dans la classe InitContenu
+-Le MainActivity n'est maintenant plus lançable de lui-même, mais grâce à un launcher
+
+#TomRobette#21/03/2020#
+-Ajout du système de priorisation des pnj en fonction de leur vitesse
+-Création de l'IA de combat
+-Création de système de tour par tour
+-Ajout de l'utilisation de l'attaque sur une cible
+-Pour l'instant il n'y a pas de saisie
+
+#TomRobette#22/03/2020#
+-Ajout de méthodes liées à l'argent dans la classe Team
+-Ajout d'un cheat pour ajouter de l'argent et pour en retirer
+
+#TomRobette#31/03/2020#
+-Ajout d'une fonction analyseVictoire() dans la class Combat
+-Le combat s'arrête en cas de victoire ou de défaite
+-Ajout d'une fonction lvlUp
+
+
+#ThomasDegave#31/03/2020#
+-Création des pnj
+
+#AlexisO'grady#31/03/2020#
+-Ajout dans la listeItems dans InitContenu d'un baton, d'une dague, d'une épée, de 2 armures et 2 potions
+-Maj des fonctions useItem dans Arme, Armure, Consommable
+-Ajout des fonctions addPv et removePv dans PV
+

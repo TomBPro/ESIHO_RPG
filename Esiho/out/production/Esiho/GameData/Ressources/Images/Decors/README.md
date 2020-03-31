@@ -1,0 +1,1 @@
+Ici seront stockées les images des décors (herbe, arbre, rocher, porte, etc)

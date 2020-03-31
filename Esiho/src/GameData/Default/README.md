@@ -1,0 +1,1 @@
+Ici seront les fonctions générales du jeu (excluant les combats).
