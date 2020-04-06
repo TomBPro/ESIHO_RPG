@@ -80,3 +80,11 @@
 -Maj des fonctions useItem dans Arme, Armure, Consommable
 -Ajout des fonctions addPv et removePv dans PV
 
+#TomRobette#06/04/2020#
+-Ajout d'une classe Sauvegarde dans "GameData.Default.Save"
+-Ajout d'une méthode écrivant une arborescence pour la sauvegarde si elle n'existe pas
+-Ajout d'une méthode créant un fichier de sauvegarde
+-Ajout d'une chaîne de caractère "position" dans Team ayant pour but de savoir où est l'équipe. 
+C'est une chaîne de caractère, il faut donc faire "id de la map"+"position x"+"position y".
+-Correction de MoveList
+-Ajout d'une méthode écrivant toute la progression du jeu (Avec les classes que nous avons pour l'instant) dans Sauvegarde

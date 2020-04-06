@@ -16,9 +16,8 @@ public class Armure extends Item {//Ce type d'objet réfère aux objets à equip
         this.image=image;
         this.coeffProtection=coeffProtection;
     }
-
-    public Integer useItem(){
-        return this.coeffProtection;
+    @Override
+    public void useItem(){
     }
 
     public String getId() {

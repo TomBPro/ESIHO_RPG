@@ -93,12 +93,12 @@ public class Pv {
         System.out.println("]");//Fin deuxième ligne
     }//L'affichage de la vie en format texte et sur une jauge
 
-    public Integer removePv(Integer valeur){
-        this.pv-=pcAjoute;
+    public void removePv(Integer valeur){
+        this.pv-=valeur;
     }
 
-    public Integer addPv(Integer pvAjouter){
-        this.pv+=pcAjoute;
+    public void addPv(Integer pvAjoute){
+        this.pv+=pvAjoute;
     }
 
 }

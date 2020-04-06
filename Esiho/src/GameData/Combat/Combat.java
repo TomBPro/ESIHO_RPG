@@ -76,10 +76,13 @@ public class Combat {
                         if (pnj.equals(pnjteam1) && pnj.getEntite().getPV().getPv()>0 && victoire==0){
                             Integer selecGenre;
                             //Ici le joueur choisit le genre d'attaque , il retourne un chiffre entre 0 et 1 (inclus)
+                            selecGenre=1;//TEST A SUPPRIMER !
                             Integer selecAttaque;
                             //Ici le joueur choisit l'attaque à lancer, il retourne un chiffre entre 0 et 3 (inclus)
+                            selecAttaque=1;//TEST A SUPPRIMER !
                             Integer selecCible;
                             //Ici le joueur choisit la cible de l'attaque, il retourne un chiffre entre 0 et le nb maximal d'adversaire + 1
+                            selecCible=1;//TEST A SUPPRIMER !
                             Move attaque = new Move("MError","Erreur","Erreur", 0, new Eau(), 0);//Attaque vide. Reste s'il y a une erreur
                             if (selecGenre==0){
                                 attaque = pnjteam1.getEntite().getMovesPhy().getMove(selecAttaque);
@@ -87,7 +90,7 @@ public class Combat {
                                 attaque = pnjteam1.getEntite().getMovesSpe().getMove(selecAttaque);
                             }
                             Entity cible = team2.getListePNJ().get(selecCible).getEntite();
-                            useMove(attaque, pnjteam1, cible);
+                            useMove(attaque, pnjteam1.getEntite(), cible);
                             //Ici on lance l'animation, puis l'affichage
                             affichage();
                             victoire = analyseVictoire(team1, team2);

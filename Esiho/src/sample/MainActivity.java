@@ -1,4 +1,4 @@
-package ProjetPPE_RPG.projet.Esiho.src.sample;
+package sample;
 
 //import GameData.Ressources.Cheats.Engine;
 //import GameData.Ressources.Contenu.InitContenu;

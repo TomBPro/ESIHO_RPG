@@ -10,6 +10,7 @@ import GameData.Combat.Types.Plante;
 import GameData.Combat.Types.Types;
 import GameData.Default.Items.Arme;
 import GameData.Default.Items.Armure;
+import GameData.Default.Items.Consommable;
 import GameData.Default.Items.Item;
 
 import java.awt.*;
@@ -25,10 +26,11 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
     private ArrayList<Team> listeTeams;
 
     public InitContenu() {
-	initMoves();
-	initDecors();
-	initPnjs();
-	initItems();
+	    initMoves();
+	    initDecors();
+	    initPnjs();
+	    initItems();
+	    initTeams();
     } 
 
     private void initMoves() {//Ici on créera les attaques
@@ -131,13 +133,46 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
     }
 
     private void initItems() {//Ici on créera les Items
-        listeItems.add(new Arme("I1","Baton",100, "Baton.png", 1));
-        listeItems.add(new Arme("I2","dague",250, "Dague.png", 3));
-        listeItems.add(new Arme("I3","epee légendaire",500, "Epee.png", 5));
-        listeItems.Add(new Armure("I4", "Armure banale", 100, "Armure.png", 2));
-        listeItems.Add(new Armure("I5", "Armure légendaire", 500, "Armure.png", 5));
-        listeItems.Add(new Consommable("I6", "Potion de vie", 100, "Vie.png", 1));
-        listeItems.Add(new Consommable("I7", "Potion de dégâts", 100, "Degats.png", 2));
+//        listeItems.add(new Arme("I1","Baton",100, "Baton.png", 1));
+//        listeItems.add(new Arme("I2","dague",250, "Dague.png", 3));
+//        listeItems.add(new Arme("I3","epee légendaire",500, "Epee.png", 5));
+//        listeItems.add(new Armure("I4", "Armure banale", 100, "Armure.png", 2));
+//        listeItems.add(new Armure("I5", "Armure légendaire", 500, "Armure.png", 5));
+//        listeItems.add(new Consommable("I6", "Potion de vie", 100, "Vie.png", 1) {
+//            @Override
+//            public void useItem() {
+//
+//            }
+//
+//            @Override
+//            public void useItem(Pnj pnj, Integer val) {
+//                if(this.getType()==1){
+//                    //Soigner
+//                    pnj.getEntite().getPV().addPv(val);
+//                }else if (this.getType() == 2){
+//                    //Degats
+//                    pnj.getEntite().getPV().removePv(val);
+//                }
+//            }
+//        });
+//        listeItems.add(new Consommable("I7", "Potion de dégâts", 100, "Degats.png", 2) {
+//            @Override
+//            public void useItem() {
+//
+//            }
+//
+//            @Override
+//            public void useItem(Pnj pnj, Integer val) {
+//                if(this.getType()==1){
+//                    //Soigner
+//                    pnj.getEntite().getPV().addPv(val);
+//                }else if (this.getType() == 2){
+//                    //Degats
+//                    pnj.getEntite().getPV().removePv(val);
+//                }
+//            }
+//        });
+
     }
 
     private void initTeams(){

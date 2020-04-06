@@ -1,5 +1,7 @@
 package GameData.Default.Items;
 
+import GameData.Ressources.Contenu.Pnj;
+
 import java.awt.*;
 
 public abstract class Consommable extends Item {//Ce type d'objet réfère aux objets qui s'utilisent une fois et font des choses (ex : Potions, nourriture, etc)
@@ -17,14 +19,9 @@ public abstract class Consommable extends Item {//Ce type d'objet réfère aux o
         this.type=type;
     }
 
-    public abstract void useItem(Pnj pnj, Integer val);//Ce champ sera rempli lorsqu'un Consommable sera initialisé, mais pas lorsqu'il sera utilisé
-    if (this.type == 1){
-        //Soigner
-        pnj.getEntite().getPV().addPv(val);
-    }else if (this.type == 2){
-        //Degats
-        pnj.getEntite().getPV().removePv(val);
-    }
+    public abstract void useItem(Pnj pnj, Integer val)//Ce champ sera rempli lorsqu'un Consommable sera initialisé, mais pas lorsqu'il sera utilisé
+    ;
+
 
     public String getId() {
         return id;
@@ -56,5 +53,13 @@ public abstract class Consommable extends Item {//Ce type d'objet réfère aux o
 
     public void setImage(Image image) {
         this.image = image;
+    }
+
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
     }
 }

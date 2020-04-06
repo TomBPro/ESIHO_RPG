@@ -1,4 +1,4 @@
-package ProjetPPE_RPG.projet.Esiho.src.sample;
+package sample;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

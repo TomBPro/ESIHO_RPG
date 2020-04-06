@@ -17,8 +17,8 @@ public class Arme extends Item{//Ce type d'objet réfère aux objets servant d'a
         this.coeffDegats=coeffDegats;
     }
 
-    public Interger useItem(){
-        return this.coeffDegats;
+    public void useItem(){
+
     }
 
     public String getId() {

@@ -10,6 +10,7 @@ public class Team {
     private ArrayList<Pnj> listePNJ;
     private Inventaire inventaire;
     private Integer argent;
+    private String position;
 
     public Team(String id, Integer argent){
         this.id=id;
@@ -54,5 +55,13 @@ public class Team {
 
     public Integer getArgent(){
         return this.argent;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 }
