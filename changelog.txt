@@ -88,3 +88,7 @@
 C'est une chaîne de caractère, il faut donc faire "id de la map"+"position x"+"position y".
 -Correction de MoveList
 -Ajout d'une méthode écrivant toute la progression du jeu (Avec les classes que nous avons pour l'instant) dans Sauvegarde
+
+#FabienBoulnois#06/04/2020#
+-Creation des pages Options / Nouvelle Partie
+-Modifications du menu principal
