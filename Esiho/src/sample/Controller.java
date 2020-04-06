@@ -20,15 +20,32 @@ public class Controller implements Initializable {
 
     }
     @FXML
+    private void startCtnButtonOnClick() throws Exception {// bouton : lance le jeu
+
+    }
+
+    @FXML
     private void startCrdtsButtonOnClick() throws Exception {// bouton crédit
         //super.ecranCredits();
         Pane pane = FXMLLoader.load(getClass().getResource("ecranCrdts.fxml"));
         rootPane.getChildren().setAll(pane);
     }
 
+    @FXML
+    private void startNewButtonOnClick() throws Exception {// bouton new game
+        Pane pane = FXMLLoader.load(getClass().getResource("ecranNewGame.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void startOptnButtonOnClick() throws Exception {// bouton options
+        Pane pane = FXMLLoader.load(getClass().getResource("ecranOptions.fxml"));
+        rootPane.getChildren().setAll(pane);
+    }
+
     //Credits
     @FXML
-    private void optnRtrnButtonOnClick() throws Exception {
+    private void optnRtrnButtonOnClick() throws Exception {//bouton retour
         //super.ecranTitre();
         Pane pane = FXMLLoader.load(getClass().getResource("ecranTitre.fxml"));
         rootPane.getChildren().setAll(pane);
