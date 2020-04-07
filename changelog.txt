@@ -92,3 +92,7 @@ C'est une chaîne de caractère, il faut donc faire "id de la map"+"position x"+
 #FabienBoulnois#06/04/2020#
 -Creation des pages Options / Nouvelle Partie
 -Modifications du menu principal
+
+#AlexisO'grady#07/04/2020#
+-Ajout d'un arc dans listeItems
+-Ecriture d'items divers
