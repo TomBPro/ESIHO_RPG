@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<Pane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<Pane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #001433;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <Label layoutX="218.0" layoutY="73.0" text="Ce jeu a été fait par :" textAlignment="CENTER">
+      <Label layoutX="504.0" layoutY="112.0" text="Ce jeu a été fait par :" textAlignment="CENTER" textFill="#ffe066">
          <font>
-            <Font size="18.0" />
+            <Font name="System Bold" size="30.0" />
          </font>
       </Label>
-      <Button id="optnRtrnButton" layoutX="258.0" layoutY="316.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#optnRtrnButtonOnClick" text="Retour">
+      <Button id="optnRtrnButton" layoutX="504.0" layoutY="563.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#optnRtrnButtonOnClick" prefHeight="37.0" prefWidth="272.0" style="-fx-background-color: #00004d; -fx-background-radius: 300; -fx-border-color: #000033; -fx-border-radius: 300; -fx-border-width: 8;" text="Retour" textFill="#ffe066">
          <font>
             <Font name="Calibri Bold" size="20.0" />
          </font>
       </Button>
-      <GridPane layoutX="126.0" layoutY="110.0" prefHeight="180.0" prefWidth="348.0">
+      <GridPane layoutX="465.0" layoutY="200.0" prefHeight="321.0" prefWidth="350.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -29,39 +34,39 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label prefHeight="27.0" prefWidth="98.0" text="Tom BALIEU" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Label prefHeight="40.0" prefWidth="157.0" text="Tom BALIEU" textFill="#ffe066" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
-                  <Font size="18.0" />
+                  <Font size="28.0" />
                </font>
             </Label>
-            <Label prefHeight="27.0" prefWidth="145.0" text="Fabien BOULNOIS" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Label prefHeight="40.0" prefWidth="229.0" text="Fabien BOULNOIS" textFill="#ffe066" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
-                  <Font size="18.0" />
+                  <Font size="28.0" />
                </font>
             </Label>
-            <Label prefHeight="27.0" prefWidth="135.0" text="Thomas DEGAVE" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <Label prefHeight="40.0" prefWidth="212.0" text="Thomas DEGAVE" textFill="#ffe066" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <font>
-                  <Font size="18.0" />
+                  <Font size="28.0" />
                </font>
             </Label>
-            <Label prefHeight="27.0" prefWidth="118.0" text="Arnaud DUPRÉ" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+            <Label prefHeight="40.0" prefWidth="189.0" text="Arnaud DUPRÉ" textFill="#ffe066" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                <font>
-                  <Font size="18.0" />
+                  <Font size="28.0" />
                </font>
             </Label>
-            <Label prefHeight="27.0" prefWidth="184.0" text="Quentin GOEDGEBUER" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+            <Label prefHeight="40.0" prefWidth="289.0" text="Quentin GOEDGEBUER" textFill="#ffe066" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                <font>
-                  <Font size="18.0" />
+                  <Font size="28.0" />
                </font>
             </Label>
-            <Label prefHeight="27.0" prefWidth="130.0" text="Alexis O'GRADY" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+            <Label prefHeight="40.0" prefWidth="203.0" text="Alexis O'GRADY" textFill="#ffe066" GridPane.halignment="CENTER" GridPane.rowIndex="5">
                <font>
-                  <Font size="18.0" />
+                  <Font size="28.0" />
                </font>
             </Label>
-            <Label prefHeight="27.0" prefWidth="114.0" text="Tom ROBETTE" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+            <Label prefHeight="40.0" prefWidth="178.0" text="Tom ROBETTE" textFill="#ffe066" GridPane.halignment="CENTER" GridPane.rowIndex="6">
                <font>
-                  <Font size="18.0" />
+                  <Font size="28.0" />
                </font>
             </Label>
          </children>

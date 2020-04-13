@@ -12,6 +12,7 @@ import GameData.Default.Items.Arme;
 import GameData.Default.Items.Armure;
 import GameData.Default.Items.Consommable;
 import GameData.Default.Items.Item;
+import GameData.Default.Story.Quest;
 
 import java.awt.*;
 import java.awt.image.ImageObserver;
@@ -24,6 +25,7 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
     private ArrayList<Pnj> listePnjs;
     private ArrayList<Item> listeItems;
     private ArrayList<Team> listeTeams;
+    private ArrayList<Quest> listeQuetes;
 
     public InitContenu() {
 	    initMoves();
@@ -31,7 +33,8 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
 	    initPnjs();
 	    initItems();
 	    initTeams();
-    } 
+	    initQuetes();
+    }
 
     private void initMoves() {//Ici on créera les attaques
 	//Ex :
@@ -136,9 +139,10 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
 //        listeItems.add(new Arme("I1","Baton",100, "Baton.png", 1));
 //        listeItems.add(new Arme("I2","dague",250, "Dague.png", 3));
 //        listeItems.add(new Arme("I3","epee légendaire",500, "Epee.png", 5));
-//        listeItems.add(new Armure("I4", "Armure banale", 100, "Armure.png", 2));
-//        listeItems.add(new Armure("I5", "Armure légendaire", 500, "Armure.png", 5));
-//        listeItems.add(new Consommable("I6", "Potion de vie", 100, "Vie.png", 1) {
+//        listeItems.add(new Arme("I4","arc",300, "x", 4));
+//        listeItems.add(new Armure("I5", "Armure banale", 100, "x", 2));
+//        listeItems.add(new Armure("I6", "Armure légendaire", 500, "x", 5));
+//        listeItems.add(new Consommable("I7", "Potion de vie", 100, "x", 1); {
 //            @Override
 //            public void useItem() {
 //
@@ -154,8 +158,8 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
 //                    pnj.getEntite().getPV().removePv(val);
 //                }
 //            }
-//        });
-//        listeItems.add(new Consommable("I7", "Potion de dégâts", 100, "Degats.png", 2) {
+//      }
+//        listeItems.add(new Consommable("I8", "Potion de dégâts", 100, "x", 2); {
 //            @Override
 //            public void useItem() {
 //
@@ -171,12 +175,19 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
 //                    pnj.getEntite().getPV().removePv(val);
 //                }
 //            }
-//        });
+//        }
+
+//        listeItems.add(new Divers("I9", "queue de rat", 50, "x"));
+//        listeItems.add(new Divers("I10", "balle", 200, "x"));
 
     }
 
     private void initTeams(){
 
+    }
+
+    private void initQuetes() {
+        
     }
 
 
