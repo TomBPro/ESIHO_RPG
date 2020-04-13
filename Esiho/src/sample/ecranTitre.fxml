@@ -50,6 +50,6 @@
             </Label>
          </children>
       </Pane>
-      <Label id="startVersionText" layoutX="14.0" layoutY="369.0" text="V_0.0.5" />
+      <Label id="startVersionText" layoutX="14.0" layoutY="369.0" text="V_0.0.9.2" />
    </children>
 </Pane>

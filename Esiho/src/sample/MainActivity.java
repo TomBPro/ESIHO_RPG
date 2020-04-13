@@ -43,7 +43,6 @@ public class MainActivity extends Application {
         primeStage = new Stage();
         primeStage.setScene(sceneTitre);
         primeStage.show();
-       // cheat.cheats("Bonjour Maurice");
     }
 
 
