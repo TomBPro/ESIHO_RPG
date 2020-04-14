@@ -46,18 +46,18 @@
             </Button>
          </children>
       </GridPane>
-<<<<<<< HEAD
-      <Pane layoutX="112.0" layoutY="26.0" prefHeight="77.0" prefWidth="377.0">
-         <children>
-            <Label id="startTitleText" alignment="CENTER" layoutX="-18.0" layoutY="-25.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="102.0" prefWidth="413.0" text="ESIHO" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="87.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Label id="startVersionText" layoutX="14.0" layoutY="369.0" text="V_0.0.9.2" />
-=======
+<!--<<<<<<< HEAD-->
+<!--      <Pane layoutX="112.0" layoutY="26.0" prefHeight="77.0" prefWidth="377.0">-->
+<!--         <children>-->
+<!--            <Label id="startTitleText" alignment="CENTER" layoutX="-18.0" layoutY="-25.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="102.0" prefWidth="413.0" text="ESIHO" textAlignment="CENTER">-->
+<!--               <font>-->
+<!--                  <Font name="System Bold" size="87.0" />-->
+<!--               </font>-->
+<!--            </Label>-->
+<!--         </children>-->
+<!--      </Pane>-->
+<!--      <Label id="startVersionText" layoutX="14.0" layoutY="369.0" text="V_0.0.9.2" />-->
+<!--=======-->
       <Pane layoutX="112.0" layoutY="26.0" prefHeight="77.0" prefWidth="377.0" />
       <Label id="startVersionText" layoutX="14.0" layoutY="689.0" text="V_0.0.5" />
       <Label id="startTitleText" alignment="CENTER" layoutX="447.0" layoutY="107.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="102.0" prefWidth="413.0" text="ESIHO" textAlignment="CENTER" textFill="#ffe066">
@@ -65,6 +65,6 @@
             <Font name="System Bold" size="87.0" />
          </font>
       </Label>
->>>>>>> 97fe37c07e6884d27980ee81ed18b8894b3b2c14
+<!--&gt;>>>>>> 97fe37c07e6884d27980ee81ed18b8894b3b2c14-->
    </children>
 </Pane>

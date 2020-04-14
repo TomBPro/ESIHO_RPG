@@ -100,3 +100,7 @@ C'est une chaîne de caractère, il faut donc faire "id de la map"+"position x"+
 #TomRobette#13/04/2020#
 -Ajout de la classe Quete et de ses méthodes
 -Ajout de la listeQuetes et de sa procédure d'initialisation à InitContenu.
+
+
+#ThomasDegave#14/04/2020#
+-Création d'un menu pour tester les differentes "maquettes" (espace de combat pour le moment)
