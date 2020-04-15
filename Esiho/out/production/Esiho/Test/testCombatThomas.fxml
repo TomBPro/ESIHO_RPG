@@ -4,9 +4,9 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Test.TestThomas">
+<AnchorPane fx:id="rootPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Test.TestControleurCombatThomas">
    <children>
-      <GridPane layoutY="251.0" prefHeight="149.0" prefWidth="331.0">
+      <GridPane fx:id="gridAtk" gridLinesVisible="true" layoutY="251.0" prefHeight="149.0" prefWidth="331.0" visible="false">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -16,10 +16,10 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button id="attaque1" mnemonicParsing="false" prefHeight="104.0" prefWidth="200.0" text="Attaque1" />
-            <Button id="attaque2" mnemonicParsing="false" prefHeight="154.0" prefWidth="240.0" text="Attaque2" GridPane.columnIndex="1" />
-            <Button id="attaque3" mnemonicParsing="false" prefHeight="129.0" prefWidth="371.0" text="Attaque3" GridPane.rowIndex="1" />
-            <Button id="attaque4" mnemonicParsing="false" prefHeight="181.0" prefWidth="288.0" text="Attaque4" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button id="attaque1" fx:id="btnAtk1" mnemonicParsing="false" prefHeight="104.0" prefWidth="200.0" />
+            <Button id="attaque2" fx:id="btnAtk2" mnemonicParsing="false" prefHeight="154.0" prefWidth="240.0" GridPane.columnIndex="1" />
+            <Button id="attaque3" fx:id="btnAtk3" mnemonicParsing="false" prefHeight="129.0" prefWidth="371.0" GridPane.rowIndex="1" />
+            <Button id="attaque4" fx:id="btnAtk4" mnemonicParsing="false" prefHeight="181.0" prefWidth="288.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <Pane layoutX="-3.0" prefHeight="252.0" prefWidth="609.0" style="-fx-background-color: #c9c9c9;">
@@ -115,13 +115,15 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button id="AttaqueBtn" mnemonicParsing="false" prefHeight="56.0" prefWidth="234.0" text="Attaque" GridPane.rowIndex="2" />
-            <Button id="DefenceBtn" mnemonicParsing="false" prefHeight="60.0" prefWidth="256.0" text="Defence" GridPane.rowIndex="3" />
-            <Button id="FuiteBtn" mnemonicParsing="false" prefHeight="60.0" prefWidth="220.0" text="Fuite" GridPane.rowIndex="4" />
+            <Button id="AttaqueBtn" fx:id="btnAtkPhy" mnemonicParsing="false" onAction="#atkPhy" prefHeight="56.0" prefWidth="234.0" text="Attaque Phy" GridPane.rowIndex="2" />
+            <Button id="DefenceBtn" mnemonicParsing="false" onAction="#atkSpe" prefHeight="60.0" prefWidth="256.0" text="Attaque Spé" GridPane.rowIndex="3" />
+            <Button id="FuiteBtn" fx:id="btnFuite" mnemonicParsing="false" onAction="#fuite" prefHeight="60.0" prefWidth="220.0" text="Fuite" GridPane.rowIndex="5" />
             <TextField id="PV" editable="false" text="PV" />
             <TextField id="Magie" editable="false" text="Magie" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" onAction="#inventaire" prefHeight="66.0" prefWidth="209.0" text="Inventaire" GridPane.rowIndex="4" />
          </children>
       </GridPane>
       <GridPane layoutX="331.0" layoutY="251.0" prefHeight="149.0" prefWidth="135.0">
@@ -141,6 +143,18 @@
             <TextField editable="false" layoutX="10.0" layoutY="42.0" text="Nom Perso 3" GridPane.rowIndex="2" />
             <TextField editable="false" layoutX="10.0" layoutY="42.0" text="Nom Perso 4" GridPane.rowIndex="3" />
             <TextField editable="false" layoutX="10.0" layoutY="102.0" text="Nom Perso 5" GridPane.rowIndex="4" />
+         </children>
+      </GridPane>
+      <GridPane fx:id="gridInventaire" layoutY="253.0" prefHeight="149.0" prefWidth="331.0" visible="false">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="78.0" minHeight="10.0" prefHeight="26.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="123.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField alignment="CENTER" editable="false" text="Inventaire" />
          </children>
       </GridPane>
    </children>

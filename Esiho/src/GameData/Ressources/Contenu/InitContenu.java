@@ -89,7 +89,7 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
 
         ArrayList<Image> images = new ArrayList<>();
         images.add(x);
-        Feu typeFeu = new Feu();
+        Types typeFeu = new Feu();
         Plante typePlante = new Plante();
         Pv pv = new Pv(10,10);
         MoveList moves = new MoveList(listeMoves.get(0),listeMoves.get(0),listeMoves.get(0),listeMoves.get(0));
