@@ -5,9 +5,7 @@ import GameData.Combat.Entities.Pv;
 import GameData.Combat.Entities.Team;
 import GameData.Combat.Moves.Move;
 import GameData.Combat.Moves.MoveList;
-import GameData.Combat.Types.Feu;
-import GameData.Combat.Types.Plante;
-import GameData.Combat.Types.Types;
+import GameData.Combat.Types.*;
 import GameData.Default.Items.Arme;
 import GameData.Default.Items.Armure;
 import GameData.Default.Items.Consommable;
@@ -39,6 +37,19 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
     private void initMoves() {//Ici on créera les attaques
 	//Ex :
 	//listeMoves.add(new Move(1, "Lance-flammes", etc))
+        listeMoves.add(new Move("M1", "Coup de poing", "Physique", 40, new Normal(), 95));
+        listeMoves.add(new Move("M2", "Coup d'épée", "Physique", 85, new Normal(), 85));
+        listeMoves.add(new Move("M3", "Lame d'herbe", "Physique", 80, new Plante(), 90));
+        listeMoves.add(new Move("M4", "Lame de feu", "Physique", 90, new Feu(), 80));
+        listeMoves.add(new Move("M5", "Lame d'eau", "Physique", 85, new Eau(), 85));
+        listeMoves.add(new Move("M6", "Feuilles à lancer", "Spécial", 80, new Plante(), 90));
+        listeMoves.add(new Move("M7", "Lance-Flammes", "Spécial", 90, new Feu(), 80));
+        listeMoves.add(new Move("M8", "Canon à Eau", "Spécial", 85, new Eau(), 85));
+        listeMoves.add(new Move("M9", "Tir de flèche", "Spécial", 80, new Normal(), 85));
+        listeMoves.add(new Move("M10", "Flèche d'épines", "Spécial", 80, new Plante(), 90));
+        listeMoves.add(new Move("M11", "Flèche d'eau", "Spécial", 90, new Normal(), 80));
+        listeMoves.add(new Move("M12", "Flèche de feu", "Spécial", 85, new Normal(), 85));
+
     } 
 
     private void initDecors() {//Ici on créera les décors 
