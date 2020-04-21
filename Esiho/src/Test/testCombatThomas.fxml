@@ -121,7 +121,7 @@
             <Button id="AttaqueBtn" fx:id="btnAtkPhy" mnemonicParsing="false" onAction="#atkPhy" prefHeight="56.0" prefWidth="234.0" text="Attaque Phy" GridPane.rowIndex="2" />
             <Button id="DefenceBtn" mnemonicParsing="false" onAction="#atkSpe" prefHeight="60.0" prefWidth="256.0" text="Attaque Spé" GridPane.rowIndex="3" />
             <Button id="FuiteBtn" fx:id="btnFuite" mnemonicParsing="false" onAction="#fuite" prefHeight="60.0" prefWidth="220.0" text="Fuite" GridPane.rowIndex="5" />
-            <TextField id="PV" editable="false" text="PV" />
+            <TextField id="PV" fx:id="pv" editable="false" text="PV" />
             <TextField id="Magie" editable="false" text="Magie" GridPane.rowIndex="1" />
             <Button mnemonicParsing="false" onAction="#inventaire" prefHeight="66.0" prefWidth="209.0" text="Inventaire" GridPane.rowIndex="4" />
          </children>
@@ -138,11 +138,11 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField editable="false" text="Nom Perso 1" />
-            <TextField editable="false" layoutX="10.0" layoutY="12.0" text="Nom Perso 2" GridPane.rowIndex="1" />
-            <TextField editable="false" layoutX="10.0" layoutY="42.0" text="Nom Perso 3" GridPane.rowIndex="2" />
-            <TextField editable="false" layoutX="10.0" layoutY="42.0" text="Nom Perso 4" GridPane.rowIndex="3" />
-            <TextField editable="false" layoutX="10.0" layoutY="102.0" text="Nom Perso 5" GridPane.rowIndex="4" />
+            <Button fx:id="perso1" mnemonicParsing="false"  prefHeight="154.0" prefWidth="466.0" />
+            <Button fx:id="perso2" mnemonicParsing="false"  prefHeight="128.0" prefWidth="371.0" GridPane.rowIndex="1" />
+            <Button fx:id="perso3" mnemonicParsing="false"  prefHeight="148.0" prefWidth="356.0" GridPane.rowIndex="2" />
+            <Button fx:id="perso4" mnemonicParsing="false"  prefHeight="147.0" prefWidth="439.0" GridPane.rowIndex="3" />
+            <Button fx:id="perso5" mnemonicParsing="false"  prefHeight="149.0" prefWidth="391.0" GridPane.rowIndex="4" />
          </children>
       </GridPane>
       <GridPane fx:id="gridInventaire" layoutY="253.0" prefHeight="149.0" prefWidth="331.0" visible="false">

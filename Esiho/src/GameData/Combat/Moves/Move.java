@@ -34,6 +34,7 @@ public class Move {
         this.type = type;
     }
 
+
     public String getId() {
         return id;
     }
