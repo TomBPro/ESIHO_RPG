@@ -12,6 +12,7 @@ import GameData.Combat.Types.Eau;
 import GameData.Combat.Types.Types;
 import GameData.Default.Items.Item;
 import GameData.Ressources.Contenu.Pnj;
+import Test.TestControleurCombatThomas;
 
 public class Combat {
     private Team team1;
@@ -76,13 +77,28 @@ public class Combat {
                         if (pnj.equals(pnjteam1) && pnj.getEntite().getPV().getPv()>0 && victoire==0){
                             Integer selecGenre;
                             //Ici le joueur choisit le genre d'attaque , il retourne un chiffre entre 0 et 1 (inclus)
-                            selecGenre=1;//TEST A SUPPRIMER !
+                            selecGenre=1;//Init vide
                             Integer selecAttaque;
                             //Ici le joueur choisit l'attaque à lancer, il retourne un chiffre entre 0 et 3 (inclus)
-                            selecAttaque=1;//TEST A SUPPRIMER !
+                            selecAttaque=1;//Init vide
                             Integer selecCible;
                             //Ici le joueur choisit la cible de l'attaque, il retourne un chiffre entre 0 et le nb maximal d'adversaire + 1
-                            selecCible=1;//TEST A SUPPRIMER !
+                            selecCible=1;//Init vide
+                            boolean selection=false;
+                            while (selection==false){
+                                if (TestControleurCombatThomas.getSelectionAtk()!="RIEN" && selection==false){
+                                    try{
+                                        selecGenre=Integer.parseInt(TestControleurCombatThomas.getSelectionAtk().substring(0,1));
+                                        selecAttaque=Integer.parseInt(TestControleurCombatThomas.getSelectionAtk().substring(1,2));
+                                        selecCible=Integer.parseInt(TestControleurCombatThomas.getSelectionAtk().substring(2,3));
+                                        selection=true;
+                                        TestControleurCombatThomas.setSelectionAtk("RIEN");
+                                    }catch (Exception error_selection_atk){
+                                        //Erreur lors de la selection de l'attaque
+                                    }
+                                }
+                            }
+
                             Move attaque = new Move("MError","Erreur","Erreur", 0, new Eau(), 0);//Attaque vide. Reste s'il y a une erreur
                             if (selecGenre==0){
                                 attaque = pnjteam1.getEntite().getMovesPhy().getMove(selecAttaque);

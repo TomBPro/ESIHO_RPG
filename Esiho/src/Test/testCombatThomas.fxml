@@ -16,10 +16,10 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button id="attaque1" fx:id="btnAtk1" mnemonicParsing="false" prefHeight="104.0" prefWidth="200.0" />
-            <Button id="attaque2" fx:id="btnAtk2" mnemonicParsing="false" prefHeight="154.0" prefWidth="240.0" GridPane.columnIndex="1" />
-            <Button id="attaque3" fx:id="btnAtk3" mnemonicParsing="false" prefHeight="129.0" prefWidth="371.0" GridPane.rowIndex="1" />
-            <Button id="attaque4" fx:id="btnAtk4" mnemonicParsing="false" prefHeight="181.0" prefWidth="288.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button id="attaque1" fx:id="btnAtk1" onAction="#useBtnAtk1" mnemonicParsing="false" prefHeight="104.0" prefWidth="200.0" />
+            <Button id="attaque2" fx:id="btnAtk2" onAction="#useBtnAtk2" mnemonicParsing="false" prefHeight="154.0" prefWidth="240.0" GridPane.columnIndex="1" />
+            <Button id="attaque3" fx:id="btnAtk3" onAction="#useBtnAtk3" mnemonicParsing="false" prefHeight="129.0" prefWidth="371.0" GridPane.rowIndex="1" />
+            <Button id="attaque4" fx:id="btnAtk4" onAction="#useBtnAtk4" mnemonicParsing="false" prefHeight="181.0" prefWidth="288.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <Pane layoutX="-3.0" prefHeight="252.0" prefWidth="609.0" style="-fx-background-color: #c9c9c9;">

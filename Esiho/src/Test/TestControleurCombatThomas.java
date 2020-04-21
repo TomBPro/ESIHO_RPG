@@ -20,14 +20,18 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class TestControleurCombatThomas implements Initializable {
 
     private Pnj combattant;
     private ArrayList<Pnj> listPlayer;
     private ArrayList<Move> move;
+    private Integer selecGenre;
+    public static String selectionAtk;
 
     public TestControleurCombatThomas(){
+        selectionAtk="RIEN";
         System.out.println("ok");
         InitContenu contenu = new InitContenu();
         System.out.println("ok");
@@ -112,6 +116,8 @@ public class TestControleurCombatThomas implements Initializable {
         btnAtk2.setText(combattant.getEntite().getMovesPhy().getMove(1).getNom());
         btnAtk3.setText(combattant.getEntite().getMovesPhy().getMove(2).getNom());
         btnAtk4.setText(combattant.getEntite().getMovesPhy().getMove(3).getNom());
+        selecGenre=0;
+        selectionAtk="RIEN";
     }
 
     @FXML
@@ -122,7 +128,8 @@ public class TestControleurCombatThomas implements Initializable {
         btnAtk2.setText(combattant.getEntite().getMovesSpe().getMove(1).getNom());
         btnAtk3.setText(combattant.getEntite().getMovesSpe().getMove(2).getNom());
         btnAtk4.setText(combattant.getEntite().getMovesSpe().getMove(3).getNom());
-
+        selecGenre=1;
+        selectionAtk="RIEN";
     }
 
     @FXML
@@ -131,9 +138,41 @@ public class TestControleurCombatThomas implements Initializable {
         gridInventaire.setVisible(true);
     }
 
+    @FXML
+    public void useBtnAtk1() throws Exception {
+        Integer cibleRandom = ThreadLocalRandom.current().nextInt(0, 4);
+        selectionAtk=""+selecGenre+0+cibleRandom.toString();
+    }
+
+    @FXML
+    public void useBtnAtk2() throws Exception {
+        Integer cibleRandom = ThreadLocalRandom.current().nextInt(0, 4);
+        selectionAtk=""+selecGenre+1+cibleRandom.toString();
+    }
+
+    @FXML
+    public void useBtnAtk3() throws Exception {
+        Integer cibleRandom = ThreadLocalRandom.current().nextInt(0, 4);
+        selectionAtk=""+selecGenre+2+cibleRandom.toString();
+    }
+
+    @FXML
+    public void useBtnAtk4() throws Exception {
+        Integer cibleRandom = ThreadLocalRandom.current().nextInt(0, 4);
+        selectionAtk=""+selecGenre+3+cibleRandom.toString();
+    }
+
+
     public void fuite(ActionEvent actionEvent) throws IOException {
         Pane pane = FXMLLoader.load(getClass().getResource("testMenuThomas.fxml"));
         rootPane.getChildren().setAll(pane);
+    }
+
+    public static String getSelectionAtk(){
+        return selectionAtk;
+    }
+    public static void setSelectionAtk(String modif){
+        selectionAtk="RIEN";
     }
 
 //    public void selectPerso1(ActionEvent actionEvent) {
