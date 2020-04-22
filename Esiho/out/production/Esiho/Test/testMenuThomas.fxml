@@ -19,7 +19,7 @@
               </rowConstraints>
                <children>
                   <Button mnemonicParsing="false" onAction="#ecranCombat" prefHeight="101.0" prefWidth="270.0" text="Combat" />
-                  <Button mnemonicParsing="false" prefHeight="98.0" prefWidth="300.0" text="Button" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#ecranLvlUp" prefHeight="98.0" prefWidth="300.0" text="Lvl Up" GridPane.rowIndex="1" />
                   <Button mnemonicParsing="false" prefHeight="131.0" prefWidth="352.0" text="Button" GridPane.rowIndex="2" />
                </children>
             </GridPane>

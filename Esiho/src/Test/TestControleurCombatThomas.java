@@ -85,24 +85,24 @@ public class TestControleurCombatThomas implements Initializable {
         if (listPlayer.size()==1){
             perso1.setText(listPlayer.get(0).getNom());
         }
-        //this.combattant = listPlayer.get(0);
-        int compt = 0;
-        for (Pnj player:listPlayer) {
-            for (Button btn: listBtnPlayer) {
-                if (btn.getText().equals(player.getNom())) {
-                    btn.setTextFill(Paint.valueOf("red"));
-                }
-                pv.setText(player.getEntite().getPV().getPv().toString());
-                boolean moveset = false;
-                while(!moveset){
-                   if (this.move.size()==1){
-                       moveset=true;
-                   }
-                }
-                btn.setTextFill(Paint.valueOf("black"));
-            }
-
-        }
+        this.combattant = listPlayer.get(0);
+//        int compt = 0;
+//        for (Pnj player:listPlayer) {
+//            for (Button btn: listBtnPlayer) {
+//                if (btn.getText().equals(player.getNom())) {
+//                    btn.setTextFill(Paint.valueOf("red"));
+//                }
+//                pv.setText(player.getEntite().getPV().getPv().toString());
+//                boolean moveset = false;
+//                while(!moveset){
+//                   if (this.move.size()==1){
+//                       moveset=true;
+//                   }
+//                }
+//                btn.setTextFill(Paint.valueOf("black"));
+//            }
+//
+//        }
     }
 
 

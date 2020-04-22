@@ -19,10 +19,6 @@ public class ControleurThomas implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
-    @FXML
-    private void startCtnButtonOnClick() throws Exception {// bouton : lance le jeu
-
-    }
 
     @FXML
     private void ecranCombat() throws Exception {// bouton Combat
@@ -32,22 +28,8 @@ public class ControleurThomas implements Initializable {
     }
 
     @FXML
-    private void startNewButtonOnClick() throws Exception {// bouton new game
-        Pane pane = FXMLLoader.load(getClass().getResource("ecranNewGame.fxml"));
-        rootPane.getChildren().setAll(pane);
-    }
-
-    @FXML
-    private void startOptnButtonOnClick() throws Exception {// bouton options
-        Pane pane = FXMLLoader.load(getClass().getResource("ecranOptions.fxml"));
-        rootPane.getChildren().setAll(pane);
-    }
-
-    //Credits
-    @FXML
-    private void optnRtrnButtonOnClick() throws Exception {//bouton retour
-        //super.ecranTitre();
-        Pane pane = FXMLLoader.load(getClass().getResource("ecranTitre.fxml"));
+    private void ecranLvlUp() throws Exception {// bouton new game
+        Pane pane = FXMLLoader.load(getClass().getResource("testLvlUpThomas.fxml"));
         rootPane.getChildren().setAll(pane);
     }
 }

@@ -53,4 +53,32 @@ public class Pnj {
     public void setEntite(Entity entite) {
         this.entite = entite;
     }
+
+    public void sethpmax(int i) {
+        this.entite.getPV().setPvmax(i);
+    }
+
+    public void setAtk(int i) {
+        this.entite.setAtt(i);
+    }
+
+    public void setDef(int i) {
+        this.entite.setDef(i);
+    }
+
+    public void setAtkSpe(int i) {
+        this.entite.setAttspe(i);
+    }
+
+    public void setDefSpe(int i) {
+        this.entite.setDefspe(i);
+    }
+
+    public void setVitesse(int i) {
+        this.entite.setVitesse(i);
+    }
+
+    public void setLvl(int i) {
+        this.entite.setLvl(i);
+    }
 }
