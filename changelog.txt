@@ -109,3 +109,6 @@ C'est une chaîne de caractère, il faut donc faire "id de la map"+"position x"+
 
 #TomRobette#15/04/2020#
 -Liaison du controleur combat et de la classe combat
+
+#ThomasDegave#22/04/2020#
+-Création d'une page pour le lvl up
