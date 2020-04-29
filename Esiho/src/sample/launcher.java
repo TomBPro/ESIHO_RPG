@@ -5,4 +5,7 @@ public class launcher {//Ceci est le laucher du jeu
         MainActivity Game = new MainActivity();
         Game.main(args);
     }
+    public static void ecranMortRespawn(){
+        ecranMortRespawn();
+    }
 }

@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
+import sample.launcher;
 import GameData.Combat.Entities.Team;
 import GameData.Combat.Moves.MoveList;
 import GameData.Combat.Moves.Move;
@@ -187,6 +188,12 @@ public class Combat {
             victoire=0;
         }
         return victoire;
+    }
+
+    public void testMort(){
+        if (analyseVictoire(team1,team2)==-1){
+            launcher.ecranMortRespawn();
+        }
     }
 
     public void useMove(Move move, Entity entityThrow, Entity entityReceiver){
