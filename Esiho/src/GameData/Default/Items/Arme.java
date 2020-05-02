@@ -60,4 +60,9 @@ public class Arme extends Item{//Ce type d'objet réfère aux objets servant d'a
     public void setCoeffDegats(Integer coeffDegats) {
         this.coeffDegats = coeffDegats;
     }
+
+//    public static Arme baton(){
+//        Arme baton = new Arme("I1","Baton",100, "Baton.png", 1);
+//        return baton;
+//    }
 }

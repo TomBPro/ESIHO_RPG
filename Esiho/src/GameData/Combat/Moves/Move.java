@@ -1,6 +1,6 @@
 package GameData.Combat.Moves;
 
-import GameData.Combat.Types.Types;
+import GameData.Combat.Types.*;
 
 public class Move {
     private String id;
@@ -81,6 +81,66 @@ public class Move {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public static Move coupPoing(){
+        Move move = new Move("M1", "Coup de poing", "Physique", 40, new Normal(), 95);
+        return move;
+    }
+
+    public static Move coupEpee(){
+        Move move = new Move("M2", "Coup d'épée", "Physique", 85, new Normal(), 85);
+        return move;
+    }
+
+    public static Move lameHerbe(){
+        Move move = new Move("M3", "Lame d'herbe", "Physique", 80, new Plante(), 90);
+        return move;
+    }
+
+    public static Move lameFeu(){
+        Move move = new Move("M4", "Lame de feu", "Physique", 90, new Feu(), 80);
+        return move;
+    }
+
+    public static Move lameEau(){
+        Move move = new Move("M5", "Lame d'eau", "Physique", 85, new Eau(), 85);
+        return move;
+    }
+
+    public static Move feuillesLancer(){
+        Move move = new Move("M6", "Feuilles à lancer", "Spécial", 80, new Plante(), 90);
+        return move;
+    }
+
+    public static Move lanceFlammes(){
+        Move move = new Move("M7", "Lance-Flammes", "Spécial", 90, new Feu(), 80);
+        return move;
+    }
+
+    public static Move cannonEau(){
+        Move move = new Move("M8", "Cannon à Eau", "Spécial", 85, new Eau(), 85);
+        return move;
+    }
+
+    public static Move tirFleche(){
+        Move move = new Move("M9", "Tir de flèche", "Spécial", 80, new Normal(), 85);
+        return move;
+    }
+
+    public static Move flecheEpines(){
+        Move move = new Move("M10", "Flèche d'épines", "Spécial", 80, new Plante(), 90);
+        return move;
+    }
+
+    public static Move flecheEau(){
+        Move move = new Move("M11", "Flèche d'eau", "Spécial", 90, new Normal(), 80);
+        return move;
+    }
+
+    public static Move flecheFeu(){
+        Move move = new Move("M12", "Flèche de feu", "Spécial", 85, new Normal(), 85);
+        return move;
     }
 }
 

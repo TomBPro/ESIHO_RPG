@@ -38,18 +38,6 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
 	//Ex :
 	//listeMoves.add(new Move(1, "Lance-flammes", etc))
         listeMoves = new ArrayList<>();
-        listeMoves.add(new Move("M1", "Coup de poing", "Physique", 40, new Normal(), 95));
-        listeMoves.add(new Move("M2", "Coup d'épée", "Physique", 85, new Normal(), 85));
-        listeMoves.add(new Move("M3", "Lame d'herbe", "Physique", 80, new Plante(), 90));
-        listeMoves.add(new Move("M4", "Lame de feu", "Physique", 90, new Feu(), 80));
-        listeMoves.add(new Move("M5", "Lame d'eau", "Physique", 85, new Eau(), 85));
-        listeMoves.add(new Move("M6", "Feuilles à lancer", "Spécial", 80, new Plante(), 90));
-        listeMoves.add(new Move("M7", "Lance-Flammes", "Spécial", 90, new Feu(), 80));
-        listeMoves.add(new Move("M8", "Canon à Eau", "Spécial", 85, new Eau(), 85));
-        listeMoves.add(new Move("M9", "Tir de flèche", "Spécial", 80, new Normal(), 85));
-        listeMoves.add(new Move("M10", "Flèche d'épines", "Spécial", 80, new Plante(), 90));
-        listeMoves.add(new Move("M11", "Flèche d'eau", "Spécial", 90, new Normal(), 80));
-        listeMoves.add(new Move("M12", "Flèche de feu", "Spécial", 85, new Normal(), 85));
 
     } 
 
@@ -156,7 +144,8 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
     }
 
     private void initItems() {//Ici on créera les Items
-//        listeItems.add(new Arme("I1","Baton",100, "Baton.png", 1));
+         //Arme.baton();
+
 //        listeItems.add(new Arme("I2","dague",250, "Dague.png", 3));
 //        listeItems.add(new Arme("I3","epee légendaire",500, "Epee.png", 5));
 //        listeItems.add(new Arme("I4","arc",300, "x", 4));
@@ -196,7 +185,7 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
 //                }
 //            }
 //        }
-
+//
 //        listeItems.add(new Divers("I9", "queue de rat", 50, "x"));
 //        listeItems.add(new Divers("I10", "balle", 200, "x"));
 
