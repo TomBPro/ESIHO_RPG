@@ -116,3 +116,6 @@ C'est une chaîne de caractère, il faut donc faire "id de la map"+"position x"+
 #FabienBoulnois#29/04/2020#
 -Creation de la page MortRespawn
 -Ajout de la fonction test mort qui renvoit vers la page MortRespawn
+
+#TomRobette#02/05/2020#
+-Les attaques ont été mises en statique
