@@ -18,7 +18,6 @@ import java.awt.image.ImageProducer;
 import java.util.ArrayList;
 
 public class InitContenu {//Cette classe contiendra toutes les initialisations de map, d'items, de pnj, d'entités, etc.
-    private ArrayList<Move> listeMoves;
     private ArrayList<Decor> listeDecors;
     private ArrayList<Pnj> listePnjs;
     private ArrayList<Item> listeItems;
@@ -26,20 +25,12 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
     private ArrayList<Quest> listeQuetes;
 
     public InitContenu() {
-	    initMoves();
 	    initDecors();
 	    initPnjs();
 	    initItems();
 	    initTeams();
 	    initQuetes();
     }
-
-    private void initMoves() {//Ici on créera les attaques
-	//Ex :
-	//listeMoves.add(new Move(1, "Lance-flammes", etc))
-        listeMoves = new ArrayList<>();
-
-    } 
 
     private void initDecors() {//Ici on créera les décors 
 	
@@ -92,15 +83,15 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
         Types typeFeu = new Feu();
         Plante typePlante = new Plante();
         Pv pv = new Pv(10,10);
-        MoveList movesPhy = new MoveList(listeMoves.get(0),listeMoves.get(1),listeMoves.get(2),listeMoves.get(3));
-        MoveList movesSpe = new MoveList(listeMoves.get(5),listeMoves.get(6),listeMoves.get(7),listeMoves.get(8));
+        MoveList movesPhy = new MoveList(Move.lameFeu(),Move.coupPoing(),Move.coupEpee(),Move.coupPoing());
+        MoveList movesSpe = new MoveList(Move.flecheFeu(),Move.flecheFeu(),Move.flecheFeu(),Move.flecheFeu());
         Arme arme = new Arme("1","Epée",5,x,2);
         Armure armure = new Armure("2","Bouclier", 5, x , 2);
         Entity entity = new Entity("1","Squelette",1,50,0,typeFeu,pv,1,1,1,1,1,arme,armure, movesPhy, movesPhy, x);
         listePnjs.add(new Pnj("1","Squelette", images, entity));
 
-        movesPhy = new MoveList(listeMoves.get(0),listeMoves.get(1),listeMoves.get(4),listeMoves.get(3));
-        movesSpe = new MoveList(listeMoves.get(5),listeMoves.get(6),listeMoves.get(8),listeMoves.get(8));
+        movesPhy = new MoveList(Move.coupPoing(),Move.coupPoing(),Move.coupPoing(),Move.coupPoing());
+        movesSpe = new MoveList(Move.coupPoing(),Move.coupPoing(),Move.coupPoing(),Move.coupPoing());
         pv = new Pv(10,10);
         //movesPhy = new MoveList(listeMoves.get(0),listeMoves.get(0),listeMoves.get(0),listeMoves.get(0));
         arme = new Arme("2","Rien",1,x,1);
@@ -197,16 +188,6 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
 
     private void initQuetes() {
         
-    }
-
-
-
-    public ArrayList<Move> getListeMoves() {
-        return listeMoves;
-    }
-
-    public void setListeMoves(ArrayList<Move> listeMoves) {
-        this.listeMoves = listeMoves;
     }
 
     public ArrayList<Decor> getListeDecors() {

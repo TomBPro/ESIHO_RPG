@@ -83,6 +83,11 @@ public class Move {
         this.genre = genre;
     }
 
+    public static Move vide(){
+        Move move = new Move("M0", "", "Physique", 0, new Normal(), 0);
+        return move;
+    }
+
     public static Move coupPoing(){
         Move move = new Move("M1", "Coup de poing", "Physique", 40, new Normal(), 95);
         return move;
