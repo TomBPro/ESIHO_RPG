@@ -59,4 +59,14 @@ public class Armure extends Item {//Ce type d'objet réfère aux objets à equip
     public void setCoeffProtection(Integer coeffProtection) {
         this.coeffProtection = coeffProtection;
     }
+
+    //    public static Armure banale(){
+//        Armure banale = new Armure("I5", "Armure banale", 100, "Armure.png", 2);
+//        return banale;
+//    }
+
+    //    public static Armure legendaire(){
+//        Armure leg = new Armure("I6", "Armure légendaire", 500, "Armure.png", 5);
+//        return leg;
+//    }
 }

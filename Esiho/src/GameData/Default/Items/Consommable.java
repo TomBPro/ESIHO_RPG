@@ -62,4 +62,44 @@ public abstract class Consommable extends Item {//Ce type d'objet réfère aux o
     public void setType(Integer type) {
         this.type = type;
     }
+
+//    public static Consommable vie(){
+//        Consommable vie = new Consommable("I7", "Potion de vie", 100, "Potion de vie .png", 1);
+//        @Override
+//        public void useItem() {
+//
+//            }
+//
+//            @Override
+//            public void useItem(Pnj pnj, Integer val) {
+//                if(this.getType()==1){
+//                    //Soigner
+//                    pnj.getEntite().getPV().addPv(val);
+//                }else if (this.getType() == 2){
+//                    //Degats
+//                    pnj.getEntite().getPV().removePv(val);
+//                }
+//            }
+//        return vie;
+//    }
+
+//    public static Consommable degats(){
+//        Consommable degats = new Consommable("I8", "Potion de dégâts", 100, "Potion de dégat.png", 2);
+//        @Override
+//        public void useItem() {
+//
+//            }
+//
+//            @Override
+//            public void useItem(Pnj pnj, Integer val) {
+//                if(this.getType()==1){
+//                    //Soigner
+//                    pnj.getEntite().getPV().addPv(val);
+//                }else if (this.getType() == 2){
+//                    //Degats
+//                    pnj.getEntite().getPV().removePv(val);
+//                }
+//            }
+//        return degats;
+//    }
 }

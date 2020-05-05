@@ -51,4 +51,14 @@ public class Divers extends Item{//Ce type d'objet réfère aux objets sans fonc
     public void setImage(Image image) {
         this.image = image;
     }
+
+//    public static Divers balle(){
+//        Divers balle = new Divers("I10", "balle", 200, "x"));
+//        return balle;
+//    }
+
+//    public static Divers queue(){
+//        Divers queue = new Divers("I9", "queue de rat", 50, "x"));
+//        return queue;
+//    }
 }

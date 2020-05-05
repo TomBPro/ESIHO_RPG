@@ -135,50 +135,20 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
     }
 
     private void initItems() {//Ici on créera les Items
-         //Arme.baton();
+//        Arme.baton();
+//        Arme.dague();
+//        Arme.epee();
+//        Arme.arc();
+//
+//        Armure.banale();
+//        Armure.legendaire();
+//
+//        Consommable.vie();
+//        Consommable.degats();
+//
+//        Divers.balle()
+//        Divers.queue()
 
-//        listeItems.add(new Arme("I2","dague",250, "Dague.png", 3));
-//        listeItems.add(new Arme("I3","epee légendaire",500, "Epee.png", 5));
-//        listeItems.add(new Arme("I4","arc",300, "x", 4));
-//        listeItems.add(new Armure("I5", "Armure banale", 100, "x", 2));
-//        listeItems.add(new Armure("I6", "Armure légendaire", 500, "x", 5));
-//        listeItems.add(new Consommable("I7", "Potion de vie", 100, "x", 1); {
-//            @Override
-//            public void useItem() {
-//
-//            }
-//
-//            @Override
-//            public void useItem(Pnj pnj, Integer val) {
-//                if(this.getType()==1){
-//                    //Soigner
-//                    pnj.getEntite().getPV().addPv(val);
-//                }else if (this.getType() == 2){
-//                    //Degats
-//                    pnj.getEntite().getPV().removePv(val);
-//                }
-//            }
-//      }
-//        listeItems.add(new Consommable("I8", "Potion de dégâts", 100, "x", 2); {
-//            @Override
-//            public void useItem() {
-//
-//            }
-//
-//            @Override
-//            public void useItem(Pnj pnj, Integer val) {
-//                if(this.getType()==1){
-//                    //Soigner
-//                    pnj.getEntite().getPV().addPv(val);
-//                }else if (this.getType() == 2){
-//                    //Degats
-//                    pnj.getEntite().getPV().removePv(val);
-//                }
-//            }
-//        }
-//
-//        listeItems.add(new Divers("I9", "queue de rat", 50, "x"));
-//        listeItems.add(new Divers("I10", "balle", 200, "x"));
 
     }
 

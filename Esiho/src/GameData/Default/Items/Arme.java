@@ -65,4 +65,19 @@ public class Arme extends Item{//Ce type d'objet réfère aux objets servant d'a
 //        Arme baton = new Arme("I1","Baton",100, "Baton.png", 1);
 //        return baton;
 //    }
+
+//    public static Arme dague(){
+//        Arme dague = new Arme("I2","dague",250, "Dague.png", 3);
+//        return dague;
+//    }
+
+//    public static Arme epee(){
+//        Arme epee = new Arme("I3","epee légendaire",500, "Epee.png", 5);
+//        return epee;
+//    }
+
+//    public static Arme arc(){
+//        Arme arc = new Arme("I4","arc",300, "Arc.png", 4);
+//        return arc;
+//    }
 }
