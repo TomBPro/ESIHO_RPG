@@ -26,12 +26,6 @@ public class Tileset {
                 return false;
             }
         };
-        //tileset.getHeight(observer);
-        System.out.println(tileset.getHeight(observer));
-        System.out.println(tileset.getWidth(observer));
-        BufferedImage tile = getImg(toBufferedImage(tileset), 16, 0, 0);
-        System.out.println(tile.getHeight());
-        System.out.println(tile.getWidth());
         Integer compteur = 0;
         for (int a = 0; a<tileset.getHeight(observer)/16; a++){
             for (int b = 0; b<tileset.getWidth(observer)/16; b++){
@@ -39,7 +33,6 @@ public class Tileset {
                 compteur++;
             }
         }
-        System.out.println("Le nombre de tiles : "+listeTiles.size());
     }
 
     private BufferedImage getImg(BufferedImage img, Integer taille, Integer x, Integer y) {
@@ -63,10 +56,5 @@ public class Tileset {
         bGr.dispose();
 
         return bimage;
-    }
-
-    public static Tileset getTileset0(){
-        Tileset tileset0 = new Tileset("Z0","tileset_0.png");
-        return tileset0;
     }
 }

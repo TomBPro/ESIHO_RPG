@@ -22,12 +22,18 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
     private ArrayList<Item> listeItems;
     private ArrayList<Team> listeTeams;
     private ArrayList<Quest> listeQuetes;
+    public static ArrayList<Tileset> listeTileset = new ArrayList<>();
 
     public InitContenu() {
 	    initPnjs();
 	    initItems();
 	    initTeams();
 	    initQuetes();
+	    initTilesets();
+    }
+
+    private void initTilesets(){
+        listeTileset.add(new Tileset("Z0","tileset_0.png"));
     }
 
     private void initPnjs() {//Ici on créera les Pnjs

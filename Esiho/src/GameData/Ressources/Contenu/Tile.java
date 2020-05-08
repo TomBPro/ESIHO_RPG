@@ -30,8 +30,8 @@ public class Tile {
         this.image = image;
     }
 
-//    private Image getTile(Integer no){
-//       Image tile;
-//       return tile;
-//    }
+    public static Tile tileVide(){
+        Tile tile = null;
+        return tile;
+    }
 }
