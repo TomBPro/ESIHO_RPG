@@ -119,3 +119,12 @@ C'est une chaîne de caractère, il faut donc faire "id de la map"+"position x"+
 
 #TomRobette#02/05/2020#
 -Les attaques ont été mises en statique
+
+#TomRobette#08/05/2020#
+-Changement majeur de la classe decor (transformée en la classe Tiles)
+-Ajout d'une classe Tileset
+-Ajout d'une lecture de fichier image dans Tileset
+-Ajout de la lecture et de l'ajout des Tiles (anciennement décors)
+-Les Ids des Tileset vont se présenter ainsi : Zx	où x est le nombre. Ex : Z2
+-Les Ids des Tiles vont se présenter ainsi : Tx-y	où T pour Tile, x pour l'id (sans le caractère Z) Tileset correspondant, et y pour l'id du Tile (sans le caractère non plus)
+ex : T2-28 => Le 28e Tile du tileset 2

@@ -2,12 +2,12 @@ package GameData.Ressources.Contenu;
 
 public class Map {
     private String id;
-    private Decor gridDecor[][];
+    private Tile gridTiles[][];
     private Pnj gridPnj[][];
 
     public Map(String id, Integer x, Integer y) {
         this.id = id;
-        this.gridDecor = new Decor[x][y];
+        this.gridTiles = new Tile[x][y];
         this.gridPnj = new Pnj[x][y];
     }
 
@@ -19,12 +19,12 @@ public class Map {
         this.id = id;
     }
 
-    public Decor getDecor(Integer x, Integer y) {
-        return gridDecor[x][y];
+    public Tile getTile(Integer x, Integer y) {
+        return gridTiles[x][y];
     }
 
-    public void setGridDecor(Decor decor, Integer x, Integer y) {
-        this.gridDecor[x][y] = decor;
+    public void setGridTiles(Tile tile, Integer x, Integer y) {
+        this.gridTiles[x][y] = tile;
     }
 
     public Pnj getGridPnj(Integer x, Integer y) {

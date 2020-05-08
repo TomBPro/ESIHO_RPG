@@ -3,11 +3,13 @@ package GameData.Ressources.Contenu;
 
 import javafx.scene.image.Image;
 
-public class Decor {
-    private String id;
-    private Image image;
+import java.awt.image.BufferedImage;
 
-    public Decor(String id, Image image) {
+public class Tile {
+    private String id;
+    private BufferedImage image;
+
+    public Tile(String id, BufferedImage image) {
         this.id = id;
         this.image = image;
     }
@@ -20,11 +22,16 @@ public class Decor {
         this.id = id;
     }
 
-    public Image getImage() {
+    public BufferedImage getImage() {
         return image;
     }
 
-    public void setImage(Image image) {
+    public void setImage(BufferedImage image) {
         this.image = image;
     }
+
+//    private Image getTile(Integer no){
+//       Image tile;
+//       return tile;
+//    }
 }

@@ -18,22 +18,21 @@ import java.awt.image.ImageProducer;
 import java.util.ArrayList;
 
 public class InitContenu {//Cette classe contiendra toutes les initialisations de map, d'items, de pnj, d'entités, etc.
-    private ArrayList<Decor> listeDecors;
     private ArrayList<Pnj> listePnjs;
     private ArrayList<Item> listeItems;
     private ArrayList<Team> listeTeams;
     private ArrayList<Quest> listeQuetes;
 
     public InitContenu() {
-	    initDecors();
 	    initPnjs();
 	    initItems();
 	    initTeams();
 	    initQuetes();
+	    initTileSet();
     }
 
-    private void initDecors() {//Ici on créera les décors 
-	
+    private void initTileSet(){
+        Tileset base = new Tileset("Z1","tileset_0.png");
     }
 
     private void initPnjs() {//Ici on créera les Pnjs
@@ -158,14 +157,6 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
 
     private void initQuetes() {
         
-    }
-
-    public ArrayList<Decor> getListeDecors() {
-        return listeDecors;
-    }
-
-    public void setListeDecors(ArrayList<Decor> listeDecors) {
-        this.listeDecors = listeDecors;
     }
 
     public ArrayList<Pnj> getListePnjs() {
