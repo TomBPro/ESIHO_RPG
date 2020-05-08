@@ -47,7 +47,6 @@ public class Tileset {
         return newImg;
     }
 
-
     public static BufferedImage toBufferedImage(Image img){
         if (img instanceof BufferedImage){
             return (BufferedImage) img;
@@ -60,5 +59,10 @@ public class Tileset {
         bGr.dispose();
 
         return bimage;
+    }
+
+    public static Tileset getTileset0(){
+        Tileset tileset0 = new Tileset("Z0","tileset_0.png");
+        return tileset0;
     }
 }

@@ -128,3 +128,5 @@ C'est une chaîne de caractère, il faut donc faire "id de la map"+"position x"+
 -Les Ids des Tileset vont se présenter ainsi : Zx	où x est le nombre. Ex : Z2
 -Les Ids des Tiles vont se présenter ainsi : Tx-y	où T pour Tile, x pour l'id (sans le caractère Z) Tileset correspondant, et y pour l'id du Tile (sans le caractère non plus)
 ex : T2-28 => Le 28e Tile du tileset 2
+-Ajout de la classe Layer (couche) qui contiendra un tableau de tableau de Tile
+-Modification de la classe Map. C'est maintenant une classe avec 3 Layer et une dernière couche pour les Pnjs

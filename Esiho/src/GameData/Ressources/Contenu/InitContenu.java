@@ -28,11 +28,6 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
 	    initItems();
 	    initTeams();
 	    initQuetes();
-	    initTileSet();
-    }
-
-    private void initTileSet(){
-        Tileset base = new Tileset("Z1","tileset_0.png");
     }
 
     private void initPnjs() {//Ici on créera les Pnjs
