@@ -130,3 +130,6 @@ C'est une chaîne de caractère, il faut donc faire "id de la map"+"position x"+
 ex : T2-28 => Le 28e Tile du tileset 2
 -Ajout de la classe Layer (couche) qui contiendra un tableau de tableau de Tile
 -Modification de la classe Map. C'est maintenant une classe avec 3 Layer et une dernière couche pour les Pnjs
+-Ajout d'une map test
+-Ajout de la lecture des fichiers dans Layer
+-Ajout de la construction de couche dans Layer

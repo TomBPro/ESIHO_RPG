@@ -29,22 +29,26 @@ public class Tileset {
         //tileset.getHeight(observer);
         System.out.println(tileset.getHeight(observer));
         System.out.println(tileset.getWidth(observer));
-        BufferedImage tile = getTile(toBufferedImage(tileset), 16, 0, 0);
+        BufferedImage tile = getImg(toBufferedImage(tileset), 16, 0, 0);
         System.out.println(tile.getHeight());
         System.out.println(tile.getWidth());
         Integer compteur = 0;
         for (int a = 0; a<tileset.getHeight(observer)/16; a++){
             for (int b = 0; b<tileset.getWidth(observer)/16; b++){
-                listeTiles.add(new Tile("T"+this.id.substring(1,id.length())+"-"+compteur,getTile(toBufferedImage(tileset),16,b,a)));
+                listeTiles.add(new Tile("T"+this.id.substring(1,id.length())+"-"+compteur,getImg(toBufferedImage(tileset),16,b,a)));
                 compteur++;
             }
         }
         System.out.println("Le nombre de tiles : "+listeTiles.size());
     }
 
-    private BufferedImage getTile(BufferedImage img, Integer taille, Integer x, Integer y) {
+    private BufferedImage getImg(BufferedImage img, Integer taille, Integer x, Integer y) {
         BufferedImage newImg = img.getSubimage(16*x, 16*y, taille, taille);
         return newImg;
+    }
+
+    public Tile getTile(Integer position){
+        return listeTiles.get(position);
     }
 
     public static BufferedImage toBufferedImage(Image img){
