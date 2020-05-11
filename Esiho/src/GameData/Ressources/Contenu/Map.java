@@ -2,6 +2,7 @@ package GameData.Ressources.Contenu;
 
 public class Map {
     private String id;
+    private String nomMap;
     private Integer largeur;
     private Integer hauteur;
     private Layer coucheBase;
@@ -9,13 +10,14 @@ public class Map {
     private Layer couche3;
     private Pnj coucheFin;
 
-    public Map(String id, Integer largeur, Integer hauteur, Layer coucheBase, Layer couche2, Layer couche3){
+    public Map(String id, String nomMap, Integer largeur, Integer hauteur){
         this.id=id;
+        this.nomMap=nomMap;
         this.largeur=largeur;
         this.hauteur=hauteur;
-        this.coucheBase=coucheBase;
-        this.couche2=couche2;
-        this.couche3=couche3;
+        this.coucheBase= new Layer(largeur, hauteur, nomMap, "0");
+        this.couche2=new Layer(largeur, hauteur, nomMap, "1");
+        this.couche3=new Layer(largeur, hauteur, nomMap, "2");
     }
 
     public String getId() {
@@ -24,6 +26,14 @@ public class Map {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getNomMap() {
+        return nomMap;
+    }
+
+    public void setNomMap(String nomMap) {
+        this.nomMap = nomMap;
     }
 
     public Integer getLargeur() {

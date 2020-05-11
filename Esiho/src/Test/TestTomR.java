@@ -51,10 +51,7 @@ public class TestTomR extends Application {
     }
 
     private void showLayers(){
-        Layer coucheBase = new Layer(16, 8, "test", "0");
-        Layer couche2 = new Layer(16, 8, "test", "1");
-        Layer couche3 = new Layer(16, 8, "test", "2");
-        Map map = new Map("M0", 16,8, coucheBase, couche2, couche3);
+        Map map = new Map("M0", "test", 16,8);
         GraphicsContext gc = mapPane.getGraphicsContext2D();
         showOneLayer(map.getCoucheBase());
         showOneLayer(map.getCouche2());
@@ -69,6 +66,7 @@ public class TestTomR extends Application {
                 mapPane.getGraphicsContext2D().drawImage(couche.getTile(a, b).getImage(), a*16, b*16);
                 b++;
             }
+            System.out.println("");
             a++;
         }
     }

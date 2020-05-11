@@ -33,7 +33,29 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
     }
 
     private void initTilesets(){
-        listeTileset.add(new Tileset("Z0","tileset_0.png"));
+        listeTileset.add(new Tileset("Z0","Outside_A1.png"));
+        listeTileset.add(new Tileset("Z1","Outside_A2.png"));
+        listeTileset.add(new Tileset("Z2","Outside_A3.png"));
+        listeTileset.add(new Tileset("Z3","Outside_A4.png"));
+        listeTileset.add(new Tileset("Z4","Outside_A5.png"));
+        listeTileset.add(new Tileset("Z5","Outside_B.png"));
+        listeTileset.add(new Tileset("Z6","Outside_C.png"));
+        listeTileset.add(new Tileset("Z7","Inside_A1.png"));
+        listeTileset.add(new Tileset("Z8","Inside_A2.png"));
+        listeTileset.add(new Tileset("Z9","Inside_A4.png"));
+        listeTileset.add(new Tileset("Z10","Inside_A5.png"));
+        listeTileset.add(new Tileset("Z11","Inside_B.png"));
+        listeTileset.add(new Tileset("Z12","Inside_C.png"));
+        listeTileset.add(new Tileset("Z13","Dungeon_A1.png"));
+        listeTileset.add(new Tileset("Z14","Dungeon_A2.png"));
+        listeTileset.add(new Tileset("Z15","Dungeon_A4.png"));
+        listeTileset.add(new Tileset("Z16","Dungeon_A5.png"));
+        listeTileset.add(new Tileset("Z17","Dungeon_B.png"));
+        listeTileset.add(new Tileset("Z18","Dungeon_C.png"));
+        listeTileset.add(new Tileset("Z19","World_A1.png"));
+        listeTileset.add(new Tileset("Z20","World_A2.png"));
+        listeTileset.add(new Tileset("Z21","World_B.png"));
+
     }
 
     private void initPnjs() {//Ici on créera les Pnjs

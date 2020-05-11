@@ -74,22 +74,27 @@ public class Layer{//Une couche de
         Tile tile = null;
         try{
             String[] codeTileset = tileCode.split("-");
-            switch (codeTileset[0]){
-                case "0":
-                    tile = InitContenu.listeTileset.get(0).getTile(Integer.parseInt(codeTileset[1]));
-                    break;
-                case "1":
-                    //tile = InitContenu.listeTileset.get(1).getTile(Integer.parseInt(codeTileset[1]));
-                    break;
-                case "2":
-                    //tile = InitContenu.listeTileset.get(2).getTile(Integer.parseInt(codeTileset[1]));
-                    break;
-                case "V":
-                    tile = Tile.tileVide();
-                    break;
-                default:
-                    tile = Tile.tileVide();
+            try{
+                tile = InitContenu.listeTileset.get(Integer.parseInt(codeTileset[0])).getTile(Integer.parseInt(codeTileset[1]));
+            }catch (Exception erreur_transcription_nom_tile_map){
+                tile = InitContenu.listeTileset.get(10).getTile(33);
             }
+//            switch (codeTileset[0]){
+//                case "0":
+//                    tile = InitContenu.listeTileset.get(0).getTile(Integer.parseInt(codeTileset[1]));
+//                    break;
+//                case "1":
+//                    //tile = InitContenu.listeTileset.get(1).getTile(Integer.parseInt(codeTileset[1]));
+//                    break;
+//                case "2":
+//                    //tile = InitContenu.listeTileset.get(2).getTile(Integer.parseInt(codeTileset[1]));
+//                    break;
+//                case "V":
+//                    tile = Tile.tileVide();
+//                    break;
+//                default:
+//                    tile = Tile.tileVide();
+//            }
         }catch(Exception erreur_lecture_tile_map){
             System.out.println("La couche de la map ne doit pas être bien écrite");
         }

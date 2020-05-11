@@ -37,8 +37,8 @@ public class Tile {
         this.image = image;
     }
 
-    public static Tile tileVide(){
-        Tile tile = null;
-        return tile;
-    }
+//    public static Tile tileVide(){
+//        Tile tile = null;
+//        return tile;
+//    }
 }
