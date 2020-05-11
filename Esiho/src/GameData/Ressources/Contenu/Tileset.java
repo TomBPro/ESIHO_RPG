@@ -54,7 +54,6 @@ public class Tileset {
         Graphics2D bGr = bimage.createGraphics();
         bGr.drawImage(img, 0, 0, null);
         bGr.dispose();
-
         return bimage;
     }
 }

@@ -1,17 +1,24 @@
 package GameData.Ressources.Contenu;
 
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.awt.image.BufferedImage;
 
 public class Tile {
     private String id;
-    private BufferedImage image;
+    private Image image;
 
-    public Tile(String id, BufferedImage image) {
+    public Tile(String id, Image image) {
         this.id = id;
         this.image = image;
+    }
+
+    public Tile(String id, BufferedImage img) {
+        this.id = id;
+        this.image = SwingFXUtils.toFXImage(img, null);
     }
 
     public String getId() {
@@ -22,11 +29,11 @@ public class Tile {
         this.id = id;
     }
 
-    public BufferedImage getImage() {
+    public Image getImage() {
         return image;
     }
 
-    public void setImage(BufferedImage image) {
+    public void setImage(Image image) {
         this.image = image;
     }
 

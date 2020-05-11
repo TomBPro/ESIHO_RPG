@@ -36,11 +36,11 @@ public class Layer{//Une couche de
                     String listeValeurString[] = ligneActuelle.trim().split(" ");
                     Integer a = 0;
                     for (String valeur:listeValeurString) {
-                        System.out.print(" "+valeur);
+                        //System.out.print(" "+valeur);
                         gridTiles[a][compteurLignes] = readTile(valeur);
                         a++;
                     }
-                    System.out.println("");
+                    //System.out.println("");
                 }
                 ligneActuelle = br.readLine();
             }
