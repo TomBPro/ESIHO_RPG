@@ -133,3 +133,8 @@ ex : T2-28 => Le 28e Tile du tileset 2
 -Ajout d'une map test
 -Ajout de la lecture des fichiers dans Layer
 -Ajout de la construction de couche dans Layer
+
+#TomRobette#11/05/2020#
+-Il est maintenant possible d'afficher un tile venant d'une map
+-Modification du tableau de tableau de la classe Layer en une collection de collection
+-Affichage des maps terminé.

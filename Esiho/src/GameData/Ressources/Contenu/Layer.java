@@ -8,25 +8,43 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class Layer{//Une couche de
-    private Tile gridTiles[][];
+    public ArrayList<ArrayList<Tile>> gridTiles;
+    private Integer width;
+    private Integer height;
 
     public Layer(Integer x, Integer y, String nomMap, String nbCouche){
-        this.gridTiles = new Tile[x][y];
-        mapReader(nomMap,nbCouche, x, y);
+        this.gridTiles = new ArrayList<>();
+        this.width = x;
+        this.height = y;
+        for (int a = 0; a<width; a++){
+            gridTiles.add(new ArrayList<>());
+        }
+        mapReader(nomMap,nbCouche);
+//        for (ArrayList<Tile> column:gridTiles) {
+//            for (Tile tile:column) {
+//                System.out.print(tile.getId());
+//            }
+//            System.out.println("a");
+//        }
     }
 
     public Tile getTile(Integer x, Integer y) {
-        return gridTiles[x][y];
+        return gridTiles.get(x).get(y);
     }
 
-    public void setGridTiles(Tile tile, Integer x, Integer y) {
-        this.gridTiles[x][y] = tile;
+    public void addGridTiles(Tile tile, Integer x) {
+        gridTiles.get(x).add(tile);
     }
 
-    private void mapReader(String nomMap, String nbLayer, Integer longueur, Integer hauteur){
+    public void setGridTiles(Tile tile, Integer x, Integer y){
+        gridTiles.get(x).set(y, tile);
+    }
+
+    private void mapReader(String nomMap, String nbLayer){
         Path chemin = Paths.get(System.getProperty("user.dir"));
         Path cheminImage = Paths.get(chemin.toString(), "src", "GameData","Ressources","Contenu","Maps","map_"+nomMap,"layer_"+nomMap+"_"+nbLayer+".txt");
-        try(BufferedReader br = new BufferedReader(new FileReader(cheminImage.toString()))){
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(cheminImage.toString()));
             String ligneActuelle = br.readLine();
             Integer compteurLignes = 0;
             while (ligneActuelle!=null){
@@ -34,18 +52,21 @@ public class Layer{//Une couche de
                     continue;
                 }else{
                     String listeValeurString[] = ligneActuelle.trim().split(" ");
-                    Integer a = 0;
+                    int a = 0;
                     for (String valeur:listeValeurString) {
                         //System.out.print(" "+valeur);
-                        gridTiles[a][compteurLignes] = readTile(valeur);
+                        Tile tile = readTile(valeur);
+                        addGridTiles(tile, a);
+                        //gridTiles.get(a).set(compteurLignes, readTile(valeur));
                         a++;
                     }
                     //System.out.println("");
                 }
                 ligneActuelle = br.readLine();
+                compteurLignes++;
             }
         }catch (Exception erreur_lecture_fichier){
-            //System.out.println("Le fichier n'a pas pu être lu");
+            System.out.println("Erreur : Le fichier n'a pas pu être lu");
         }
     }
 

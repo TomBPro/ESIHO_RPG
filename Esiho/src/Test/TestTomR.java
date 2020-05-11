@@ -3,53 +3,74 @@ package Test;
 import GameData.Ressources.Contenu.InitContenu;
 import GameData.Ressources.Contenu.Layer;
 import GameData.Ressources.Contenu.Map;
+import GameData.Ressources.Contenu.Tile;
 import javafx.application.Application;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+//import javafx.scene.layout.HBox;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 public class TestTomR extends Application {
     private Scene sceneMap;
     private Stage primStage;
     private Map map;
+    private Integer stageWidth;
+    private Integer stageHeight;
+    private Canvas mapPane;
 
     @Override
     public void start(Stage stage) throws Exception {
+        stageWidth=800;
+        stageHeight=400;
         InitContenu contenu = new InitContenu();
-        Layer coucheBase = new Layer(16, 8, "test", "0");
-        Layer couche2 = new Layer(16, 8, "test", "1");
-        Layer couche3 = new Layer(16, 8, "test", "2");
-        Map map = new Map("M0", 16,8, coucheBase, couche2, couche3);
         this.primStage = stage;
         primStage.setTitle("Map");
-        AnchorPane root = new AnchorPane();
-        Canvas canvas = new Canvas();
-        this.sceneMap= new Scene(root, 800, 400);
+        StackPane root = new StackPane();
+        mapPane = new Canvas(stageWidth,stageHeight);
+        showLayers();
+        root.getChildren().addAll(mapPane);
+        this.sceneMap= new Scene(root, stageWidth, stageHeight, Color.BLACK);
         primStage.setScene(sceneMap);
-        ImageView imgv = new ImageView();
-        Image image = coucheBase.getTile(0,0).getImage();
-        imgv.setImage(image);
-        HBox hbox = new HBox(imgv);
-//        ImageObserver observer = new ImageObserver() {
-//            @Override
-//            public boolean imageUpdate(Image img, int infoflags, int x, int y, int width, int height) {
-//                return true;
-//            }
-//        };
-        //graphics.drawImage(img, 16, 16, 16, 16, 4, 4, 4, 4, observer);
 
         ecranMap();
     }
 
     public static void main(String[] args){
         launch(args);
+    }
+
+    private void showLayers(){
+        Layer coucheBase = new Layer(16, 8, "test", "0");
+        Layer couche2 = new Layer(16, 8, "test", "1");
+        Layer couche3 = new Layer(16, 8, "test", "2");
+        Map map = new Map("M0", 16,8, coucheBase, couche2, couche3);
+        GraphicsContext gc = mapPane.getGraphicsContext2D();
+        showOneLayer(map.getCoucheBase());
+        showOneLayer(map.getCouche2());
+        showOneLayer(map.getCouche3());
+    }
+
+    private void showOneLayer(Layer couche){
+        Integer a = 0;
+        for (ArrayList<Tile> ligne:couche.gridTiles) {
+            Integer b = 0;
+            for (Tile element:ligne) {
+                mapPane.getGraphicsContext2D().drawImage(couche.getTile(a, b).getImage(), a*16, b*16);
+                b++;
+            }
+            a++;
+        }
     }
 
     private void ecranMap() throws Exception{
