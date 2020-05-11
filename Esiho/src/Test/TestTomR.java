@@ -66,7 +66,6 @@ public class TestTomR extends Application {
                 mapPane.getGraphicsContext2D().drawImage(couche.getTile(a, b).getImage(), a*16, b*16);
                 b++;
             }
-            System.out.println("");
             a++;
         }
     }
