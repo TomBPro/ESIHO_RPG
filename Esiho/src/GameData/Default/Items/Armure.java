@@ -6,10 +6,10 @@ public class Armure extends Item {//Ce type d'objet réfère aux objets à equip
     private String id;
     private String nom;
     private Integer valeur;
-    private Image image;
+    private javafx.scene.image.Image image;
     private Integer coeffProtection;
 
-    public Armure(String id, String nom, Integer valeur, Image image, Integer coeffProtection){
+    public Armure(String id, String nom, Integer valeur, javafx.scene.image.Image image, Integer coeffProtection){
         this.id=id;
         this.nom=nom;
         this.valeur=valeur;
@@ -44,11 +44,11 @@ public class Armure extends Item {//Ce type d'objet réfère aux objets à equip
         this.valeur = valeur;
     }
 
-    public Image getImage() {
+    public javafx.scene.image.Image getImage() {
         return image;
     }
 
-    public void setImage(Image image) {
+    public void setImage(javafx.scene.image.Image image) {
         this.image = image;
     }
 

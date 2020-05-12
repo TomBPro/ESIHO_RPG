@@ -1,12 +1,14 @@
 package GameData.Default.Items;
 
+import javafx.scene.image.Image;
+
 import java.awt.*;
 
 public class Arme extends Item{//Ce type d'objet réfère aux objets servant d'armes à équiper
     private String id;
     private String nom;
     private Integer valeur;
-    private Image image;
+    private javafx.scene.image.Image image;
     private Integer coeffDegats;
 
     public Arme(String id, String nom, Integer valeur, Image image, Integer coeffDegats){
@@ -45,11 +47,11 @@ public class Arme extends Item{//Ce type d'objet réfère aux objets servant d'a
         this.valeur = valeur;
     }
 
-    public Image getImage() {
+    public javafx.scene.image.Image getImage() {
         return image;
     }
 
-    public void setImage(Image image) {
+    public void setImage(javafx.scene.image.Image image) {
         this.image = image;
     }
 

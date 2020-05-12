@@ -8,10 +8,10 @@ public abstract class Consommable extends Item {//Ce type d'objet réfère aux o
     private String id;
     private String nom;
     private Integer valeur;
-    private Image image;
+    private javafx.scene.image.Image image;
     private Integer type;
 
-    public Consommable(String id, String nom, Integer valeur, Image image, Integer type){
+    public Consommable(String id, String nom, Integer valeur, javafx.scene.image.Image image, Integer type){
         this.id=id;
         this.nom=nom;
         this.valeur=valeur;
@@ -47,11 +47,11 @@ public abstract class Consommable extends Item {//Ce type d'objet réfère aux o
         this.valeur = valeur;
     }
 
-    public Image getImage() {
+    public javafx.scene.image.Image getImage() {
         return image;
     }
 
-    public void setImage(Image image) {
+    public void setImage(javafx.scene.image.Image image) {
         this.image = image;
     }
 

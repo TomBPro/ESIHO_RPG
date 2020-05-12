@@ -1,12 +1,13 @@
 package GameData.Default.Items;
 
-import java.awt.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public abstract class Item {
     private String id;
     private String nom;
     private Integer valeur;
-    private Image image;
+    private javafx.scene.image.Image image;
 
     public abstract void useItem();
 
