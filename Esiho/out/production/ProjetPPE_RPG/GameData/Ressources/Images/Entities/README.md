@@ -1,0 +1,1 @@
+Ici seront déposées les images des pnjs (en combat, **donc pas sur la map**)

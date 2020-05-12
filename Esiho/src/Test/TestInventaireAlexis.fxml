@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Test.ControleurAlexis">
+    <children>
+        <VBox prefHeight="400.0" prefWidth="600.0">
+            <children>
+                <HBox fx:id="inventaire" prefHeight="100.0" prefWidth="200.0">
+                    <children>
+                        <Label text="INVENTAIRE" />
+                    </children>
+                </HBox>
+                <HBox prefHeight="50.0" prefWidth="400.0">
+                    <children>
+                        <VBox>
+                            <children>
+                                <Button fx:id="btarme" alignment="CENTER" mnemonicParsing="false" onAction="#afficherArme" prefHeight="100.0" prefWidth="100.0" text="Arme" />
+                            </children>
+                        </VBox>
+                        <VBox>
+                            <children>
+                                <Button fx:id="btarmure" mnemonicParsing="false" onAction="#afficherArmure" prefHeight="100.0" prefWidth="100.0" text="Armure" />
+                            </children>
+                        </VBox>
+                        <VBox>
+                            <children>
+                                <Button fx:id="btconso" mnemonicParsing="false" onAction="#afficherConsommable" prefHeight="100.0" prefWidth="100.0" text="Consommable" />
+                            </children>
+                        </VBox>
+                        <VBox>
+                            <children>
+                                <Button fx:id="btdivers" mnemonicParsing="false" onAction="#afficherDivers" prefHeight="100.0" prefWidth="100.0" text="Divers" />
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
