@@ -16,6 +16,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Paint;
 import javafx.scene.text.Font;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ public class TestControleurCombatThomas implements Initializable {
     private Integer selecGenre;
     public static String selectionAtk;
 
-    public TestControleurCombatThomas(){
+    public TestControleurCombatThomas() throws FileNotFoundException {
         selectionAtk="RIEN";
         System.out.println("ok");
         InitContenu contenu = new InitContenu();

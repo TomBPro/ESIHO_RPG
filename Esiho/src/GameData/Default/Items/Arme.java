@@ -2,21 +2,33 @@ package GameData.Default.Items;
 
 import javafx.scene.image.Image;
 
+import javax.swing.*;
 import java.awt.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
-public class Arme extends Item{//Ce type d'objet réfère aux objets servant d'armes à équiper
+public class Arme extends Item {//Ce type d'objet réfère aux objets servant d'armes à équiper
     private String id;
     private String nom;
     private Integer valeur;
     private javafx.scene.image.Image image;
     private Integer coeffDegats;
 
-    public Arme(String id, String nom, Integer valeur, Image image, Integer coeffDegats){
+    public Arme(String id, String nom, Integer valeur, javafx.scene.image.Image image, Integer coeffDegats){
         this.id=id;
         this.nom=nom;
         this.valeur=valeur;
         this.image=image;
         this.coeffDegats=coeffDegats;
+
+    }
+
+    public Arme(String id, String nom, Integer valeur,  Integer coeffDegats){
+        this.id=id;
+        this.nom=nom;
+        this.valeur=valeur;
+        this.coeffDegats=coeffDegats;
+
     }
 
     public void useItem(){

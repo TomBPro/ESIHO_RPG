@@ -19,6 +19,13 @@ public abstract class Consommable extends Item {//Ce type d'objet réfère aux o
         this.type=type;
     }
 
+    public Consommable(String id, String nom, Integer valeur, Integer type){
+        this.id=id;
+        this.nom=nom;
+        this.valeur=valeur;
+        this.type=type;
+    }
+
     public abstract void useItem(Pnj pnj, Integer val)//Ce champ sera rempli lorsqu'un Consommable sera initialisé, mais pas lorsqu'il sera utilisé
     ;
 

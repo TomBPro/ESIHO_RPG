@@ -71,8 +71,8 @@ public class TestControleurLvlUpThomas implements Initializable {
         Move move = new Move("M1", "Coup de poing", "Physique", 40, new Normal(), 95);
         MoveList movesPhy = new MoveList(move,move,move,move);
         MoveList movesSpe = new MoveList(move,move,move,move);
-        Arme arme = new Arme("1","Epée",5,x,2);
-        Armure armure = new Armure("2","Bouclier", 5, x , 2);
+        Arme arme = new Arme("1","Epée",5,2);
+        Armure armure = new Armure("2","Bouclier", 5,  2);
         Entity entity = new Entity("1","Squelette",1,50,0,typeFeu,pv,1,1,1,1,1,arme,armure, movesPhy, movesSpe, x);
 
         pnjTest = new Pnj("1","Squelette", images, entity);

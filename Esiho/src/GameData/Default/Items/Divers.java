@@ -15,6 +15,12 @@ public class Divers extends Item{//Ce type d'objet réfère aux objets sans fonc
         this.image=image;
     }
 
+    public Divers(String id, String nom, Integer valeur){
+        this.id=id;
+        this.nom=nom;
+        this.valeur=valeur;
+    }
+
     public void useItem(){
         //À compléter
         //Faire un envoi de message comme quoi ça ne s'utilise pas

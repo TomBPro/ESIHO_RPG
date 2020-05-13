@@ -107,8 +107,8 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
         Pv pv = new Pv(10,10);
         MoveList movesPhy = new MoveList(Move.lameFeu(),Move.coupPoing(),Move.coupEpee(),Move.coupPoing());
         MoveList movesSpe = new MoveList(Move.flecheFeu(),Move.flecheFeu(),Move.flecheFeu(),Move.flecheFeu());
-        Arme arme = new Arme("1","Epée",5,x,2);
-        Armure armure = new Armure("2","Bouclier", 5, x , 2);
+        Arme arme = new Arme("1","Epée",5,2);
+        Armure armure = new Armure("2","Bouclier", 5 , 2);
         Entity entity = new Entity("1","Squelette",1,50,0,typeFeu,pv,1,1,1,1,1,arme,armure, movesPhy, movesPhy, x);
         listePnjs.add(new Pnj("1","Squelette", images, entity));
 
@@ -116,28 +116,28 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
         movesSpe = new MoveList(Move.coupPoing(),Move.coupPoing(),Move.coupPoing(),Move.coupPoing());
         pv = new Pv(10,10);
         //movesPhy = new MoveList(listeMoves.get(0),listeMoves.get(0),listeMoves.get(0),listeMoves.get(0));
-        arme = new Arme("2","Rien",1,x,1);
-        armure= new Armure("2","Rien",1,x,1);
+        arme = new Arme("2","Rien",1,1);
+        armure= new Armure("2","Rien",1,1);
         entity = new Entity("2","Rat",1,50,0,typeFeu,pv,1,1,1,1,1,arme,armure, movesPhy, movesPhy, x);
         listePnjs.add(new Pnj("2","Rat", images, entity));
 
         pv = new Pv(20,20);
         //movesPhy = new MoveList(listeMoves.get(0),listeMoves.get(0),listeMoves.get(0),listeMoves.get(0));
-        arme = new Arme("1","Epée",5,x,2);
-        armure= new Armure("2","Bouclier", 5, x , 2);
+        arme = new Arme("1","Epée",5,2);
+        armure= new Armure("2","Bouclier", 5, 2);
         entity = new Entity("3","Le Vieux Fou",3,50,0,typeFeu,pv,2,2,2,2,2,arme,armure, movesPhy, movesPhy, x);
         listePnjs.add(new Pnj("3","Le Vieux Fou", images, entity));
 
         pv = new Pv(15,15);
         //movesPhy = new MoveList(listeMoves.get(0),listeMoves.get(0),listeMoves.get(0),listeMoves.get(0));
-        arme = new Arme("2","Rien",1,x,1);
-        armure= new Armure("2","Rien",1,x,1);
+        arme = new Arme("2","Rien",1,1);
+        armure= new Armure("2","Rien",1,1);
         entity = new Entity("4","Petit Diable",1,50,0,typeFeu,pv,1,1,1,1,1,arme,armure, movesPhy, movesPhy, x);
         listePnjs.add(new Pnj("4","Petit Diable", images, entity));
 
         pv = new Pv(15,15);
-        arme = new Arme("2","Rien",1,x,1);
-        armure= new Armure("2","Rien",1,x,1);
+        arme = new Arme("2","Rien",1,1);
+        armure= new Armure("2","Rien",1,1);
         entity = new Entity("5","Combattant Test",1,50,0,typeFeu,pv,1,1,1,1,1,arme,armure, movesPhy, movesSpe, x);
         listePnjs.add(new Pnj("4","Combattant Test", images, entity));
 

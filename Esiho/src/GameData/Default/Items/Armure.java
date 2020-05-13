@@ -17,6 +17,13 @@ public class Armure extends Item {//Ce type d'objet réfère aux objets à equip
         this.coeffProtection=coeffProtection;
     }
 
+    public Armure(String id, String nom, Integer valeur, Integer coeffProtection){
+        this.id=id;
+        this.nom=nom;
+        this.valeur=valeur;
+        this.coeffProtection=coeffProtection;
+    }
+
     public void useItem(){
     }
 
