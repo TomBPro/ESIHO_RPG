@@ -138,3 +138,6 @@ ex : T2-28 => Le 28e Tile du tileset 2
 -Il est maintenant possible d'afficher un tile venant d'une map
 -Modification du tableau de tableau de la classe Layer en une collection de collection
 -Affichage des maps terminé.
+
+#TomRobette#16/05/2020#
+-Optimisation (majeure !) de l'affichage des maps (concernant la récupération et la lecture des tilesets)
