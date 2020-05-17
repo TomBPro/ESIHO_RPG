@@ -1,9 +1,6 @@
 package Test;
 
-import GameData.Ressources.Contenu.InitContenu;
-import GameData.Ressources.Contenu.Layer;
-import GameData.Ressources.Contenu.Map;
-import GameData.Ressources.Contenu.Tile;
+import GameData.Ressources.Contenu.*;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Node;
@@ -26,24 +23,17 @@ public class TestTomR extends Application {
     private Integer stageWidth;
     private Integer stageHeight;
     private Canvas mapPane;
-    private Integer xJoueur;
-    private Integer yJoueur;
-    private Boolean goNorth = false;
-    private Boolean goSouth = false;
-    private Boolean goWest = false;
-    private Boolean goEast = false;
-    private Boolean running = false;
     private Image joueurImage;
     private Node joueur;
+    private Integer dx = 0;
+    private Integer dy = 0;
 
     @Override
     public void start(Stage stage) throws Exception {
         InitContenu contenu = new InitContenu();
         stageWidth=800;
         stageHeight=400;
-        xJoueur = -16+stageWidth/2;
-        yJoueur = -16+stageHeight/2;
-        joueurImage = InitContenu.listeSpriteset.get(0).getTile(0).getImage();
+        joueurImage = Pnj.joueur("Maurice").getListeSprites().get(0).getImage();
         joueur = new ImageView(joueurImage);
         this.primStage = stage;
         primStage.setTitle("Map");
@@ -51,6 +41,7 @@ public class TestTomR extends Application {
         mapPane = new Canvas(stageWidth,stageHeight);
         showLayers();
         root.getChildren().addAll(mapPane);
+        root.getChildren().add(joueur);
         this.sceneMap= new Scene(root, stageWidth, stageHeight, Color.BLACK);
 
         sceneMap.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -58,27 +49,23 @@ public class TestTomR extends Application {
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
                     case UP:
-                        goNorth = true;
-                        System.out.println("BRUH");
+                        dy -= 16;
                         break;
-                    case DOWN:  goSouth = true; break;
-                    case LEFT:  goWest  = true; break;
-                    case RIGHT: goEast  = true; break;
-                    case SHIFT: running = true; break;
+                    case DOWN:
+                        dy += 16;
+                        break;
+                    case LEFT:
+                        dx -= 16;
+                        break;
+                    case RIGHT:
+                        dx += 16;
+                        break;
+                    case SHIFT:
+                        dx *= 3;
+                        dy *= 3;
+                        break;
                 }
-            }
-        });
 
-        sceneMap.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                switch (event.getCode()) {
-                    case UP:    goNorth = false; break;
-                    case DOWN:  goSouth = false; break;
-                    case LEFT:  goWest  = false; break;
-                    case RIGHT: goEast  = false; break;
-                    case SHIFT: running = false; break;
-                }
             }
         });
 
@@ -86,18 +73,9 @@ public class TestTomR extends Application {
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                if (goNorth){
-                    yJoueur+=32;
-                }
-                if (goSouth){
-                    yJoueur-=32;
-                }
-                if (goWest){
-                    xJoueur+=32;
-                }
-                if (goEast){
-                    xJoueur-=32;
-                }
+                joueur.setTranslateX(joueur.getLayoutX()+dx);
+                joueur.setTranslateY(joueur.getLayoutY()+dy);
+                joueur.relocate(joueur.getLayoutX()+dx, joueur.getLayoutY()+dy);
             }
         };
         timer.start();
@@ -125,9 +103,9 @@ public class TestTomR extends Application {
         for (ArrayList<Tile> ligne:couche.gridTiles) {
             Integer b = 0;
             for (Tile element:ligne) {
-                if (a*16<=-16+xJoueur*2 && b*16<=-16+yJoueur*2){
+//                if (a*16<=-16+joueur.getLayoutX()*2 && b*16<=-16+joueur.getLayoutY()*2){
                     mapPane.getGraphicsContext2D().drawImage(couche.getTile(a, b).getImage(), a*16, b*16);
-                }
+//                }
                 b++;
             }
             a++;
