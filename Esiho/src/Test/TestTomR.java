@@ -26,7 +26,9 @@ public class TestTomR extends Application {
     private Image joueurImage;
     private Node joueur;
     private Integer dx = 0;
-    private Integer dy = 0;
+    private Integer dy = 8;
+    private Integer dx_old;
+    private Integer dy_old;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -50,19 +52,19 @@ public class TestTomR extends Application {
                 switch (event.getCode()) {
                     case UP:
                         dy -= 16;
+
                         break;
                     case DOWN:
                         dy += 16;
+
                         break;
                     case LEFT:
                         dx -= 16;
+
                         break;
                     case RIGHT:
                         dx += 16;
-                        break;
-                    case SHIFT:
-                        dx *= 3;
-                        dy *= 3;
+
                         break;
                 }
 
@@ -73,9 +75,13 @@ public class TestTomR extends Application {
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                joueur.setTranslateX(joueur.getLayoutX()+dx);
-                joueur.setTranslateY(joueur.getLayoutY()+dy);
-                joueur.relocate(joueur.getLayoutX()+dx, joueur.getLayoutY()+dy);
+//                joueur.setTranslateX(joueur.getLayoutX()+dx);
+//                joueur.setTranslateY(joueur.getLayoutY()+dy);
+//                joueur.relocate(joueur.getLayoutX()+dx, joueur.getLayoutY()+dy);
+                if (dx!=dx_old || dy!=dy_old){
+                    showLayers();
+                }
+                showLayers();
             }
         };
         timer.start();
@@ -93,6 +99,8 @@ public class TestTomR extends Application {
     private void showLayers(){
         Map map = new Map("M0", "test", 32,32);
         GraphicsContext gc = mapPane.getGraphicsContext2D();
+        gc.setFill(Color.BLACK);
+        gc.fillRect(0, 0, stageWidth, stageHeight);
         showOneLayer(map.getCoucheBase());
         showOneLayer(map.getCouche2());
         showOneLayer(map.getCouche3());
@@ -103,9 +111,7 @@ public class TestTomR extends Application {
         for (ArrayList<Tile> ligne:couche.gridTiles) {
             Integer b = 0;
             for (Tile element:ligne) {
-//                if (a*16<=-16+joueur.getLayoutX()*2 && b*16<=-16+joueur.getLayoutY()*2){
-                    mapPane.getGraphicsContext2D().drawImage(couche.getTile(a, b).getImage(), a*16, b*16);
-//                }
+                    mapPane.getGraphicsContext2D().drawImage(couche.getTile(a, b).getImage(), a*16+dx, b*16+dy);
                 b++;
             }
             a++;

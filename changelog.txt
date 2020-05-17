@@ -146,3 +146,4 @@ ex : T2-28 => Le 28e Tile du tileset 2
 -Ajout d'une lecture de touches
 -Ajout d'une initialisation de Tileset pour les Sprites de PNJs (Spritesets)
 -Ajout d'un PNJ joueur avec une liste de tilesets. La fonction d'appel est en statique dans PNJ
+-Ajout d'un système de déplacement (très basique)
