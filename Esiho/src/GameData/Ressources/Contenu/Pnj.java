@@ -104,8 +104,6 @@ public class Pnj {
         Armure armure = new Armure("2","Bouclier", 5 , 2);
         Entity entity = new Entity("1","Squelette",1,50,0,typeFeu,pv,1,1,1,1,1,arme,armure, movesPhy, movesPhy);
         Tileset tileset = Tileset.getTileset(0, "SPRITE");
-        System.out.println("listeSprites.size() : "+tileset.getListeSprites().size());
-        System.out.println("listeSprites.get(0).size() : "+tileset.getListeSprites().get(0).size());
         ArrayList<Tile> listeSprites = tileset.getListeSprites().get(0);
         Pnj pnj = new Pnj("P0", nomJoueur, listeSprites, entity);
         return pnj;
