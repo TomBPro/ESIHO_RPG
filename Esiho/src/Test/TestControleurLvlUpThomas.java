@@ -9,19 +9,22 @@ import GameData.Combat.Types.Normal;
 import GameData.Combat.Types.Types;
 import GameData.Default.Items.Arme;
 import GameData.Default.Items.Armure;
+import GameData.Ressources.Contenu.InitContenu;
 import GameData.Ressources.Contenu.Pnj;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 
 import javafx.scene.control.TextField;
-import java.awt.*;
 import java.awt.image.ImageObserver;
 import java.awt.image.ImageProducer;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -38,32 +41,9 @@ public class TestControleurLvlUpThomas implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Image x = new Image() {
-            @Override
-            public int getWidth(ImageObserver observer) {
-                return 0;
-            }
-
-            @Override
-            public int getHeight(ImageObserver observer) {
-                return 0;
-            }
-
-            @Override
-            public ImageProducer getSource() {
-                return null;
-            }
-
-            @Override
-            public Graphics getGraphics() {
-                return null;
-            }
-
-            @Override
-            public Object getProperty(String name, ImageObserver observer) {
-                return null;
-            }
-        };
+        Path chemin = Paths.get(System.getProperty("user.dir"));
+        Path cheminImage = Paths.get(chemin.toString(),"src", "GameData","Ressources","Images", "Entities", "PersoRPG", "Chevalier Combat.png");
+        Image x = new Image(cheminImage.toString());
         ArrayList<Image> images = new ArrayList<>();
         images.add(x);
         Types typeFeu = new Feu();
@@ -75,7 +55,7 @@ public class TestControleurLvlUpThomas implements Initializable {
         Armure armure = new Armure("2","Bouclier", 5,  2);
         Entity entity = new Entity("1","Squelette",1,50,0,typeFeu,pv,1,1,1,1,1,arme,armure, movesPhy, movesSpe, x);
 
-        pnjTest = new Pnj("1","Squelette", images, entity);
+        pnjTest = new Pnj("1","Squelette", InitContenu.listeSpriteset.get(0).getListeSprites().get(0), entity);
 
         currentLvl.setText(valueOf(pnjTest.getEntite().getLvl()));
         currentHp.setText(valueOf(pnjTest.getEntite().getPV().getPvmax())) ;

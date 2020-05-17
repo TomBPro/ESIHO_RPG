@@ -4,8 +4,8 @@ import GameData.Combat.Moves.MoveList;
 import GameData.Combat.Types.Types;
 import GameData.Default.Items.Arme;
 import GameData.Default.Items.Armure;
+import javafx.scene.image.Image;
 
-import java.awt.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Entity {
@@ -46,6 +46,27 @@ public class Entity {
         this.movesPhy = movesPhy;
         this.movesSpe = movesSpe;
         this.image = image;
+    }
+
+
+    public Entity(String id, String name, Integer lvl, Integer xpmax, Integer xp, Types type, Pv pv, Integer att, Integer def, Integer attspe, Integer defspe, Integer vitesse, Arme arme, Armure armure, MoveList movesPhy, MoveList movesSpe) {
+        //Pas d'image
+        this.id = id;
+        this.name = name;
+        this.lvl = lvl;
+        this.xpmax = xpmax;
+        this.xp = xp;
+        this.type = type;
+        this.pv = pv;
+        this.att = att;
+        this.def = def;
+        this.attspe = attspe;
+        this.defspe = defspe;
+        this.vitesse = vitesse;
+        this.arme = arme;
+        this.armure = armure;
+        this.movesPhy = movesPhy;
+        this.movesSpe = movesSpe;
     }
 
     public Entity(String id, String name){

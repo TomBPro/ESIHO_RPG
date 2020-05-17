@@ -4,10 +4,14 @@ import GameData.Ressources.Contenu.InitContenu;
 import GameData.Ressources.Contenu.Layer;
 import GameData.Ressources.Contenu.Map;
 import GameData.Ressources.Contenu.Tile;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -29,14 +33,18 @@ public class TestTomR extends Application {
     private Boolean goWest = false;
     private Boolean goEast = false;
     private Boolean running = false;
+    private Image joueurImage;
+    private Node joueur;
 
     @Override
     public void start(Stage stage) throws Exception {
+        InitContenu contenu = new InitContenu();
         stageWidth=800;
         stageHeight=400;
         xJoueur = -16+stageWidth/2;
         yJoueur = -16+stageHeight/2;
-        InitContenu contenu = new InitContenu();
+        joueurImage = InitContenu.listeSpriteset.get(0).getTile(0).getImage();
+        joueur = new ImageView(joueurImage);
         this.primStage = stage;
         primStage.setTitle("Map");
         StackPane root = new StackPane();
@@ -49,7 +57,10 @@ public class TestTomR extends Application {
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
-                    case UP:    goNorth = true; break;
+                    case UP:
+                        goNorth = true;
+                        System.out.println("BRUH");
+                        break;
                     case DOWN:  goSouth = true; break;
                     case LEFT:  goWest  = true; break;
                     case RIGHT: goEast  = true; break;
@@ -71,18 +82,25 @@ public class TestTomR extends Application {
             }
         });
 
-        if (goNorth){
-            yJoueur++;
-        }
-        if (goSouth){
-            yJoueur--;
-        }
-        if (goWest){
-            xJoueur++;
-        }
-        if (goEast){
-            xJoueur--;
-        }
+
+        AnimationTimer timer = new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                if (goNorth){
+                    yJoueur+=32;
+                }
+                if (goSouth){
+                    yJoueur-=32;
+                }
+                if (goWest){
+                    xJoueur+=32;
+                }
+                if (goEast){
+                    xJoueur-=32;
+                }
+            }
+        };
+        timer.start();
 
 
         primStage.setScene(sceneMap);

@@ -141,3 +141,7 @@ ex : T2-28 => Le 28e Tile du tileset 2
 
 #TomRobette#16/05/2020#
 -Optimisation (majeure !) de l'affichage des maps (concernant la récupération et la lecture des tilesets)
+
+#TomRobette#17/05/2020#
+-Ajout d'une lecture de touches
+-Ajout d'une initialisation de Tileset pour les Sprites de PNJs (Spritesets)

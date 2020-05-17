@@ -78,13 +78,13 @@ public class Layer{//Une couche de
                 if (Tileset.isTilesetInArray(Integer.parseInt(codeTileset[0]))){
                     tile = InitContenu.listeTileset.get(Integer.parseInt(codeTileset[0])).getTile(Integer.parseInt(codeTileset[1]));
                 }else{
-                    tile = Tileset.getTileset(Integer.parseInt(codeTileset[0])).getTile(Integer.parseInt(codeTileset[1]));
+                    tile = Tileset.getTileset(Integer.parseInt(codeTileset[0]), "MAP").getTile(Integer.parseInt(codeTileset[1]));
                 }
             }catch (Exception erreur_transcription_nom_tile_map){
                 if (Tileset.isTilesetInArray(10)){
                     tile = InitContenu.listeTileset.get(10).getTile(33);
                 }else{
-                    tile = Tileset.getTileset(10).getTile(33);
+                    tile = Tileset.getTileset(10, "MAP").getTile(33);
                 }
             }
         }catch(Exception erreur_lecture_tile_map){
