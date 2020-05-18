@@ -1,5 +1,6 @@
 package Test;
 
+import GameData.Ressources.Cheats.Engine;
 import GameData.Ressources.Contenu.*;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -7,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -15,6 +17,7 @@ import javafx.stage.Stage;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class TestTomR extends Application {
     private Scene sceneMap;
@@ -33,6 +36,8 @@ public class TestTomR extends Application {
     private Boolean keyPressed;
     private Integer compteurPas;
     private Integer memoireSens;
+    private Boolean cheatsToggle;
+    private Engine cheatEngine;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -55,6 +60,25 @@ public class TestTomR extends Application {
         showLayers();
         root.getChildren().addAll(mapPane);
         root.getChildren().add(joueur);
+
+
+        //Zone cheats
+        cheatsToggle = false;
+        GridPane cheatRoot = new GridPane();
+        TextArea textArea = new TextArea();
+        textArea.setPrefRowCount(4);
+        textArea.setEditable(true);
+        AtomicReference<String> text = new AtomicReference<>("");
+        textArea.textProperty().addListener((observable, oldValue, newValue) -> {
+            text.set(textArea.getText());
+        });
+        textArea.setText(text.get());
+        textArea.setMaxSize(stageWidth*0.2, stageHeight*0.1);
+        cheatRoot.add(textArea, 0, 0);
+        root.getChildren().add(cheatRoot);
+            root.getChildren().get(2).setVisible(false);
+
+
         this.sceneMap= new Scene(root, stageWidth, stageHeight, Color.BLACK);
 
         sceneMap.setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -99,6 +123,26 @@ public class TestTomR extends Application {
                         }
                         joueurImage = joueurSprites.get(6+compteurPas);
                         break;
+                    case F9:
+                        if (cheatsToggle){
+                            cheatsToggle=false;
+                        }else{
+                            cheatsToggle=true;
+                        }
+                        if (!cheatsToggle){
+                            root.getChildren().get(2).setVisible(false);
+                        }else{
+                            root.getChildren().get(2).setVisible(true);
+                        }
+                        break;
+                    case ENTER:
+                        if (cheatsToggle){
+                            try{
+                                cheatEngine.cheats(text.toString());
+                            }catch (Exception erreur_cheat_code){
+                                System.out.println("Erreur lors de la commande de cheat");
+                            }
+                        }
                 }
 
             }
@@ -126,7 +170,6 @@ public class TestTomR extends Application {
             }
         };
         timer.start();
-
 
         primStage.setScene(sceneMap);
 
