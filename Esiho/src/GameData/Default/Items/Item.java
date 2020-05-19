@@ -1,5 +1,6 @@
 package GameData.Default.Items;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.awt.*;
@@ -9,7 +10,13 @@ public abstract class Item {
     private String nom;
     private Integer valeur;
     private javafx.scene.image.Image image;
+    private String typeI;
 
+    public Item(String id, String nom, Integer valeur, Image image, String typeI) {
+    }
+
+    public Item(String id, String nom, Integer valeur) {
+    }
 
 
     public abstract void useItem();
@@ -44,5 +51,13 @@ public abstract class Item {
 
     public void setImage(javafx.scene.image.Image image) {
         this.image = image;
+    }
+
+    public String getTypeI() {
+        return typeI;
+    }
+
+    public void setTypeI(String typeI) {
+        this.typeI = typeI;
     }
 }

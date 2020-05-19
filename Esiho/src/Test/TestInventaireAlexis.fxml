@@ -10,6 +10,17 @@
                 <HBox fx:id="inventaire" prefHeight="100.0" prefWidth="200.0">
                     <children>
                         <Label text="INVENTAIRE" />
+                        <GridPane fx:id="gridInv">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            </rowConstraints>
+                        </GridPane>
                     </children>
                 </HBox>
                 <HBox prefHeight="50.0" prefWidth="400.0">
@@ -38,53 +49,53 @@
                 </HBox>
             </children>
         </VBox>
-      <GridPane fx:id="gridArme" alignment="BOTTOM_CENTER" layoutY="155.0" prefHeight="246.0" prefWidth="600.0" visible="false">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="117.4" minHeight="10.0" prefHeight="32.400000000000006" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="219.4" minHeight="10.0" prefHeight="212.4" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <TextField alignment="CENTER" editable="false" text="Arme" />
-         </children>
-      </GridPane>
-      <GridPane fx:id="gridArmure" alignment="BOTTOM_CENTER" layoutY="155.0" prefHeight="246.0" prefWidth="600.0" visible="false">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="117.4" minHeight="10.0" prefHeight="32.400000000000006" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="219.4" minHeight="10.0" prefHeight="212.4" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <TextField alignment="CENTER" editable="false" text="Armure" />
-         </children>
-      </GridPane>
-      <GridPane fx:id="gridConso" alignment="BOTTOM_CENTER" layoutY="155.0" prefHeight="246.0" prefWidth="600.0" visible="false">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="117.4" minHeight="10.0" prefHeight="32.400000000000006" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="219.4" minHeight="10.0" prefHeight="212.4" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <TextField alignment="CENTER" editable="false" text="Consommable" />
-         </children>
-      </GridPane>
-      <GridPane fx:id="gridDivers" alignment="BOTTOM_CENTER" layoutY="155.0" prefHeight="246.0" prefWidth="600.0" visible="false">
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints maxHeight="117.4" minHeight="10.0" prefHeight="32.400000000000006" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="219.4" minHeight="10.0" prefHeight="212.4" vgrow="SOMETIMES" />
-         </rowConstraints>
-         <children>
-            <TextField alignment="CENTER" editable="false" text="Divers" />
-         </children>
-      </GridPane>
+        <GridPane fx:id="gridArme" alignment="BOTTOM_CENTER" layoutY="155.0" prefHeight="246.0" prefWidth="600.0" visible="false">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="117.4" minHeight="10.0" prefHeight="32.400000000000006" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="219.4" minHeight="10.0" prefHeight="212.4" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <TextField alignment="CENTER" editable="false" text="Arme" />
+            </children>
+        </GridPane>
+        <GridPane fx:id="gridArmure" alignment="BOTTOM_CENTER" layoutY="155.0" prefHeight="246.0" prefWidth="600.0" visible="false">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="117.4" minHeight="10.0" prefHeight="32.400000000000006" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="219.4" minHeight="10.0" prefHeight="212.4" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <TextField alignment="CENTER" editable="false" text="Armure" />
+            </children>
+        </GridPane>
+        <GridPane fx:id="gridConso" alignment="BOTTOM_CENTER" layoutY="155.0" prefHeight="246.0" prefWidth="600.0" visible="false">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="117.4" minHeight="10.0" prefHeight="32.400000000000006" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="219.4" minHeight="10.0" prefHeight="212.4" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <TextField alignment="CENTER" editable="false" text="Consommable" />
+            </children>
+        </GridPane>
+        <GridPane fx:id="gridDivers" alignment="BOTTOM_CENTER" layoutY="155.0" prefHeight="246.0" prefWidth="600.0" visible="false">
+            <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints maxHeight="117.4" minHeight="10.0" prefHeight="32.400000000000006" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="219.4" minHeight="10.0" prefHeight="212.4" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+                <TextField alignment="CENTER" editable="false" text="Divers" />
+            </children>
+        </GridPane>
     </children>
 </AnchorPane>

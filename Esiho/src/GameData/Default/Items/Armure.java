@@ -3,61 +3,56 @@ package GameData.Default.Items;
 import java.awt.*;
 
 public class Armure extends Item {//Ce type d'objet réfère aux objets à equiper donnant de l'armure
-    private String id;
-    private String nom;
-    private Integer valeur;
-    private javafx.scene.image.Image image;
+//    private String id;
+//    private String nom;
+//    private Integer valeur;
+//    private javafx.scene.image.Image image;
     private Integer coeffProtection;
 
-    public Armure(String id, String nom, Integer valeur, javafx.scene.image.Image image, Integer coeffProtection){
-        this.id=id;
-        this.nom=nom;
-        this.valeur=valeur;
-        this.image=image;
+    public Armure(String id, String nom, Integer valeur, javafx.scene.image.Image image, Integer coeffProtection, String typeI){
+        super(id,nom,valeur,image,typeI);
         this.coeffProtection=coeffProtection;
     }
 
     public Armure(String id, String nom, Integer valeur, Integer coeffProtection){
-        this.id=id;
-        this.nom=nom;
-        this.valeur=valeur;
+       super(id, nom, valeur);
         this.coeffProtection=coeffProtection;
     }
 
     public void useItem(){
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public Integer getValeur() {
-        return valeur;
-    }
-
-    public void setValeur(Integer valeur) {
-        this.valeur = valeur;
-    }
-
-    public javafx.scene.image.Image getImage() {
-        return image;
-    }
-
-    public void setImage(javafx.scene.image.Image image) {
-        this.image = image;
-    }
+//    public String getId() {
+//        return id;
+//    }
+//
+//    public void setId(String id) {
+//        this.id = id;
+//    }
+//
+//    public String getNom() {
+//        return nom;
+//    }
+//
+//    public void setNom(String nom) {
+//        this.nom = nom;
+//    }
+//
+//    public Integer getValeur() {
+//        return valeur;
+//    }
+//
+//    public void setValeur(Integer valeur) {
+//        this.valeur = valeur;
+//    }
+//
+//    public javafx.scene.image.Image getImage() {
+//        return image;
+//    }
+//
+//    public void setImage(javafx.scene.image.Image image) {
+//        this.image = image;
+//    }
 
     public Integer getCoeffProtection() {
         return coeffProtection;

@@ -1,6 +1,7 @@
 package GameData.Combat.Entities;
 
 import GameData.Default.Inventaire;
+import GameData.Default.Items.Item;
 import GameData.Ressources.Contenu.Pnj;
 
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ public class Team {
     public Team(String id, Integer argent){
         this.id=id;
         this.argent=argent;
+        this.inventaire=new Inventaire(new ArrayList<>());
     }
 
     public String getId() {

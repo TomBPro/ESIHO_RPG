@@ -1,5 +1,7 @@
 package Test;
 
+import GameData.Combat.Entities.Team;
+import GameData.Default.Items.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -7,9 +9,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class ControleurAlexis implements Initializable {
+
+    private Team teamjoueur;
+    private ArrayList<Item> listItem;
 
     @FXML
     private GridPane gridArme, gridArmure, gridConso, gridDivers;
@@ -20,6 +26,12 @@ public class ControleurAlexis implements Initializable {
         gridArmure.setVisible(false);
         gridConso.setVisible(false);
         gridDivers.setVisible(false);
+        String type = "Arme";
+        for (Item unItem:teamjoueur.getInventaire().getInventaire()) {
+            if (unItem.getTypeI()==type){
+                listItem.add(unItem);
+            }
+        }
     }
 
     @FXML
@@ -48,6 +60,9 @@ public class ControleurAlexis implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.teamjoueur= new Team("T1",1200);
+        teamjoueur.getInventaire().getInventaire().add(Arme.epee());
+
 
     }
 
