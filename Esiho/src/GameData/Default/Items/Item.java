@@ -70,7 +70,6 @@ public abstract class Item {
 
     public static Arme epee(){
         Arme epee = new Arme("I3","Épée légendaire",500,5);
-        System.out.println("BRUHEN : "+epee.getNom());
         return epee;
     }
 }
