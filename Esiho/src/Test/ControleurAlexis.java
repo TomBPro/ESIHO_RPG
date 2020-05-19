@@ -28,9 +28,12 @@ public class ControleurAlexis implements Initializable {
         gridDivers.setVisible(false);
         String type = "Arme";
         for (Item unItem:teamjoueur.getInventaire().getInventaire()) {
-            if (unItem.getTypeI()==type){
+            if (unItem.getTypeI().equals(type)){
                 listItem.add(unItem);
             }
+        }
+        for(Item element:listItem){
+            System.out.println(element);
         }
     }
 
@@ -61,6 +64,8 @@ public class ControleurAlexis implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.teamjoueur= new Team("T1",1200);
+        teamjoueur.getInventaire().getInventaire().add(Arme.epee());
+        teamjoueur.getInventaire().getInventaire().add(Arme.epee());
         teamjoueur.getInventaire().getInventaire().add(Arme.epee());
 
 
