@@ -11,6 +11,10 @@ public class Inventaire {
         this.inventaire = inventaire;
     }
 
+    public Inventaire(){
+        this.inventaire = new ArrayList<>();
+    }
+
     public void addItem(Item itemAdded){
         inventaire.add(itemAdded);
     }//ajoute un objet à l'inventaire

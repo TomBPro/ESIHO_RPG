@@ -8,12 +8,14 @@ public class Divers extends Item{//Ce type d'objet réfère aux objets sans fonc
 //    private Integer valeur;
 //    private javafx.scene.image.Image image;
 
-    public Divers(String id, String nom, Integer valeur, javafx.scene.image.Image image,String typeI){
-        super(id,nom,valeur,image,typeI);
+    public Divers(String id, String nom, Integer valeur, javafx.scene.image.Image image){
+        super(id,nom,valeur,image);
+        super.setTypeI("DIVERS");
     }
 
     public Divers(String id, String nom, Integer valeur){
         super(id,nom,valeur);
+        super.setTypeI("DIVERS");
     }
 
     public void useItem(){
@@ -62,4 +64,8 @@ public class Divers extends Item{//Ce type d'objet réfère aux objets sans fonc
 //        Divers queue = new Divers("I9", "queue de rat", 50, "x"));
 //        return queue;
 //    }
+
+      public String getTypeI(){
+        return super.getTypeI();
+      }
 }

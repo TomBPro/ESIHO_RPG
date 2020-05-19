@@ -15,16 +15,17 @@ public class Arme extends Item {//Ce type d'objet réfère aux objets servant d'
     private Integer coeffDegats;
     private String typeI;
 
-    public Arme(String id, String nom, Integer valeur, javafx.scene.image.Image image, Integer coeffDegats, String typeI){
-        super(id,nom,valeur,image,typeI);
+    public Arme(String id, String nom, Integer valeur, javafx.scene.image.Image image, Integer coeffDegats){
+        super(id,nom,valeur,image);
         this.coeffDegats=coeffDegats;
+        super.setTypeI("ARME");
 
     }
 
     public Arme(String id, String nom, Integer valeur,  Integer coeffDegats){
         super(id,nom,valeur);
-        this.typeI = "Arme";
         this.coeffDegats=coeffDegats;
+        super.setTypeI("ARME");
 
     }
 
@@ -72,6 +73,10 @@ public class Arme extends Item {//Ce type d'objet réfère aux objets servant d'
         this.coeffDegats = coeffDegats;
     }
 
+    public String getTypeI(){
+        return super.getTypeI();
+    }
+
 /*//    public static Arme baton(){
 //        Arme baton = new Arme("I1","Baton",100, "Baton.png", 1);
 //        return baton;
@@ -82,11 +87,10 @@ public class Arme extends Item {//Ce type d'objet réfère aux objets servant d'
 //        return dague;
 //    }
 
-    public static Arme epee(){
-
-        Arme epee = new Arme("I3","epee légendaire",500,5);
-        return epee;
-    }
+//    public static Arme epee(){
+//        Arme epee = new Arme("I3","Épée légendaire",500,5);
+//        return epee;
+//    }
 
 //    public static Arme arc(){
 //        Arme arc = new Arme("I4","arc",300, "Arc.png", 4);

@@ -9,14 +9,16 @@ public class Armure extends Item {//Ce type d'objet réfère aux objets à equip
 //    private javafx.scene.image.Image image;
     private Integer coeffProtection;
 
-    public Armure(String id, String nom, Integer valeur, javafx.scene.image.Image image, Integer coeffProtection, String typeI){
-        super(id,nom,valeur,image,typeI);
+    public Armure(String id, String nom, Integer valeur, javafx.scene.image.Image image, Integer coeffProtection){
+        super(id,nom,valeur,image);
         this.coeffProtection=coeffProtection;
+        super.setTypeI("ARMURE");
     }
 
     public Armure(String id, String nom, Integer valeur, Integer coeffProtection){
        super(id, nom, valeur);
         this.coeffProtection=coeffProtection;
+        super.setTypeI("ARMURE");
     }
 
     public void useItem(){
@@ -60,6 +62,10 @@ public class Armure extends Item {//Ce type d'objet réfère aux objets à equip
 
     public void setCoeffProtection(Integer coeffProtection) {
         this.coeffProtection = coeffProtection;
+    }
+
+    public String getTypeI(){
+        return super.getTypeI();
     }
 
     //    public static Armure banale(){

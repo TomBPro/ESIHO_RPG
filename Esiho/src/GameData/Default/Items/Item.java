@@ -12,10 +12,17 @@ public abstract class Item {
     private javafx.scene.image.Image image;
     private String typeI;
 
-    public Item(String id, String nom, Integer valeur, Image image, String typeI) {
+    public Item(String id, String nom, Integer valeur, Image image) {
+        this.id = id;
+        this.nom = nom;
+        this.valeur = valeur;
+        this.image = image;
     }
 
     public Item(String id, String nom, Integer valeur) {
+        this.id = id;
+        this.nom = nom;
+        this.valeur = valeur;
     }
 
 
@@ -59,5 +66,11 @@ public abstract class Item {
 
     public void setTypeI(String typeI) {
         this.typeI = typeI;
+    }
+
+    public static Arme epee(){
+        Arme epee = new Arme("I3","Épée légendaire",500,5);
+        System.out.println("BRUHEN : "+epee.getNom());
+        return epee;
     }
 }

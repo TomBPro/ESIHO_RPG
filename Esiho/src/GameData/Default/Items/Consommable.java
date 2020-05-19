@@ -11,14 +11,16 @@ public abstract class Consommable extends Item {//Ce type d'objet réfère aux o
 //    private javafx.scene.image.Image image;
     private Integer type;
 
-    public Consommable(String id, String nom, Integer valeur, javafx.scene.image.Image image, Integer type, String typeI){
-        super(id,nom,valeur,image,typeI);
+    public Consommable(String id, String nom, Integer valeur, javafx.scene.image.Image image, Integer type){
+        super(id,nom,valeur,image);
         this.type=type;
+        super.setTypeI("CONSOMMABLE");
     }
 
     public Consommable(String id, String nom, Integer valeur, Integer type){
         super(id,nom,valeur);
         this.type=type;
+        super.setTypeI("CONSOMMABLE");
     }
 
     public abstract void useItem(Pnj pnj, Integer val)//Ce champ sera rempli lorsqu'un Consommable sera initialisé, mais pas lorsqu'il sera utilisé
@@ -63,6 +65,10 @@ public abstract class Consommable extends Item {//Ce type d'objet réfère aux o
 
     public void setType(Integer type) {
         this.type = type;
+    }
+
+    public String getTypeI(){
+        return super.getTypeI();
     }
 
 //    public static Consommable vie(){

@@ -81,7 +81,7 @@ public class Sauvegarde {
                 writer.println("FIN_ITEM");
                 for (Pnj pnj:equipe.getListePNJ()) {
                     writer.println(pnj.getId());
-                    writer.println(pnj.getEntite().getName());
+                    //writer.println(pnj.getEntite().getName());
                     writer.println(pnj.getEntite().getLvl());
                     writer.println(pnj.getEntite().getXpmax());
                     writer.println(pnj.getEntite().getXp());

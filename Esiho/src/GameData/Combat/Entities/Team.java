@@ -13,10 +13,16 @@ public class Team {
     private Integer argent;
     private String position;
 
-    public Team(String id, Integer argent){
+    public Team(String id, Integer argent, ArrayList<Item> inventaire){
         this.id=id;
         this.argent=argent;
         this.inventaire=new Inventaire(new ArrayList<>());
+    }
+
+    public Team(String id, Integer argent){
+        this.id=id;
+        this.argent=argent;
+        this.inventaire=new Inventaire();
     }
 
     public String getId() {
