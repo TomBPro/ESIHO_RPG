@@ -9,12 +9,9 @@ import GameData.Combat.Types.Plante;
 import GameData.Combat.Types.Types;
 import GameData.Default.Items.Arme;
 import GameData.Default.Items.Armure;
-import javafx.embed.swing.SwingFXUtils;
 
-import javax.swing.*;
 import java.awt.*;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import javafx.scene.image.Image;
 import java.util.ArrayList;
 
 public class Pnj {
@@ -95,17 +92,140 @@ public class Pnj {
     }
 
     public static Pnj joueur(String nomJoueur){
-        Types typeFeu = new Feu();
-        Plante typePlante = new Plante();
-        Pv pv = new Pv(10,10);
-        MoveList movesPhy = new MoveList(Move.lameFeu(),Move.coupPoing(),Move.coupEpee(),Move.coupPoing());
-        MoveList movesSpe = new MoveList(Move.flecheFeu(),Move.flecheFeu(),Move.flecheFeu(),Move.flecheFeu());
-        Arme arme = new Arme("1","Epée",5,2);
-        Armure armure = new Armure("2","Bouclier", 5 , 2);
-        Entity entity = new Entity("1","Squelette",1,50,0,typeFeu,pv,1,1,1,1,1,arme,armure, movesPhy, movesPhy);
-        Tileset tileset = Tileset.getTileset(0, "SPRITE");
-        ArrayList<Tile> listeSprites = tileset.getListeSprites().get(0);
-        Pnj pnj = new Pnj("P0", nomJoueur, listeSprites, entity);
-        return pnj;
-    }
-}
+        try{
+            switch (nomJoueur) {
+                case "P1":
+                    ArrayList<Tile> listeSprites = Pnj.joueur("Maurice").getListeSprites(); //On récupère la liste de sprites
+                    Image image = new Image("");
+                    Entity entity = new Entity(
+                            //Lvl / xpmax / xp
+                            1, 50, 0,
+                            //Type
+                            new Feu(),
+                            //PV
+                            new Pv(10, 10),
+                            // Atk / Def / AtkSpe / DefSpe / Vitesse
+                            1, 1,1,1,1,
+                            //Arme
+
+                            //Armure
+
+                            //Moves Phy
+                            new MoveList(new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu())),
+                            //Moves Spe
+                            new MoveList(new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu())),
+                            //Image
+                            image
+                    );
+                    return new Pnj(nomJoueur , "Squellette", listeSprites, entity);
+
+                case "P2":
+                    listeSprites = Pnj.joueur("Maurice").getListeSprites(); //On récupère la liste de sprites
+                    image = new Image("");
+                    entity = new Entity(
+                            //Lvl / xpmax / xp
+                            3, 50, 0,
+                            //Type
+                            new Feu(),
+                            //PV
+                            new Pv(20, 20),
+                            // Atk / Def / AtkSpe / DefSpe / Vitesse
+                            2,2,2,2,2,
+                            //Arme
+                            new Arme("1","Epée",5,2),
+                            //Armure
+                            new Armure("2","Bouclier", 5, 2),
+                            //Moves Phy
+                            new MoveList(new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu())),
+                            //Moves Spe
+                            new MoveList(new Move("1", "Test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu())),
+                            //Image
+                            image
+                    );
+                    return new Pnj( nomJoueur, "Le Vieux Fou", listeSprites, entity);
+
+                case "P3":
+                    listeSprites = Pnj.joueur("Maurice").getListeSprites(); //On récupère la liste de sprites
+                    image = new Image("");
+                    entity = new Entity(
+                            //Lvl / xpmax / xp
+                            1, 50, 0,
+                            //Type
+                            new Feu(),
+                            //PV
+                            new Pv(15, 15),
+                            // Atk / Def / AtkSpe / DefSpe / Vitesse
+                            1,1,1,1,1,
+                            //Arme
+
+                            //Armure
+
+                            //Moves Phy
+                            new MoveList(new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu())),
+                            //Moves Spe
+                            new MoveList(new Move("1", "Test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu())),
+                            //Image
+                            image
+                    );
+                    return new Pnj( nomJoueur, "Petit Diable", listeSprites, entity);
+
+                case "P4":
+                    listeSprites = Pnj.joueur("Maurice").getListeSprites(); //On récupère la liste de sprites
+                    image = new Image("");
+                    entity = new Entity(
+                            //Lvl / xpmax / xp
+                            1, 50, 0,
+                            //Type
+                            new Feu(),
+                            //PV
+                            new Pv(10, 10),
+                            // Atk / Def / AtkSpe / DefSpe / Vitesse
+                            1,1,1,1,1,
+                            //Arme
+
+                            //Armure
+
+                            //Moves Phy
+                            new MoveList(new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu())),
+                            //Moves Spe
+                            new MoveList(new Move("1", "Test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu())),
+                            //Image
+                            image
+                    );
+                    return new Pnj( nomJoueur, "Rat", listeSprites, entity);
+
+//            case "P5":
+//                listeSprites = Pnj.joueur("Maurice").getListeSprites(); //On récupère la liste de sprites
+//                image = new Image("");
+//                entity = new Entity(
+//                        //Lvl / xpmax / xp
+//                        1, 50, 0,
+//                        //Type
+//                        new Feu(),
+//                        //PV
+//                        new Pv(10, 10),
+//                        // Atk / Def / AtkSpe / DefSpe / Vitesse
+//                        1,1,1,1,1,
+//                        //Arme
+//
+//                        //Armure
+//
+//                        //Moves Phy
+//                        new MoveList(new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu())),
+//                        //Moves Spe
+//                        new MoveList(new Move("1", "Test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu())),
+//                        //Image
+//                        image
+//                );
+//                return new Pnj( nomJoueur, "Rat", listeSprites, entity);
+            }
+
+
+
+        }catch (Exception E){
+            System.out.print("error");
+
+        }
+        return null;
+    }}
+

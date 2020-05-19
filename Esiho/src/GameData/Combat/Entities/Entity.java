@@ -9,8 +9,6 @@ import javafx.scene.image.Image;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Entity {
-    String id;
-    String name;
     Integer lvl;
     Integer xpmax;
     Integer xp;
@@ -28,9 +26,7 @@ public class Entity {
     Image image;
 
 
-    public Entity(String id, String name, Integer lvl, Integer xpmax, Integer xp, Types type, Pv pv, Integer att, Integer def, Integer attspe, Integer defspe, Integer vitesse, Arme arme, Armure armure, MoveList movesPhy, MoveList movesSpe, Image image) {
-        this.id = id;
-        this.name = name;
+    public Entity(Integer lvl, Integer xpmax, Integer xp, Types type, Pv pv, Integer att, Integer def, Integer attspe, Integer defspe, Integer vitesse, Arme arme, Armure armure, MoveList movesPhy, MoveList movesSpe, Image image) {
         this.lvl = lvl;
         this.xpmax = xpmax;
         this.xp = xp;
@@ -49,10 +45,8 @@ public class Entity {
     }
 
 
-    public Entity(String id, String name, Integer lvl, Integer xpmax, Integer xp, Types type, Pv pv, Integer att, Integer def, Integer attspe, Integer defspe, Integer vitesse, Arme arme, Armure armure, MoveList movesPhy, MoveList movesSpe) {
+    public Entity( Integer lvl, Integer xpmax, Integer xp, Types type, Pv pv, Integer att, Integer def, Integer attspe, Integer defspe, Integer vitesse, Arme arme, Armure armure, MoveList movesPhy, MoveList movesSpe) {
         //Pas d'image
-        this.id = id;
-        this.name = name;
         this.lvl = lvl;
         this.xpmax = xpmax;
         this.xp = xp;
@@ -69,18 +63,27 @@ public class Entity {
         this.movesSpe = movesSpe;
     }
 
-    public Entity(String id, String name){
-
+    public Entity( Integer lvl, Integer xpmax, Integer xp, Types type, Pv pv, Integer att, Integer def, Integer attspe, Integer defspe, Integer vitesse, MoveList movesPhy, MoveList movesSpe, Image image) {
+        //Pas Armes et armures
+        this.lvl = lvl;
+        this.xpmax = xpmax;
+        this.xp = xp;
+        this.type = type;
+        this.pv = pv;
+        this.att = att;
+        this.def = def;
+        this.attspe = attspe;
+        this.defspe = defspe;
+        this.vitesse = vitesse;
+        this.arme = arme;
+        this.armure = armure;
+        this.movesPhy = movesPhy;
+        this.movesSpe = movesSpe;
     }
+
 
     //Accesseur
 
-
-
-
-    public String getName() {
-        return name;
-    }//Récupérer le nom
 
     public int getLvl() {
         return lvl;
@@ -122,9 +125,6 @@ public class Entity {
         return vitesse;
     }//Récupérer le niveau de vitesse
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public void setLvl(Integer lvl) {
         this.lvl = lvl;
@@ -162,14 +162,6 @@ public class Entity {
 
     public void setVitesse(Integer vitesse) {
         this.vitesse = vitesse;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public Pv getPv() {
