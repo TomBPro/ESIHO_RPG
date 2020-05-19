@@ -118,7 +118,7 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
 
     private void initItems() {//Ici on créera les Items
 //        Arme.baton();
-//        Arme.dague();
+// /       Arme.dague();
         Arme.epee();
 //        Arme.arc();
 //
