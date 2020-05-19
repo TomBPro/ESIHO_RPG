@@ -83,7 +83,6 @@ public class Arme extends Item {//Ce type d'objet réfère aux objets servant d'
 //    }
 
     public static Arme epee(){
-
         Arme epee = new Arme("I3","epee légendaire",500,5);
         return epee;
     }

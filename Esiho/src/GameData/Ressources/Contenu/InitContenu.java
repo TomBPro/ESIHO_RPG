@@ -119,7 +119,7 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
     private void initItems() {//Ici on créera les Items
 //        Arme.baton();
 //        Arme.dague();
-//        Arme.epee();
+        Arme.epee();
 //        Arme.arc();
 //
 //        Armure.banale();
@@ -128,8 +128,8 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
 //        Consommable.vie();
 //        Consommable.degats();
 //
-//        Divers.balle()
-//        Divers.queue()
+//        Divers.balle();
+//        Divers.queue();
 
 
     }

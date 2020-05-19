@@ -33,7 +33,7 @@ public class ControleurAlexis implements Initializable {
             }
         }
         for(Item element:listItem){
-            System.out.println(element);
+            System.out.println(element.getNom());
         }
     }
 
@@ -64,10 +64,11 @@ public class ControleurAlexis implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.teamjoueur= new Team("T1",1200);
-        teamjoueur.getInventaire().getInventaire().add(Arme.epee());
-        teamjoueur.getInventaire().getInventaire().add(Arme.epee());
-        teamjoueur.getInventaire().getInventaire().add(Arme.epee());
+        teamjoueur.getInventaire().addItem(Arme.epee());
 
+        for(Item element:teamjoueur.getInventaire().getInventaire()){
+            System.out.println(element.getNom());
+        }
 
     }
 
