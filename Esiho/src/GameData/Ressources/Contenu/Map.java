@@ -21,7 +21,7 @@ public class Map {
         this.coucheBase= new Layer(largeur, hauteur, nomMap, "0");
         this.couche2=new Layer(largeur, hauteur, nomMap, "1");
         this.couche3=new Layer(largeur, hauteur, nomMap, "2");
-        this.collision = new Layer(largeur, hauteur, nomMap, "C"); // "C" comme collision
+        //this.collision = new Layer(largeur, hauteur, nomMap, "C"); // "C" comme collision
         this.coucheFin= new ArrayList<>();
         for (int a = 0; a<hauteur; a++){
             coucheFin.add(new ArrayList<>());

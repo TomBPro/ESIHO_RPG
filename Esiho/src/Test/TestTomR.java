@@ -57,6 +57,8 @@ public class TestTomR extends Application {
         StackPane root = new StackPane();
         mapPane = new Canvas(stageWidth,stageHeight);
         keyPressed = false;
+        this.map = new Map("M0", "test", 32,32);
+        map.getCoucheFin().get(3).add(6, Pnj.getPnj("P1"));// GROS lag dès qu'il est chargé
         showLayers();
         root.getChildren().addAll(mapPane);
         root.getChildren().add(joueur);
@@ -181,8 +183,6 @@ public class TestTomR extends Application {
     }
 
     private void showLayers(){
-        Map map = new Map("M0", "test", 32,32);
-        map.getCoucheFin().get(3).add(6, Pnj.getPnj("P1"));
         GraphicsContext gc = mapPane.getGraphicsContext2D();
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, stageWidth, stageHeight);
