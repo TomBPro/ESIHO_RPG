@@ -159,3 +159,6 @@ ex : T2-28 => Le 28e Tile du tileset 2
 -Ajout d'un ArrayList d'ArrayList de Booléens pour les collisions dans la map
 -Ajout d'une fonction de lecture de fichiers de collisions dans Layer
 -Ajout de l'affichage de Pnjs dans la map
+-Création d'un système (Très rudimentaire) de collision
+-Correction d'un bug concernant l'affichage des maps et leurs coordonnées
+-Correction d'un bug concernant la lecture des collisions du Layer

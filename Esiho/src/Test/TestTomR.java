@@ -30,7 +30,7 @@ public class TestTomR extends Application {
     private Image joueurImage;
     private Node joueur;
     private Integer dx = 0;
-    private Integer dy = 8;
+    private Integer dy = 0;
     private Integer dx_old;
     private Integer dy_old;
     private Boolean keyPressed;
@@ -94,36 +94,56 @@ public class TestTomR extends Application {
                 keyPressed = true;
                 switch (event.getCode()) {
                     case UP:
-                        dy += 16;
-                        if (memoireSens!=3){
-                            compteurPas=0;
-                            memoireSens=3;
+                        if (!map.isCollided(dx, dy-16, 16)){
+                            dy -= 16;
+                            if (memoireSens!=3){
+                                compteurPas=0;
+                                memoireSens=3;
+                            }
+                            joueurImage = joueurSprites.get(9+compteurPas);
+                        }else{
+                            System.out.println("COLLISION case x: "+dx+" y: "+dy);
+                            joueurImage = joueurSprites.get(9);
                         }
-                        joueurImage = joueurSprites.get(9+compteurPas);
                         break;
                     case DOWN:
-                        dy -= 16;
-                        if (memoireSens!=0){
-                            compteurPas=0;
-                            memoireSens=0;
+                        if (!map.isCollided(dx, dy+16, 16)){ //S'il n'y a pas de collision là où il se dirige
+                            dy += 16;
+                            if (memoireSens!=0){
+                                compteurPas=0;
+                                memoireSens=0;
+                            }
+                            joueurImage = joueurSprites.get(0+compteurPas);
+                        }else{
+                            System.out.println("COLLISION case x: "+dx+" y: "+dy);
+                            joueurImage = joueurSprites.get(0);
                         }
-                        joueurImage = joueurSprites.get(0+compteurPas);
                         break;
                     case LEFT:
-                        dx += 16;
-                        if (memoireSens!=1){
-                            compteurPas=0;
-                            memoireSens=1;
+                        if (!map.isCollided(dx-16, dy, 16)){
+                            dx -= 16;
+                            if (memoireSens!=1){
+                                compteurPas=0;
+                                memoireSens=1;
+                            }
+                            joueurImage = joueurSprites.get(3+compteurPas);
+                        }else{
+                            System.out.println("COLLISION case x: "+dx+" y: "+dy);
+                            joueurImage = joueurSprites.get(3);
                         }
-                        joueurImage = joueurSprites.get(3+compteurPas);
                         break;
                     case RIGHT:
-                        dx -= 16;
-                        if (memoireSens!=2){
-                            compteurPas=0;
-                            memoireSens=2;
+                        if (!map.isCollided(dx+16, dy, 16)) {
+                            dx += 16;
+                            if (memoireSens!=2){
+                                compteurPas=0;
+                                memoireSens=2;
+                            }
+                            joueurImage = joueurSprites.get(6+compteurPas);
+                        }else{
+                            System.out.println("COLLISION case x: "+dx+" y: "+dy);
+                            joueurImage = joueurSprites.get(6);
                         }
-                        joueurImage = joueurSprites.get(6+compteurPas);
                         break;
                     case F9:
                         if (cheatsToggle){
@@ -143,10 +163,13 @@ public class TestTomR extends Application {
                                 cheatEngine.cheats(text.toString());
                             }catch (Exception erreur_cheat_code){
                                 System.out.println("Erreur lors de la commande de cheat");
+                                if (text.toString()=="coord"){
+                                    System.out.println("Dx : "+dx+" Dy : "+dy+" Dx/ : "+dx/16+" Dy/ : "+dy/16);
+                                }
                             }
                         }
                 }
-
+                System.out.println("Dx : "+dx+" Dy : "+dy+" Dx/ : "+dx/16+" Dy/ : "+dy/16);
             }
         });
 
@@ -167,6 +190,8 @@ public class TestTomR extends Application {
                 }
                 if (dx!=dx_old || dy!=dy_old){
                     showLayers();
+                    dx_old=dx;
+                    dy_old=dy;
                 }
                 showLayers();
             }
@@ -197,7 +222,7 @@ public class TestTomR extends Application {
         for (ArrayList<Tile> ligne:couche.gridTiles) {
             Integer b = 0;
             for (Tile element:ligne) {
-                    mapPane.getGraphicsContext2D().drawImage(couche.getTile(a, b).getImage(), a*16+dx, b*16+dy);
+                    mapPane.getGraphicsContext2D().drawImage(couche.getTile(a, b).getImage(), a*16-dx+400, b*16-dy+192);
                 b++;
             }
             a++;
@@ -210,7 +235,7 @@ public class TestTomR extends Application {
             Integer b = 0;
             for (Pnj element:ligne) {
                 if (element!=null){
-                    mapPane.getGraphicsContext2D().drawImage(element.getListeSprites().get(0).getImage(), a*32+dx, b*32+dy);
+                    mapPane.getGraphicsContext2D().drawImage(element.getListeSprites().get(0).getImage(), a*32-dx+400, b*32-dy+192);
                 }
                 b++;
             }

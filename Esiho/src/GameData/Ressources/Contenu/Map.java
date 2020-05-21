@@ -10,7 +10,7 @@ public class Map {
     private Layer coucheBase;
     private Layer couche2;
     private Layer couche3;
-    private Layer collision; //Où False = pas de collision et True = collision
+    private Layer collisionGrid; //Où False = pas de collision et True = collision
     private ArrayList<ArrayList<Pnj>> coucheFin;
 
     public Map(String id, String nomMap, Integer largeur, Integer hauteur){
@@ -21,7 +21,16 @@ public class Map {
         this.coucheBase= new Layer(largeur, hauteur, nomMap, "0");
         this.couche2=new Layer(largeur, hauteur, nomMap, "1");
         this.couche3=new Layer(largeur, hauteur, nomMap, "2");
-        //this.collision = new Layer(largeur, hauteur, nomMap, "C"); // "C" comme collision
+        this.collisionGrid = new Layer(largeur, hauteur, nomMap, "C"); // "C" comme collision
+        Integer compteur = 0;
+        for (ArrayList<Tile> col : collisionGrid.gridTiles){
+            for (Tile ele : col){
+                if (ele.getCollision()==true){
+                    compteur++;
+                }
+            }
+        }
+        System.out.println(compteur);
         this.coucheFin= new ArrayList<>();
         for (int a = 0; a<hauteur; a++){
             coucheFin.add(new ArrayList<>());
@@ -89,5 +98,24 @@ public class Map {
 
     public ArrayList<ArrayList<Pnj>> getCoucheFin() {
         return coucheFin;
+    }
+
+    public Layer getCollisionGrid() {
+        return collisionGrid;
+    }
+
+    public Boolean isCollided(Integer newDx, Integer newDy, Integer step){
+        Boolean collision = false;
+        try{
+            newDx/=step;
+            newDy/=step;
+            if (this.getCollisionGrid().getTile(newDx, newDy).getCollision()==true){
+                collision = true;
+            }
+            return collision;
+        }catch (Exception erreur_collision){
+            System.out.println("Erreur de collision");
+            return true;
+        }
     }
 }
