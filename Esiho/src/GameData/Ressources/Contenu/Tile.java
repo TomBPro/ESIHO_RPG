@@ -10,15 +10,23 @@ import java.awt.image.BufferedImage;
 public class Tile {
     private String id;
     private Image image;
+    private Boolean collision;
 
     public Tile(String id, Image image) {
         this.id = id;
         this.image = image;
+        this.collision = false;
     }
 
     public Tile(String id, BufferedImage img) {
         this.id = id;
         this.image = SwingFXUtils.toFXImage(img, null);
+        this.collision = false;
+    }
+
+    public Tile(String id, Boolean collision) {
+        this.id = id;
+        this.collision = collision;
     }
 
     public String getId() {
@@ -41,4 +49,13 @@ public class Tile {
 //        Tile tile = null;
 //        return tile;
 //    }
+
+
+    public void setCollision(Boolean collision) {
+        this.collision = collision;
+    }
+
+    public Boolean getCollision() {
+        return collision;
+    }
 }

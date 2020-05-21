@@ -1,5 +1,7 @@
 package GameData.Ressources.Contenu;
 
+import java.util.ArrayList;
+
 public class Map {
     private String id;
     private String nomMap;
@@ -8,7 +10,8 @@ public class Map {
     private Layer coucheBase;
     private Layer couche2;
     private Layer couche3;
-    private Pnj coucheFin;
+    private Layer collision; //Où False = pas de collision et True = collision
+    private ArrayList<ArrayList<Pnj>> coucheFin;
 
     public Map(String id, String nomMap, Integer largeur, Integer hauteur){
         this.id=id;
@@ -18,6 +21,14 @@ public class Map {
         this.coucheBase= new Layer(largeur, hauteur, nomMap, "0");
         this.couche2=new Layer(largeur, hauteur, nomMap, "1");
         this.couche3=new Layer(largeur, hauteur, nomMap, "2");
+        this.collision = new Layer(largeur, hauteur, nomMap, "C"); // "C" comme collision
+        this.coucheFin= new ArrayList<>();
+        for (int a = 0; a<hauteur; a++){
+            coucheFin.add(new ArrayList<>());
+            for (int b = 0; b<largeur; b++){
+                coucheFin.get(a).add(null);
+            }
+        }
     }
 
     public String getId() {
@@ -76,11 +87,7 @@ public class Map {
         this.couche3 = couche3;
     }
 
-    public Pnj getCoucheFin() {
+    public ArrayList<ArrayList<Pnj>> getCoucheFin() {
         return coucheFin;
-    }
-
-    public void setCoucheFin(Pnj coucheFin) {
-        this.coucheFin = coucheFin;
     }
 }

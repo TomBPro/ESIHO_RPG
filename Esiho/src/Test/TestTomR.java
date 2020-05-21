@@ -182,12 +182,14 @@ public class TestTomR extends Application {
 
     private void showLayers(){
         Map map = new Map("M0", "test", 32,32);
+        map.getCoucheFin().get(3).add(6, Pnj.getPnj("P1"));
         GraphicsContext gc = mapPane.getGraphicsContext2D();
         gc.setFill(Color.BLACK);
         gc.fillRect(0, 0, stageWidth, stageHeight);
         showOneLayer(map.getCoucheBase());
         showOneLayer(map.getCouche2());
         showOneLayer(map.getCouche3());
+        showPnjLayer(map.getCoucheFin());
     }
 
     private void showOneLayer(Layer couche){
@@ -196,6 +198,20 @@ public class TestTomR extends Application {
             Integer b = 0;
             for (Tile element:ligne) {
                     mapPane.getGraphicsContext2D().drawImage(couche.getTile(a, b).getImage(), a*16+dx, b*16+dy);
+                b++;
+            }
+            a++;
+        }
+    }
+
+    private void showPnjLayer(ArrayList<ArrayList<Pnj>> gridPnj){
+        Integer a = 0;
+        for (ArrayList<Pnj> ligne:gridPnj) {
+            Integer b = 0;
+            for (Pnj element:ligne) {
+                if (element!=null){
+                    mapPane.getGraphicsContext2D().drawImage(element.getListeSprites().get(0).getImage(), a*32+dx, b*32+dy);
+                }
                 b++;
             }
             a++;
