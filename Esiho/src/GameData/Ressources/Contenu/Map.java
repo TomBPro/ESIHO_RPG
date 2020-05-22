@@ -22,15 +22,6 @@ public class Map {
         this.couche2=new Layer(largeur, hauteur, nomMap, "1");
         this.couche3=new Layer(largeur, hauteur, nomMap, "2");
         this.collisionGrid = new Layer(largeur, hauteur, nomMap, "C"); // "C" comme collision
-        Integer compteur = 0;
-        for (ArrayList<Tile> col : collisionGrid.gridTiles){
-            for (Tile ele : col){
-                if (ele.getCollision()==true){
-                    compteur++;
-                }
-            }
-        }
-        System.out.println(compteur);
         this.coucheFin= new ArrayList<>();
         for (int a = 0; a<hauteur; a++){
             coucheFin.add(new ArrayList<>());
@@ -109,13 +100,30 @@ public class Map {
         try{
             newDx/=step;
             newDy/=step;
-            if (this.getCollisionGrid().getTile(newDx, newDy).getCollision()==true){
+            if (this.getCollisionGrid().getTile(newDx, newDy).getCollision()==true || this.coucheFin.get(newDx).get(newDy)!=null){
                 collision = true;
             }
             return collision;
         }catch (Exception erreur_collision){
             System.out.println("Erreur de collision");
             return true;
+        }
+    }
+
+    public void refreshCollision(){
+        Integer a = 0;
+        for (ArrayList<Pnj> list: this.coucheFin) {
+            Integer b = 0;
+            for (Pnj pnj: list){
+                if (pnj!=null){
+                    Integer x = a+pnj.getAngleX();
+                    Integer y = b+pnj.getAngleY();
+                    System.out.println("x : "+a+" y : "+b+" newX : "+x+" newY : "+y);
+                    collisionGrid.getTile(x, y).setCollision(true);
+                }
+                b++;
+            }
+            a++;
         }
     }
 }

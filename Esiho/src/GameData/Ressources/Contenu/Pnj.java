@@ -22,11 +22,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
-public class Pnj {
+public abstract class Pnj {
     private String id;
     private String nom;
     private ArrayList<Tile> listeSprites;
     private Entity entite;
+    private Integer angleX;
+    private Integer angleY;
 
     public Pnj(){
         //Pnj vide
@@ -38,6 +40,8 @@ public class Pnj {
         this.listeSprites = listeSprites;
         this.entite = entite;
     }
+
+    public abstract void interract();
 
     public String getId() {
         return id;
@@ -240,7 +244,12 @@ public class Pnj {
                 new MoveList(Move.flecheFeu(), Move.cannonEau(), Move.feuillesLancer(), Move.flecheEpines()),
                 image
         );
-        Pnj pnj = new Pnj("P0" , "Joueur", listeSprites, entity);
+        Pnj pnj = new Pnj("P0", "Joueur", listeSprites, entity) {
+            @Override
+            public void interract() {
+                //RIEN
+            }
+        };
         return pnj;
     }
 
@@ -269,8 +278,26 @@ public class Pnj {
                 //Image
                 image
         );
-        Pnj pnj = new Pnj("P1", "Squelette", listeSprites, entity);
+        Pnj pnj = new Pnj("P1", "Squelette", listeSprites, entity) {
+            @Override
+            public void interract() {
+                System.out.println("Vous venez de parler au "+this.getNom());
+            }
+        };
         return pnj;
+    }
+
+    public void setAngle(Integer angleX, Integer angleY) {
+        this.angleX = angleX;
+        this.angleY = angleY;
+    }
+
+    public Integer getAngleX() {
+        return angleX;
+    }
+
+    public Integer getAngleY() {
+        return angleY;
     }
 }
 

@@ -115,7 +115,12 @@ public class Combat {
                     }//On fait choisir les attaques par le joueur
 
                     for (Pnj pnjteam2:team2.getListePNJ()) {
-                        Pnj randomPnj = new Pnj();
+                        Pnj randomPnj = new Pnj() {
+                            @Override
+                            public void interract() {
+
+                            }
+                        };
                         if (pnj.equals(pnjteam2) && pnj.getEntite().getPV().getPv()>0 && victoire==0){
                             boolean finAnalysePv = false;
                             while (finAnalysePv==false){

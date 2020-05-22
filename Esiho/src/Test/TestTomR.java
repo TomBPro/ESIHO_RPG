@@ -58,7 +58,9 @@ public class TestTomR extends Application {
         mapPane = new Canvas(stageWidth,stageHeight);
         keyPressed = false;
         this.map = new Map("M0", "test", 32,32);
-        map.getCoucheFin().get(3).add(6, Pnj.getPnj("P1"));// GROS lag dès qu'il est chargé
+        map.getCoucheFin().get(6).add(12, Pnj.getPnj("P1"));
+        map.getCoucheFin().get(6).get(12).setAngle(1, 0);
+        map.refreshCollision();
         showLayers();
         root.getChildren().addAll(mapPane);
         root.getChildren().add(joueur);
@@ -168,6 +170,34 @@ public class TestTomR extends Application {
                                 }
                             }
                         }
+                        break;
+                    case E: //INTERRACTION
+                        switch (memoireSens){
+                            case 0 :
+                                //BAS
+                                if (map.getCoucheFin().get(dx/16).get(-1+dy/16)!=null){
+                                    map.getCoucheFin().get(dx/16).get(-1+dy/16).interract();
+                                }
+                                break;
+                            case 1 :
+                                //GAUCHE
+                                if (map.getCoucheFin().get(-1+dx/16).get(dy/16)!=null){
+                                    map.getCoucheFin().get(-1+dx/16).get(dy/16).interract();
+                                }
+                                break;
+                            case 2 :
+                                //DROITE
+                                if (map.getCoucheFin().get(1+dx/16).get(dy/16)!=null){
+                                    map.getCoucheFin().get(1+dx/16).get(dy/16).interract();
+                                }
+                                break;
+                            case 3 :
+                                //HAUT
+                                if (map.getCoucheFin().get(dx/16).get(1+dy/16)!=null){
+                                    map.getCoucheFin().get(dx/16).get(1+dy/16).interract();
+                                }
+                                break;
+                        }
                 }
                 System.out.println("Dx : "+dx+" Dy : "+dy+" Dx/ : "+dx/16+" Dy/ : "+dy/16);
             }
@@ -222,7 +252,7 @@ public class TestTomR extends Application {
         for (ArrayList<Tile> ligne:couche.gridTiles) {
             Integer b = 0;
             for (Tile element:ligne) {
-                    mapPane.getGraphicsContext2D().drawImage(couche.getTile(a, b).getImage(), a*16-dx+400, b*16-dy+192);
+                    mapPane.getGraphicsContext2D().drawImage(couche.getTile(a, b).getImage(), a*16-dx+384, b*16-dy+176);
                 b++;
             }
             a++;
@@ -235,7 +265,7 @@ public class TestTomR extends Application {
             Integer b = 0;
             for (Pnj element:ligne) {
                 if (element!=null){
-                    mapPane.getGraphicsContext2D().drawImage(element.getListeSprites().get(0).getImage(), a*32-dx+400, b*32-dy+192);
+                    mapPane.getGraphicsContext2D().drawImage(element.getListeSprites().get(0).getImage(), a*16-dx+384, b*16-dy+176);
                 }
                 b++;
             }
