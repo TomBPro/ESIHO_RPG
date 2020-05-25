@@ -166,3 +166,10 @@ ex : T2-28 => Le 28e Tile du tileset 2
 #TomRobette#22/05/2020#
 -Ajout d'un système de collision avec les npc
 -Ajout d'un système d'interaction avec les npc
+
+#TomRobette#25/05/2020#
+-Correction de la classe Ajouter
+-Correction de la classe Enlever
+-Correction de la classe Engine
+-Ajout d'une fonction statique getItem dans Item
+-Ajout d'une fonction statique getTeam dans Team

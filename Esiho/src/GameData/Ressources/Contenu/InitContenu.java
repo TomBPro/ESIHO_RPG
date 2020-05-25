@@ -21,12 +21,12 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class InitContenu {//Cette classe contiendra toutes les initialisations de map, d'items, de pnj, d'entités, etc.
-    private ArrayList<Pnj> listePnjs;
-    private ArrayList<Item> listeItems;
-    private ArrayList<Team> listeTeams;
     private ArrayList<Quest> listeQuetes;
     public static ArrayList<Tileset> listeTileset = new ArrayList<>();
     public static ArrayList<Tileset> listeSpriteset = new ArrayList<>();
+    public static ArrayList<Team> listeTeams = new ArrayList<>();
+    public static ArrayList<Item> listeItems = new ArrayList<>();
+    public static ArrayList<Pnj> listePnjs = new ArrayList<>();
 
     public InitContenu() throws FileNotFoundException {
         initTilesets();
@@ -48,7 +48,11 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
     }
 
     private void initPnjs() throws FileNotFoundException {//Ici on créera les Pnjs
-	    listePnjs = new ArrayList<>();
+	    Integer nbPnj = 2;
+        for (int a = 0; a<nbPnj; a++){
+            listePnjs.add(null);
+        }
+
  //       _____ __  __ _____   ____  _____ _______       _   _ _______
  //     |_   _|  \/  |  __ \ / __ \|  __ \__   __|/\   | \ | |__   __|
  //       | | | \  / | |__) | |  | | |__) | | |  /  \  |  \| |  | |
@@ -106,19 +110,15 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
 
 
 
-    //Ennemis
-        //listePnjs.add(new Pnj(2,"Petit Rat", x,));
-        //listePnjs.add(new Pnj(3,"Gros Rat", x, ));
-
-
-    //Compagnons
 
 
     }
 
     private void initItems() {//Ici on créera les Items
-//        Arme.baton();
-// /       Arme.dague();
+        Integer nbItems = 1;
+        for (int a = 0; a<nbItems; a++){
+            InitContenu.listeItems.add(null);
+        }
         Arme.epee();
 //        Arme.arc();
 //
@@ -135,7 +135,10 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
     }
 
     private void initTeams(){
-
+        Integer nbTeams = 1;
+        for (int a = 0; a<nbTeams; a++){
+            InitContenu.listeTeams.add(null);
+        }
     }
 
     private void initQuetes() {

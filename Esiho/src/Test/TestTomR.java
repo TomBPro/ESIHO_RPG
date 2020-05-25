@@ -1,5 +1,6 @@
 package Test;
 
+import GameData.Combat.Entities.Team;
 import GameData.Ressources.Cheats.Engine;
 import GameData.Ressources.Contenu.*;
 import javafx.animation.AnimationTimer;
@@ -159,7 +160,7 @@ public class TestTomR extends Application {
                             root.getChildren().get(2).setVisible(true);
                         }
                         break;
-                    case ENTER:
+                    case F10:
                         if (cheatsToggle){
                             try{
                                 cheatEngine.cheats(text.toString());
@@ -198,6 +199,11 @@ public class TestTomR extends Application {
                                 }
                                 break;
                         }
+                        break;
+                    case I:
+                        System.out.println("Argent : "+ Team.getTeam("T0").getArgent());
+                        System.out.println("Inventaire : "+Team.getTeam("T0").getInventaire().getInventaire().size()+" objets");
+                        System.out.println("Team : "+Team.getTeam("T0").getListePNJ().size()+" Pnjs");
                 }
                 System.out.println("Dx : "+dx+" Dy : "+dy+" Dx/ : "+dx/16+" Dy/ : "+dy/16);
             }

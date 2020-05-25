@@ -114,10 +114,21 @@ public abstract class Pnj {
             Pnj pnj;
             switch (id) {
                 case 0:
-                    pnj = Pnj.joueur("Maurice");
+                    if (!isPNJInArray(id)){
+                        pnj = Pnj.joueur("Maurice");
+                        InitContenu.listePnjs.set(id, pnj);
+                    }else{
+                        pnj = InitContenu.listePnjs.get(id);
+                    }
                     break;
                 case 1:
-                    pnj = Pnj.squelette(); //Faire les autres comme ici, en faisant chacun leur fonction statique comme le squelette
+                    if (!isPNJInArray(id)){
+                        pnj = Pnj.squelette();
+                        InitContenu.listePnjs.set(id, pnj);
+                    }else{
+                        pnj = InitContenu.listePnjs.get(id);
+                    }
+                    //Faire les autres comme ici, en faisant chacun leur fonction statique comme le squelette
                     break;
 //                case 2:
 //                    listeSprites = Pnj.joueur("Maurice").getListeSprites(); //On récupère la liste de sprites
@@ -225,6 +236,19 @@ public abstract class Pnj {
         }catch (Exception E){
             System.out.print("error");
 
+        }
+        return null;
+    }
+
+    public static Boolean isPNJInArray(Integer position){
+        try{
+            Boolean exist = false;
+            if (InitContenu.listePnjs.get(position)!=null){
+                exist=true;
+            }
+            return exist;
+        }catch (Exception erreur_lecture_liste_tileset){
+            System.out.println("Il y a eu une erreur dans la lecture de la liste des PNJs.");
         }
         return null;
     }

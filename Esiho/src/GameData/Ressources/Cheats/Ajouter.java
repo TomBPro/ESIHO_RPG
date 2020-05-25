@@ -8,41 +8,71 @@ import sample.MainActivity;
 
 public class Ajouter {
 
-    public Ajouter(InitContenu contenu, Pnj PNJ){
-        contenu.getListeTeams().get(0).addPNJ(PNJ);
-    }//Ajout d'un PNJ à l'équipe du joueur
-
-    public Ajouter(InitContenu contenu, Pnj PNJ, Team equipe){
-        contenu.getListeTeams().get(contenu.getListeTeams().indexOf(equipe)).addPNJ(PNJ);
-    }//Ajout d'un PNJ à l'équipe donnée
-
-    public Ajouter(InitContenu contenu, Item objet){
-        contenu.getListeTeams().get(0).getInventaire().addItem(objet);
-    }//Ajout d'un objet à l'inventaire de l'équipe du joueur
-
-    public Ajouter(InitContenu contenu, Item objet, Team equipe){
-        contenu.getListeTeams().get(contenu.getListeTeams().indexOf(equipe)).getInventaire().addItem(objet);
-    }//Ajout d'un objet à l'inventaire de l'équipe donnée
-
-    public Ajouter(InitContenu contenu, Item objet, Integer quantite){
-        for (int a = 0; a<quantite; a++){
-            contenu.getListeTeams().get(0).getInventaire().addItem(objet);
+    public Ajouter(String id) {
+        if (id.substring(0, 1) == "P") {
+            Team.getTeam("T0").addPNJ(Pnj.getPnj(id));
+            //Ajout d'un PNJ à l'équipe du joueur
+        } else if (id.substring(0, 1) == "I") {
+            Team.getTeam("T0").getInventaire().addItem(Item.getItem(id));
+            //Ajout d'un objet à l'inventaire de l'équipe du joueur
         }
+    }
 
-    }//Ajout d'une quantité d'objets à l'inventaire de l'équipe du joueur
+    public Ajouter(String id, String idTeam){
+        if (idTeam.substring(0, 1)=="T"){
+            if (id.substring(0, 1)=="P"){
+                Team.getTeam(idTeam).addPNJ(Pnj.getPnj(id));
+                //Ajout d'un PNJ à l'équipe donnée
+            }else if (id.substring(0, 1)=="I"){
+                Team.getTeam(idTeam).getInventaire().addItem(Item.getItem(id));
+                //Ajout d'un objet à l'inventaire de l'équipe donnée
+            }
+        }else{
+            System.out.println("Erreur ! Id de team est incorrect");
+        }
+    }
 
-    public Ajouter(InitContenu contenu, Integer quantiteArgent, Team equipe){
-        contenu.getListeTeams().get(contenu.getListeTeams().indexOf(equipe)).addArgent(quantiteArgent);
-    }//Ajout d'une certaine quantité d'argent à l'équipe donnée
+    public Ajouter(String id, Integer quantite){
+        if (id.substring(0, 1)=="P"){
+            for (int a = 0; a<quantite; a++){
+                Team.getTeam("T0").addPNJ(Pnj.getPnj(id));
+                //Ajout d'une quantité de Pnj dans l'équipe du joueur
+            }
+        }else if (id.substring(0, 1)=="I"){
+            for (int a = 0; a<quantite; a++){
+                Team.getTeam("T0").getInventaire().addItem(Item.getItem(id));
+                //Ajout d'une quantité d'objets à l'inventaire de l'équipe du joueur
+            }
+        }
+    }
 
-    public Ajouter(InitContenu contenu, Integer quantiteArgent){
-        contenu.getListeTeams().get(0).addArgent(quantiteArgent);
+    public Ajouter(String id, String idTeam, Integer quantite){
+        if (idTeam.substring(0, 1)=="T"){
+            if (id.substring(0, 1)=="P"){
+                for (int a = 0; a<quantite; a++){
+                    Team.getTeam(idTeam).addPNJ(Pnj.getPnj(id));
+                }
+            }else if (id.substring(0, 1)=="I"){
+                for (int a = 0; a<quantite; a++){
+                    Team.getTeam(idTeam).getInventaire().addItem(Item.getItem(id));
+                    //Ajout d'une quantité d'objets à l'inventaire de l'équipe donnée
+                }
+            }
+        }else{
+            System.out.println("Erreur ! Id de team est incorrect");
+        }
+    }
+
+    public Ajouter(Integer quantiteArgent){
+            Team.getTeam("T0").addArgent(quantiteArgent);
     }//Ajout d'une certaine quantité d'argent à l'équipe du joueur
 
-    public Ajouter(InitContenu contenu, Item objet, Team equipe, Integer quantite){
-        for (int a = 0; a<quantite; a++){
-            contenu.getListeTeams().get(contenu.getListeTeams().indexOf(equipe)).getInventaire().addItem(objet);
+    public Ajouter(Integer quantiteArgent, String idTeam){
+        if (idTeam.substring(0, 1)=="T"){
+            Team.getTeam(idTeam).addArgent(quantiteArgent);
+        }else{
+            System.out.println("Erreur ! Id de team est incorrect");
         }
+    }//Ajout d'une certaine quantité d'argent à l'équipe donnée
 
-    }//Ajout d'une quantité d'objets à l'inventaire de l'équipe donnée
 }
