@@ -173,3 +173,8 @@ ex : T2-28 => Le 28e Tile du tileset 2
 -Correction de la classe Engine
 -Ajout d'une fonction statique getItem dans Item
 -Ajout d'une fonction statique getTeam dans Team
+
+
+#TomRobette#25/05/2020#
+-Ajout d'une méthode getMap
+-Ajout d'une fonction de tp

@@ -229,6 +229,7 @@ public class Engine {
                 }
                 break;
             case "Teleporter":
+
                 break;
         }//Analyse du premier mot
     }//méthode d'utilisation des cheats

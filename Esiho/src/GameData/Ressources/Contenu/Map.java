@@ -7,6 +7,7 @@ public class Map {
     private String nomMap;
     private Integer largeur;
     private Integer hauteur;
+    private ArrayList<ArrayList<Integer>> tpPoint;
     private Layer coucheBase;
     private Layer couche2;
     private Layer couche3;
@@ -18,6 +19,9 @@ public class Map {
         this.nomMap=nomMap;
         this.largeur=largeur;
         this.hauteur=hauteur;
+        this.tpPoint = new ArrayList<>();
+        this.tpPoint.add(new ArrayList<>());
+        this.tpPoint.add(new ArrayList<>());
         this.coucheBase= new Layer(largeur, hauteur, nomMap, "0");
         this.couche2=new Layer(largeur, hauteur, nomMap, "1");
         this.couche3=new Layer(largeur, hauteur, nomMap, "2");
@@ -87,6 +91,18 @@ public class Map {
         this.couche3 = couche3;
     }
 
+    public void addTpPoint(Integer x, Integer y){
+        this.tpPoint.get(0).add(x);
+        this.tpPoint.get(1).add(y);
+    }
+
+    public Integer[] getTpPoint(Integer rangPoint){
+        Integer[] sortie = new Integer[2];
+        sortie[0] = this.tpPoint.get(0).get(rangPoint);
+        sortie[1] = this.tpPoint.get(1).get(rangPoint);
+        return sortie;
+    }
+
     public ArrayList<ArrayList<Pnj>> getCoucheFin() {
         return coucheFin;
     }
@@ -125,5 +141,41 @@ public class Map {
             }
             a++;
         }
+    }
+
+    public static Map getMap(String id){
+        Integer idMap = 0;
+        Map map;
+        try{
+            idMap = Integer.parseInt(id.substring(1));
+        }catch (Exception erreur_transtypage_getMap){
+            System.out.println("Erreur lors du transtypage de chaine de caractère en Integer à getTeam");
+        }
+        switch (idMap){
+            case 0:
+                map = Map.getMapTest();
+                break;
+            case 1:
+                map = Map.getMapMaison();
+                break;
+            default:
+                map = Map.getMapTest();
+        }
+        return map;
+    }
+
+    public static Map getMapTest(){
+        Map map = new Map("M0", "test", 32,32);
+        map.getCoucheFin().get(6).add(12, Pnj.getPnj("P1"));
+        map.getCoucheFin().get(6).get(12).setAngle(1, 0);
+        map.refreshCollision();
+        map.addTpPoint(10, 10);
+        return map;
+    }
+
+    public static Map getMapMaison(){
+        Map map = new Map("M1", "maison", 16,16);
+        map.addTpPoint(6, 6);
+        return map;
     }
 }

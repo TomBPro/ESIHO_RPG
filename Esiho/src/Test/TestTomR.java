@@ -58,10 +58,11 @@ public class TestTomR extends Application {
         StackPane root = new StackPane();
         mapPane = new Canvas(stageWidth,stageHeight);
         keyPressed = false;
-        this.map = new Map("M0", "test", 32,32);
-        map.getCoucheFin().get(6).add(12, Pnj.getPnj("P1"));
-        map.getCoucheFin().get(6).get(12).setAngle(1, 0);
-        map.refreshCollision();
+        this.map = Map.getMap("M0");
+        Integer[] position = map.getTpPoint(0);
+        System.out.println(position[0]+" "+position[1]);
+        dx = 4*16;
+        dy = 4*16;
         showLayers();
         root.getChildren().addAll(mapPane);
         root.getChildren().add(joueur);
@@ -216,10 +217,17 @@ public class TestTomR extends Application {
             }
         });
 
-
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
+                if (dx/16 == 4 && dy/16 == 5){
+                    System.out.println("TELEPORTATION");
+                    if (map.getId()=="M1"){
+                        mapChange(Map.getMap("M0"));
+                    }else{
+                        mapChange(Map.getMap("M1"));
+                    }
+                }
                 if (keyPressed){
                     joueur = new ImageView(joueurImage);
                     root.getChildren().set(1, joueur);
@@ -276,6 +284,18 @@ public class TestTomR extends Application {
                 b++;
             }
             a++;
+        }
+    }
+
+    private void mapChange(Map newMap){
+        this.map = newMap;
+        if (map.getTpPoint(0)!=null){
+            Integer[] position = map.getTpPoint(0);
+            this.dx = position[0]*16;
+            this.dy = position[1]*16;
+        }else{
+            this.dx = 0;
+            this.dy = 0;
         }
     }
 
