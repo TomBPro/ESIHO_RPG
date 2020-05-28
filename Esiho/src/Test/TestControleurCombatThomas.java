@@ -27,7 +27,6 @@ public class TestControleurCombatThomas implements Initializable {
 
     private Pnj combattant;
     private ArrayList<Pnj> listPlayer;
-    private ArrayList<Move> move;
     private Integer selecGenre;
     public static String selectionAtk;
 
@@ -37,9 +36,11 @@ public class TestControleurCombatThomas implements Initializable {
         InitContenu contenu = new InitContenu();
         System.out.println("ok");
         this.listPlayer = new ArrayList<>();
-        for (int i = 0; i<4; i++){
-            listPlayer.add(contenu.getListePnjs().get(i));
-        }
+        listPlayer.add(Pnj.getPnj("P1"));
+        listPlayer.add(Pnj.getPnj("P1"));
+        listPlayer.add(Pnj.getPnj("P1"));
+        listPlayer.add(Pnj.getPnj("P1"));
+
     }
 
     @FXML
@@ -113,10 +114,28 @@ public class TestControleurCombatThomas implements Initializable {
     private void atkPhy() throws Exception {//
         gridInventaire.setVisible(false);
         gridAtk.setVisible(true);
-        btnAtk1.setText(combattant.getEntite().getMovesPhy().getMove(0).getNom());
-        btnAtk2.setText(combattant.getEntite().getMovesPhy().getMove(1).getNom());
-        btnAtk3.setText(combattant.getEntite().getMovesPhy().getMove(2).getNom());
-        btnAtk4.setText(combattant.getEntite().getMovesPhy().getMove(3).getNom());
+
+        if (combattant.getEntite().getMovesPhy().getSize() == 4){
+            btnAtk1.setText(combattant.getEntite().getMovesPhy().getMove(0).getNom());
+            btnAtk2.setText(combattant.getEntite().getMovesPhy().getMove(1).getNom());
+            btnAtk3.setText(combattant.getEntite().getMovesPhy().getMove(2).getNom());
+            btnAtk4.setText(combattant.getEntite().getMovesPhy().getMove(3).getNom());
+        }
+        if (combattant.getEntite().getMovesPhy().getSize() == 3){
+            btnAtk1.setText(combattant.getEntite().getMovesPhy().getMove(0).getNom());
+            btnAtk2.setText(combattant.getEntite().getMovesPhy().getMove(1).getNom());
+            btnAtk3.setText(combattant.getEntite().getMovesPhy().getMove(2).getNom());
+        }
+
+        if (combattant.getEntite().getMovesPhy().getSize() == 2){
+            btnAtk1.setText(combattant.getEntite().getMovesPhy().getMove(0).getNom());
+            btnAtk2.setText(combattant.getEntite().getMovesPhy().getMove(1).getNom());
+        }
+
+        if (combattant.getEntite().getMovesPhy().getSize() == 1){
+            btnAtk1.setText(combattant.getEntite().getMovesPhy().getMove(0).getNom());
+        }
+
         selecGenre=0;
         selectionAtk="RIEN";
     }
@@ -125,10 +144,27 @@ public class TestControleurCombatThomas implements Initializable {
     private void atkSpe() throws Exception {//
         gridInventaire.setVisible(false);
         gridAtk.setVisible(true);
-        btnAtk1.setText(combattant.getEntite().getMovesSpe().getMove(0).getNom());
-        btnAtk2.setText(combattant.getEntite().getMovesSpe().getMove(1).getNom());
-        btnAtk3.setText(combattant.getEntite().getMovesSpe().getMove(2).getNom());
-        btnAtk4.setText(combattant.getEntite().getMovesSpe().getMove(3).getNom());
+
+        if (combattant.getEntite().getMovesSpe().getSize() == 4){
+            btnAtk1.setText(combattant.getEntite().getMovesSpe().getMove(0).getNom());
+            btnAtk2.setText(combattant.getEntite().getMovesSpe().getMove(1).getNom());
+            btnAtk3.setText(combattant.getEntite().getMovesSpe().getMove(2).getNom());
+            btnAtk4.setText(combattant.getEntite().getMovesSpe().getMove(3).getNom());
+        }
+        if (combattant.getEntite().getMovesSpe().getSize() == 3){
+            btnAtk1.setText(combattant.getEntite().getMovesSpe().getMove(0).getNom());
+            btnAtk2.setText(combattant.getEntite().getMovesSpe().getMove(1).getNom());
+            btnAtk3.setText(combattant.getEntite().getMovesSpe().getMove(2).getNom());
+        }
+
+        if (combattant.getEntite().getMovesSpe().getSize() == 2){
+            btnAtk1.setText(combattant.getEntite().getMovesSpe().getMove(0).getNom());
+            btnAtk2.setText(combattant.getEntite().getMovesSpe().getMove(1).getNom());
+        }
+
+        if (combattant.getEntite().getMovesSpe().getSize() == 1){
+            btnAtk1.setText(combattant.getEntite().getMovesSpe().getMove(0).getNom());
+        }
         selecGenre=1;
         selectionAtk="RIEN";
     }

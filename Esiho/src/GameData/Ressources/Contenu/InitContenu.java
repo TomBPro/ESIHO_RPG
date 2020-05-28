@@ -48,7 +48,7 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
     }
 
     private void initPnjs() throws FileNotFoundException {//Ici on créera les Pnjs
-	    Integer nbPnj = 2;
+	    Integer nbPnj = 5;
         for (int a = 0; a<nbPnj; a++){
             listePnjs.add(null);
         }
@@ -62,10 +62,6 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
 // Les pnjs vont être initialisés en static dans la classe Pnj. Ex : Pnj.joueur();  Donc il faudra tout déplacer là-bas ! Et proprement.
 
                 //Gentils
-        ArrayList<Tile> listeSprites = Pnj.joueur("Maurice").getListeSprites(); //On récupère la liste de sprites
-                                                                                                    // de la liste de liste de sprites
-                                                                                                    // par pnj de la liste de spritesets
-                                                                                                    // (Mais oui c'est clair)
 //        Types typeFeu = new Feu();
 //        Plante typePlante = new Plante();
 //        Pv pv = new Pv(10,10);

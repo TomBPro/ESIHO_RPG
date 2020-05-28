@@ -310,15 +310,15 @@ public class Tileset {
                 }
             }
         }catch (Exception erreur_declaration_Tileset){
-            System.out.println("Un Tileset n'a pas pu être déclaré");
+            System.out.println("Un Tileset n'a pas pu être déclaré : " + erreur_declaration_Tileset);
         }
 
         return ts;
     }
 
-    public static Boolean isTilesetInArray(Integer position){
+    public static boolean isTilesetInArray(Integer position){
         try{
-            Boolean exist = false;
+            boolean exist = false;
             if (InitContenu.listeTileset.get(position)!=null){
                 exist=true;
             }
@@ -326,20 +326,20 @@ public class Tileset {
         }catch (Exception erreur_lecture_liste_tileset){
             System.out.println("Il y a eu une erreur dans la lecture de la liste des Tilesets.");
         }
-        return null;
+        return false;
     }
 
-    public static Boolean isSpritesetInArray(Integer position){
+    public static boolean isSpritesetInArray(Integer position){
         try{
-            Boolean exist = false;
+            boolean exist = false;
             if (InitContenu.listeSpriteset.get(position)!=null){
                 exist=true;
             }
             return exist;
         }catch (Exception erreur_lecture_liste_spriteset){
-            System.out.println("Il y a eu une erreur dans la lecture de la liste des Spritesets.");
+            System.out.println("Il y a eu une erreur dans la lecture de la liste des Spritesets. : " + erreur_lecture_liste_spriteset);
         }
-        return null;
+        return false;
     }
 
     public String getId() {

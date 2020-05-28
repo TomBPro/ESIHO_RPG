@@ -41,6 +41,9 @@ public class MoveList {
         return move;
     }
 
+    public int getSize(){
+        return  movelist.size();
+    }
     public ArrayList<Move> getMovelist() {
         return movelist;
     }

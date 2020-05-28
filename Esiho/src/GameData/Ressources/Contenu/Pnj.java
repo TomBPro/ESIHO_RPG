@@ -112,6 +112,7 @@ public abstract class Pnj {
                 System.out.println("Erreur de transtypage dans Pnj.getPnj()");
             }
             Pnj pnj;
+
             switch (id) {
                 case 0:
                     if (!isPNJInArray(id)){
@@ -122,113 +123,42 @@ public abstract class Pnj {
                     }
                     break;
                 case 1:
+
                     if (!isPNJInArray(id)){
+                        System.out.println("yes");
                         pnj = Pnj.squelette();
                         InitContenu.listePnjs.set(id, pnj);
                     }else{
                         pnj = InitContenu.listePnjs.get(id);
                     }
-                    //Faire les autres comme ici, en faisant chacun leur fonction statique comme le squelette
                     break;
-//                case 2:
-//                    listeSprites = Pnj.joueur("Maurice").getListeSprites(); //On récupère la liste de sprites
-//                    image = new Image("");
-//                    entity = new Entity(
-//                            //Lvl / xpmax / xp
-//                            3, 50, 0,
-//                            //Type
-//                            new Feu(),
-//                            //PV
-//                            new Pv(20, 20),
-//                            // Atk / Def / AtkSpe / DefSpe / Vitesse
-//                            2,2,2,2,2,
-//                            //Arme
-//                            new Arme("1","Epée",5,2),
-//                            //Armure
-//                            new Armure("2","Bouclier", 5, 2),
-//                            //Moves Phy
-//                            new MoveList(new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu())),
-//                            //Moves Spe
-//                            new MoveList(new Move("1", "Test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu())),
-//                            //Image
-//                            image
-//                    );
-//                    return new Pnj(idPnj, "Le Vieux Fou", listeSprites, entity);
-//
-//                case 3:
-//                    listeSprites = Pnj.joueur("Maurice").getListeSprites(); //On récupère la liste de sprites
-//                    image = new Image("");
-//                    entity = new Entity(
-//                            //Lvl / xpmax / xp
-//                            1, 50, 0,
-//                            //Type
-//                            new Feu(),
-//                            //PV
-//                            new Pv(15, 15),
-//                            // Atk / Def / AtkSpe / DefSpe / Vitesse
-//                            1,1,1,1,1,
-//                            //Arme
-//
-//                            //Armure
-//
-//                            //Moves Phy
-//                            new MoveList(new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu())),
-//                            //Moves Spe
-//                            new MoveList(new Move("1", "Test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu())),
-//                            //Image
-//                            image
-//                    );
-//                    return new Pnj(idPnj, "Petit Diable", listeSprites, entity);
-//
-//                case 4:
-//                    listeSprites = Pnj.joueur("Maurice").getListeSprites(); //On récupère la liste de sprites
-//                    image = new Image("");
-//                    entity = new Entity(
-//                            //Lvl / xpmax / xp
-//                            1, 50, 0,
-//                            //Type
-//                            new Feu(),
-//                            //PV
-//                            new Pv(10, 10),
-//                            // Atk / Def / AtkSpe / DefSpe / Vitesse
-//                            1,1,1,1,1,
-//                            //Arme
-//
-//                            //Armure
-//
-//                            //Moves Phy
-//                            new MoveList(new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu())),
-//                            //Moves Spe
-//                            new MoveList(new Move("1", "Test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu())),
-//                            //Image
-//                            image
-//                    );
-//                    return new Pnj(idPnj, "Rat", listeSprites, entity);
+                case 2:
+                    if (!isPNJInArray(id)){
+                        pnj = Pnj.petiDiable();
+                        InitContenu.listePnjs.set(id, pnj);
+                    }else{
+                        pnj = InitContenu.listePnjs.get(id);
+                    }
+                    break;
 
-//            case 5:
-//                listeSprites = Pnj.joueur("Maurice").getListeSprites(); //On récupère la liste de sprites
-//                image = new Image("");
-//                entity = new Entity(
-//                        //Lvl / xpmax / xp
-//                        1, 50, 0,
-//                        //Type
-//                        new Feu(),
-//                        //PV
-//                        new Pv(10, 10),
-//                        // Atk / Def / AtkSpe / DefSpe / Vitesse
-//                        1,1,1,1,1,
-//                        //Arme
-//
-//                        //Armure
-//
-//                        //Moves Phy
-//                        new MoveList(new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu())),
-//                        //Moves Spe
-//                        new MoveList(new Move("1", "Test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu()), new Move("1", "test", "Genre", new Feu())),
-//                        //Image
-//                        image
-//                );
-//                return new Pnj( nomJoueur, "Rat", listeSprites, entity);
+                case 3:
+                    if (!isPNJInArray(id)){
+                        pnj = Pnj.rat();
+                        InitContenu.listePnjs.set(id, pnj);
+                    }else{
+                        pnj = InitContenu.listePnjs.get(id);
+                    }
+                    break;
+
+                case 4:
+                    if (!isPNJInArray(id)){
+                        pnj = Pnj.vieuxFou();
+                        InitContenu.listePnjs.set(id, pnj);
+                    }else{
+                        pnj = InitContenu.listePnjs.get(id);
+                    }
+                    break;
+
                 default:
                     pnj = Pnj.joueur("Maurice");
             }
@@ -240,17 +170,18 @@ public abstract class Pnj {
         return null;
     }
 
-    public static Boolean isPNJInArray(Integer position){
+    public static boolean isPNJInArray(Integer position){
         try{
-            Boolean exist = false;
+            boolean exist = false;
             if (InitContenu.listePnjs.get(position)!=null){
                 exist=true;
             }
             return exist;
         }catch (Exception erreur_lecture_liste_tileset){
-            System.out.println("Il y a eu une erreur dans la lecture de la liste des PNJs.");
+            System.out.println("Il y a eu une erreur dans la lecture de la liste des PNJs. : " + erreur_lecture_liste_tileset);
+
         }
-        return null;
+        return false;
     }
 
     public static Pnj joueur(String nomJoueur){
@@ -303,6 +234,108 @@ public abstract class Pnj {
                 image
         );
         Pnj pnj = new Pnj("P1", "Squelette", listeSprites, entity) {
+            @Override
+            public void interract() {
+                System.out.println("Vous venez de parler au "+this.getNom());
+            }
+        };
+        return pnj;
+    }
+
+    public static Pnj petiDiable(){
+        ArrayList<Tile> listeSprites = Tileset.getTileset(1, "SPRITE").getListeSprites().get(1); //On récupère la liste de sprites
+        Path chemin = Paths.get(System.getProperty("user.dir"));
+        Path cheminImage = Paths.get(chemin.toString(), "src", "GameData","Ressources","Images","Entities","PersoRPG","Chevalier Combat.png");
+        Image image = SwingFXUtils.toFXImage(Tileset.toBufferedImage(new ImageIcon(cheminImage.toString()).getImage()), null);//Convertit du awt en javafx
+        Entity entity = new Entity(
+                //Lvl / xpmax / xp
+                1, 50, 0,
+                //Type
+                new Feu(),
+                //PV
+                new Pv(10, 10),
+                // Atk / Def / AtkSpe / DefSpe / Vitesse
+                1,1,1,1,1,
+                //Arme
+
+                //Armure
+
+                //Moves Phy
+                new MoveList(Move.coupEpee()),
+                //Moves Spe
+                new MoveList(Move.tirFleche()),
+                //Image
+                image
+        );
+        Pnj pnj = new Pnj("P2", "Petit Diable", listeSprites, entity) {
+            @Override
+            public void interract() {
+                System.out.println("Vous venez de parler au "+this.getNom());
+            }
+        };
+        return pnj;
+    }
+
+    public static Pnj rat(){
+        ArrayList<Tile> listeSprites = Tileset.getTileset(1, "SPRITE").getListeSprites().get(1); //On récupère la liste de sprites
+        Path chemin = Paths.get(System.getProperty("user.dir"));
+        Path cheminImage = Paths.get(chemin.toString(), "src", "GameData","Ressources","Images","Entities","PersoRPG","Chevalier Combat.png");
+        Image image = SwingFXUtils.toFXImage(Tileset.toBufferedImage(new ImageIcon(cheminImage.toString()).getImage()), null);//Convertit du awt en javafx
+        Entity entity = new Entity(
+                            //Lvl / xpmax / xp
+                            1, 50, 0,
+                            //Type
+                            new Feu(),
+                            //PV
+                            new Pv(10, 10),
+                            // Atk / Def / AtkSpe / DefSpe / Vitesse
+                            1,1,1,1,1,
+                            //Arme
+
+                            //Armure
+
+                            //Moves Phy
+                            new MoveList(Move.coupEpee()),
+                            //Moves Spe
+                             new MoveList(Move.tirFleche()),
+                            //Image
+                            image
+                    );
+        Pnj pnj = new Pnj("P3", "Rat", listeSprites, entity) {
+            @Override
+            public void interract() {
+                System.out.println("Vous venez de parler au "+this.getNom());
+            }
+        };
+        return pnj;
+    }
+
+    public static Pnj vieuxFou(){
+        ArrayList<Tile> listeSprites = Tileset.getTileset(1, "SPRITE").getListeSprites().get(1); //On récupère la liste de sprites
+        Path chemin = Paths.get(System.getProperty("user.dir"));
+        Path cheminImage = Paths.get(chemin.toString(), "src", "GameData","Ressources","Images","Entities","PersoRPG","Chevalier Combat.png");
+        Image image = SwingFXUtils.toFXImage(Tileset.toBufferedImage(new ImageIcon(cheminImage.toString()).getImage()), null);//Convertit du awt en javafx
+        Entity entity = new Entity(
+                //Lvl / xpmax / xp
+                1, 50, 0,
+                //Type
+                new Feu(),
+                //PV
+                new Pv(10, 10),
+                // Atk / Def / AtkSpe / DefSpe / Vitesse
+                1,1,1,1,1,
+                //Arme
+
+                //Armure
+
+                //Moves Phy
+                new MoveList(Move.coupEpee()),
+                //Moves Spe
+                new MoveList(Move.tirFleche()),
+                //Image
+                image
+        );
+        Pnj pnj = new Pnj("P4", "Vieux Fou", listeSprites, entity) {
             @Override
             public void interract() {
                 System.out.println("Vous venez de parler au "+this.getNom());
