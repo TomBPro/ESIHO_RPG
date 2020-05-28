@@ -6,10 +6,7 @@ import GameData.Combat.Entities.Team;
 import GameData.Combat.Moves.Move;
 import GameData.Combat.Moves.MoveList;
 import GameData.Combat.Types.*;
-import GameData.Default.Items.Arme;
-import GameData.Default.Items.Armure;
-import GameData.Default.Items.Consommable;
-import GameData.Default.Items.Item;
+import GameData.Default.Items.*;
 import GameData.Default.Story.Quest;
 import javafx.scene.image.Image;
 
@@ -120,16 +117,18 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
             InitContenu.listeItems.add(null);
         }
         Arme.epee();
-//        Arme.arc();
-//
-//        Armure.banale();
-//        Armure.legendaire();
-//
+        Arme.arc();
+        Arme.baton();
+        Arme.dague();
+
+        Armure.banale();
+        Armure.legendaire();
+
 //        Consommable.vie();
 //        Consommable.degats();
-//
-//        Divers.balle();
-//        Divers.queue();
+
+        Divers.balle();
+        Divers.queue();
 
 
     }
