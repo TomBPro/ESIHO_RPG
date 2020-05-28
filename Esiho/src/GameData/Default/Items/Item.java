@@ -109,4 +109,81 @@ public abstract class Item {
         Arme epee = new Arme("I3","Épée légendaire",500,5);
         return epee;
     }
+
+    public static Arme baton(){
+        Arme baton = new Arme("I1","Baton",100,1);
+        return baton;
+    }
+
+    public static Arme dague(){
+        Arme dague = new Arme("I2","dague",250,3);
+        return dague;
+    }
+
+
+    public static Arme arc(){
+        Arme arc = new Arme("I4","arc",300,  4);
+        return arc;
+    }
+
+    public static Armure banale(){
+        Armure banale = new Armure("I5", "Armure banale", 100, 2);
+        return banale;
+    }
+
+    public static Armure legendaire(){
+        Armure leg = new Armure("I6", "Armure légendaire", 500, 5);
+        return leg;
+    }
+
+//        public static Consommable vie(){
+//        Consommable vie = new Consommable("I7", "Potion de vie", 100, "Potion de vie .png", 1);
+//        @Override
+//        public void useItem() {
+//
+//            }
+//
+//            @Override
+//            public void useItem(Pnj pnj, Integer val) {
+//                if(this.getType()==1){
+//                    //Soigner
+//                    pnj.getEntite().getPV().addPv(val);
+//                }else if (this.getType() == 2){
+//                    //Degats
+//                    pnj.getEntite().getPV().removePv(val);
+//                }
+//            }
+//        return vie;
+//    }
+//
+//    public static Consommable degats(){
+//        Consommable degats = new Consommable("I8", "Potion de dégâts", 100, "Potion de dégat.png", 2);
+//        @Override
+//        public void useItem() {
+//
+//            }
+//
+//            @Override
+//            public void useItem(Pnj pnj, Integer val) {
+//                if(this.getType()==1){
+//                    //Soigner
+//                    pnj.getEntite().getPV().addPv(val);
+//                }else if (this.getType() == 2){
+//                    //Degats
+//                    pnj.getEntite().getPV().removePv(val);
+//                }
+//            }
+//        return degats;
+//    }
+
+    public static Divers balle(){
+        Divers balle = new Divers("I10", "balle", 200);
+        return balle;
+    }
+
+    public static Divers queue(){
+        Divers queue = new Divers("I9", "queue de rat", 50);
+        return queue;
+    }
+
 }
