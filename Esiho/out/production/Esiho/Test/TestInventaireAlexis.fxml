@@ -5,50 +5,44 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Test.ControleurAlexis">
     <children>
-        <VBox prefHeight="400.0" prefWidth="600.0">
-            <children>
-                <HBox fx:id="inventaire" prefHeight="100.0" prefWidth="200.0">
-                    <children>
-                        <Label text="INVENTAIRE" />
-                        <GridPane fx:id="gridInv">
-                            <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            </rowConstraints>
-                        </GridPane>
-                    </children>
-                </HBox>
-                <HBox prefHeight="50.0" prefWidth="400.0">
-                    <children>
-                        <VBox>
-                            <children>
-                                <Button fx:id="btarme" alignment="CENTER" mnemonicParsing="false" onAction="#afficherArme" prefHeight="100.0" prefWidth="100.0" text="Arme" />
-                            </children>
-                        </VBox>
-                        <VBox>
-                            <children>
-                                <Button fx:id="btarmure" mnemonicParsing="false" onAction="#afficherArmure" prefHeight="100.0" prefWidth="100.0" text="Armure" />
-                            </children>
-                        </VBox>
-                        <VBox>
-                            <children>
-                                <Button fx:id="btconso" mnemonicParsing="false" onAction="#afficherConsommable" prefHeight="100.0" prefWidth="100.0" text="Consommable" />
-                            </children>
-                        </VBox>
-                        <VBox>
-                            <children>
-                                <Button fx:id="btdivers" mnemonicParsing="false" onAction="#afficherDivers" prefHeight="100.0" prefWidth="100.0" text="Divers" />
-                            </children>
-                        </VBox>
-                    </children>
-                </HBox>
-            </children>
-        </VBox>
+          <HBox prefHeight="154.0" prefWidth="600.0">
+              <children>
+            <ScrollPane fx:id="vinv" prefHeight="50.0" prefWidth="180.0" visible="false">
+              <content>
+                <AnchorPane minHeight="-Infinity" prefWidth="150.0">
+                     <children>
+                        <Label fx:id="inventaire" textAlignment="CENTER" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+                  <VBox>
+                      <children>
+                          <Button fx:id="btarme" alignment="CENTER" mnemonicParsing="false" onAction="#afficherArme" prefHeight="50.0" prefWidth="100.0" text="Arme" />
+                      </children>
+                  </VBox>
+                  <VBox>
+                      <children>
+                          <Button fx:id="btarmure" mnemonicParsing="false" onAction="#afficherArmure" prefHeight="50.0" prefWidth="100.0" text="Armure" />
+                      </children>
+                  </VBox>
+                  <VBox>
+                      <children>
+                          <Button fx:id="btconso" mnemonicParsing="false" onAction="#afficherConsommable" prefHeight="50.0" prefWidth="100.0" text="Consommable" />
+                      </children>
+                  </VBox>
+                  <VBox>
+                      <children>
+                          <Button fx:id="btdivers" mnemonicParsing="false" onAction="#afficherDivers" prefHeight="50.0" prefWidth="100.0" text="Divers" />
+                      </children>
+                  </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button fx:id="btinv" mnemonicParsing="false" onAction="#showInv" prefHeight="50.0" prefWidth="100.0" text="Inventaire" />
+               </children>
+            </VBox>
+              </children>
+          </HBox>
         <GridPane fx:id="gridArme" alignment="BOTTOM_CENTER" layoutY="155.0" prefHeight="246.0" prefWidth="600.0" visible="false">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

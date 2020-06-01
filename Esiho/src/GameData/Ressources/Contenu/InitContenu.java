@@ -18,14 +18,16 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class InitContenu {//Cette classe contiendra toutes les initialisations de map, d'items, de pnj, d'entités, etc.
-    private ArrayList<Quest> listeQuetes;
+    public static ArrayList<Quest> listeQuetes = new ArrayList<>();
     public static ArrayList<Tileset> listeTileset = new ArrayList<>();
     public static ArrayList<Tileset> listeSpriteset = new ArrayList<>();
     public static ArrayList<Team> listeTeams = new ArrayList<>();
     public static ArrayList<Item> listeItems = new ArrayList<>();
     public static ArrayList<Pnj> listePnjs = new ArrayList<>();
+    public static Integer compteurSave;
 
     public InitContenu() throws FileNotFoundException {
+        InitContenu.compteurSave = 0;
         initTilesets();
 	    initPnjs();
 	    initItems();
@@ -137,7 +139,10 @@ public class InitContenu {//Cette classe contiendra toutes les initialisations d
     }
 
     private void initQuetes() {
-        
+        Integer nbQuests = 1;
+        for (int a = 0; a<nbQuests; a++){
+            InitContenu.listeQuetes.add(null);
+        }
     }
 
     public ArrayList<Pnj> getListePnjs() {
