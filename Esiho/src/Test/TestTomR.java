@@ -18,6 +18,7 @@ import javafx.stage.Stage;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class TestTomR extends Application {
@@ -39,6 +40,7 @@ public class TestTomR extends Application {
     private Integer memoireSens;
     private Boolean cheatsToggle;
     private Engine cheatEngine;
+    private Boolean deplacement;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -63,6 +65,7 @@ public class TestTomR extends Application {
         System.out.println(position[0]+" "+position[1]);
         dx = 4*16;
         dy = 4*16;
+        this.deplacement = false;
         showLayers();
         root.getChildren().addAll(mapPane);
         root.getChildren().add(joueur);
@@ -90,67 +93,66 @@ public class TestTomR extends Application {
         sceneMap.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                if (compteurPas>=2){
-                    compteurPas=0;
-                }else{
-                    compteurPas++;
-                }
                 keyPressed = true;
                 switch (event.getCode()) {
                     case UP:
-                        if (!map.isCollided(dx, dy-16, 16)){
-                            dy -= 16;
-                            if (memoireSens!=3){
-                                compteurPas=0;
+                        if (!deplacement){
+                            if (!map.isCollided(dx, dy-16, 16)){
+                                if (memoireSens!=3){
+                                    compteurPas=0;
+                                    memoireSens=3;
+                                }
+                                animDeplacement();
+                            }else{
+                                System.out.println("COLLISION case x: "+dx+" y: "+dy);
+                                joueurImage = joueurSprites.get(9);
                                 memoireSens=3;
                             }
-                            joueurImage = joueurSprites.get(9+compteurPas);
-                        }else{
-                            System.out.println("COLLISION case x: "+dx+" y: "+dy);
-                            joueurImage = joueurSprites.get(9);
-                            memoireSens=3;
                         }
                         break;
                     case DOWN:
-                        if (!map.isCollided(dx, dy+16, 16)){ //S'il n'y a pas de collision là où il se dirige
-                            dy += 16;
-                            if (memoireSens!=0){
-                                compteurPas=0;
+                        if (!deplacement){
+                            if (!map.isCollided(dx, dy+16, 16)){ //S'il n'y a pas de collision là où il se dirige
+                                if (memoireSens!=0){
+                                    compteurPas=0;
+                                    memoireSens=0;
+                                }
+                                animDeplacement();
+                            }else{
+                                System.out.println("COLLISION case x: "+dx+" y: "+dy);
+                                joueurImage = joueurSprites.get(0);
                                 memoireSens=0;
                             }
-                            joueurImage = joueurSprites.get(0+compteurPas);
-                        }else{
-                            System.out.println("COLLISION case x: "+dx+" y: "+dy);
-                            joueurImage = joueurSprites.get(0);
-                            memoireSens=0;
                         }
                         break;
                     case LEFT:
-                        if (!map.isCollided(dx-16, dy, 16)){
-                            dx -= 16;
-                            if (memoireSens!=1){
-                                compteurPas=0;
+                        if (!deplacement){
+                            if (!map.isCollided(dx-16, dy, 16)){
+                                if (memoireSens!=1){
+                                    compteurPas=0;
+                                    memoireSens=1;
+                                }
+                                animDeplacement();
+                            }else{
+                                System.out.println("COLLISION case x: "+dx+" y: "+dy);
+                                joueurImage = joueurSprites.get(3);
                                 memoireSens=1;
                             }
-                            joueurImage = joueurSprites.get(3+compteurPas);
-                        }else{
-                            System.out.println("COLLISION case x: "+dx+" y: "+dy);
-                            joueurImage = joueurSprites.get(3);
-                            memoireSens=1;
                         }
                         break;
                     case RIGHT:
-                        if (!map.isCollided(dx+16, dy, 16)) {
-                            dx += 16;
-                            if (memoireSens!=2){
-                                compteurPas=0;
+                        if (!deplacement){
+                            if (!map.isCollided(dx+16, dy, 16)) {
+                                if (memoireSens!=2){
+                                    compteurPas=0;
+                                    memoireSens=2;
+                                }
+                                animDeplacement();
+                            }else{
+                                System.out.println("COLLISION case x: "+dx+" y: "+dy);
+                                joueurImage = joueurSprites.get(6);
                                 memoireSens=2;
                             }
-                            joueurImage = joueurSprites.get(6+compteurPas);
-                        }else{
-                            System.out.println("COLLISION case x: "+dx+" y: "+dy);
-                            joueurImage = joueurSprites.get(6);
-                            memoireSens=2;
                         }
                         break;
                     case F9:
@@ -237,12 +239,6 @@ public class TestTomR extends Application {
                     joueur = new ImageView(joueurImage);
                     root.getChildren().set(1, joueur);
                 }
-                if (dx!=dx_old || dy!=dy_old){
-                    showLayers();
-                    dx_old=dx;
-                    dy_old=dy;
-                }
-                showLayers();
             }
         };
         timer.start();
@@ -270,7 +266,7 @@ public class TestTomR extends Application {
         Integer a = 0;
         for (ArrayList<Tile> ligne:couche.gridTiles) {
             Integer b = 0;
-            for (Tile element:ligne) {
+            for (Tile ignored:ligne) {
                     mapPane.getGraphicsContext2D().drawImage(couche.getTile(a, b).getImage(), a*16-dx+384, b*16-dy+176);
                 b++;
             }
@@ -285,6 +281,8 @@ public class TestTomR extends Application {
             for (Pnj element:ligne) {
                 if (element!=null){
                     mapPane.getGraphicsContext2D().drawImage(element.getListeSprites().get(0).getImage(), a*16-dx+384, b*16-dy+176);
+
+                    System.out.println("a");
                 }
                 b++;
             }
@@ -301,6 +299,52 @@ public class TestTomR extends Application {
         }else{
             this.dx = 0;
             this.dy = 0;
+        }
+    }
+
+    private void animDeplacement(){
+        deplacement = true;
+        Integer compteur = 0;
+        while(compteur<32){
+            if (compteurPas>=2){
+                compteurPas=0;
+            }else{
+                compteurPas++;
+            }
+            switch (memoireSens){
+                case 0 :
+                    //BAS
+                    joueurImage = joueurSprites.get(0+compteurPas);
+                    dy+=4;
+                    break;
+                case 1 :
+                    //GAUCHE
+                    joueurImage = joueurSprites.get(3+compteurPas);
+                    dx-=4;
+                    break;
+                case 2 :
+                    //DROITE
+                    joueurImage = joueurSprites.get(6+compteurPas);
+                    dx+=4;
+                    break;
+                case 3 :
+                    //HAUT
+                    joueurImage = joueurSprites.get(9+compteurPas);
+                    dy-=4;
+            }
+            timer(10);
+            compteur+=4;
+            showLayers();
+        }
+        deplacement = false;
+    }
+
+    private void timer(Integer duree){
+        try{
+            TimeUnit.MILLISECONDS.sleep(duree);
+        }catch(InterruptedException ex){
+            System.out.println("AH");
+            ex.printStackTrace();
         }
     }
 

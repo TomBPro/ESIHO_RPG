@@ -116,8 +116,12 @@ public class Map {
         try{
             newDx/=step;
             newDy/=step;
-            if (this.getCollisionGrid().getTile(newDx, newDy).getCollision()==true || this.coucheFin.get(newDx).get(newDy)!=null){
-                collision = true;
+            for (int a = 0; a<1; a++){
+                for (int b = 0; b<1; b++){
+                    if (this.getCollisionGrid().getTile(newDx+a, newDy+b).getCollision()==true || this.coucheFin.get(newDx+a).get(newDy+b)!=null){
+                        collision = true;
+                    }
+                }
             }
             return collision;
         }catch (Exception erreur_collision){
