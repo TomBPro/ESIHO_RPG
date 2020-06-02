@@ -187,18 +187,18 @@ public class TestTomR extends Application {
                                 break;
                             case 1 :
                                 //GAUCHE
-                                x=1;
+                                x=-1;
                                 break;
                             case 2 :
                                 //DROITE
-                                x=-1;
+                                x=1;
                                 break;
                             case 3 :
                                 //HAUT
                                 y=-1;
                         }
                         try{
-                            map.getCoucheFin().get(x+dx/16).get(y+dy/16).interract();
+                            map.onInterraction(x+dx/16, y+dy/16);
                         }catch (Exception erreur_interraction_no_Pnj){
                             System.out.println("RIEN");
                             x = x+dx/16;

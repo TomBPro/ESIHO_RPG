@@ -178,4 +178,29 @@ public class Map {
         map.addTpPoint(6, 6);
         return map;
     }
+
+    public void onInterraction(Integer x, Integer y){
+        if (this.getCoucheFin().get(x).get(y)!= null){
+            this.getCoucheFin().get(x).get(y).interract();
+        }else{
+            for (int a = -1; a<2; a++){
+                try{
+                    for (int b = -1; b<2; b++){
+                        try{
+                            if (this.getCoucheFin().get(a+x).get(b+y)!=null){
+                                Pnj pnj = this.getCoucheFin().get(a+x).get(b+y);
+                                if (a+x+pnj.getAngleX() == x && b+y+pnj.getAngleY() == y){
+                                    pnj.interract();
+                                }
+                            }
+                        }catch (Exception erreur_y_out_of_bounds){
+                            System.out.println("Y ERROR");
+                        }
+                    }
+                }catch (Exception erreur_x_out_of_bounds){
+                    System.out.println("X ERROR");
+                }
+            }
+        }
+    }
 }
