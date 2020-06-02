@@ -108,6 +108,7 @@ public class TestTomR extends Application {
                         }else{
                             System.out.println("COLLISION case x: "+dx+" y: "+dy);
                             joueurImage = joueurSprites.get(9);
+                            memoireSens=3;
                         }
                         break;
                     case DOWN:
@@ -121,6 +122,7 @@ public class TestTomR extends Application {
                         }else{
                             System.out.println("COLLISION case x: "+dx+" y: "+dy);
                             joueurImage = joueurSprites.get(0);
+                            memoireSens=0;
                         }
                         break;
                     case LEFT:
@@ -134,6 +136,7 @@ public class TestTomR extends Application {
                         }else{
                             System.out.println("COLLISION case x: "+dx+" y: "+dy);
                             joueurImage = joueurSprites.get(3);
+                            memoireSens=1;
                         }
                         break;
                     case RIGHT:
@@ -147,6 +150,7 @@ public class TestTomR extends Application {
                         }else{
                             System.out.println("COLLISION case x: "+dx+" y: "+dy);
                             joueurImage = joueurSprites.get(6);
+                            memoireSens=2;
                         }
                         break;
                     case F9:
@@ -174,31 +178,32 @@ public class TestTomR extends Application {
                         }
                         break;
                     case E: //INTERRACTION
+                        Integer x = 0;
+                        Integer y = 0;
                         switch (memoireSens){
                             case 0 :
                                 //BAS
-                                if (map.getCoucheFin().get(dx/16).get(-1+dy/16)!=null){
-                                    map.getCoucheFin().get(dx/16).get(-1+dy/16).interract();
-                                }
+                                y=1;
                                 break;
                             case 1 :
                                 //GAUCHE
-                                if (map.getCoucheFin().get(-1+dx/16).get(dy/16)!=null){
-                                    map.getCoucheFin().get(-1+dx/16).get(dy/16).interract();
-                                }
+                                x=1;
                                 break;
                             case 2 :
                                 //DROITE
-                                if (map.getCoucheFin().get(1+dx/16).get(dy/16)!=null){
-                                    map.getCoucheFin().get(1+dx/16).get(dy/16).interract();
-                                }
+                                x=-1;
                                 break;
                             case 3 :
                                 //HAUT
-                                if (map.getCoucheFin().get(dx/16).get(1+dy/16)!=null){
-                                    map.getCoucheFin().get(dx/16).get(1+dy/16).interract();
-                                }
-                                break;
+                                y=-1;
+                        }
+                        try{
+                            map.getCoucheFin().get(x+dx/16).get(y+dy/16).interract();
+                        }catch (Exception erreur_interraction_no_Pnj){
+                            System.out.println("RIEN");
+                            x = x+dx/16;
+                            y = y+dy/16;
+                            System.out.println("X : "+x+" Y : "+y);
                         }
                         break;
                     case I:

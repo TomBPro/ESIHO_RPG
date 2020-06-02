@@ -125,7 +125,6 @@ public abstract class Pnj {
                 case 1:
 
                     if (!isPNJInArray(id)){
-                        System.out.println("yes");
                         pnj = Pnj.squelette();
                         InitContenu.listePnjs.set(id, pnj);
                     }else{
