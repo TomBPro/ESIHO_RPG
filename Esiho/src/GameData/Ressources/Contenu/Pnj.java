@@ -187,7 +187,6 @@ public abstract class Pnj {
         Path chemin = Paths.get(System.getProperty("user.dir"));
         Path cheminImage = Paths.get(chemin.toString(), "src", "GameData","Ressources","Images","Entities","PersoRPG","Archer.png");
         Image image = SwingFXUtils.toFXImage(Tileset.toBufferedImage(new ImageIcon(cheminImage.toString()).getImage()), null);//Convertit du awt en javafx
-        System.out.println(image.getWidth());
         Entity entity = new Entity(
                 1, 50, 0,
                 new Feu(),
@@ -197,8 +196,6 @@ public abstract class Pnj {
                 new MoveList(Move.flecheFeu(), Move.cannonEau(), Move.feuillesLancer(), Move.flecheEpines()),
                 image
         );
-        System.out.println(image.getWidth());
-        System.out.println(entity.getImage().getWidth());
         Pnj pnj = new Pnj("P0", "Joueur", listeSprites, entity) {
             @Override
             public void interract() {

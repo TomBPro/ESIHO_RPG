@@ -7,7 +7,9 @@ import GameData.Ressources.Contenu.Pnj;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
@@ -48,29 +50,28 @@ public class TestTomRCombat extends Application {
         GridPane rootSprites = new GridPane();
         Integer compteur = 0;
         team1Cv = new Canvas(Math.round(stageWidth/2), Math.round(stageHeight/1.5));
-        Integer sizeT1 = Math.toIntExact(Math.round(stageHeight * 0.666));
-        sizeT1=Math.round(sizeT1/team1.getListePNJ().size());
+        Integer sizeT1 = Math.toIntExact(Math.round(team1.getListePNJ().size() * team1.getListePNJ().get(0).getEntite().getImage().getHeight() * 1.1 *2));
         for (Pnj pnj: team1.getListePNJ()) {
-            team1Cv.getGraphicsContext2D().drawImage(new ImageView(pnj.getEntite().getImage()).getImage(), stageWidth/2, compteur*sizeT1);
+            Image img = pnj.getEntite().getImage();
+            team1Cv.getGraphicsContext2D().drawImage(new ImageView(img).getImage(), img.getWidth()/2+stageWidth/4, compteur*sizeT1, -img.getWidth()*2, img.getHeight()*2);
             compteur++;
         }
         rootSprites.add(team1Cv, 0, 0);
+
         compteur = 0;
         team2Cv = new Canvas(Math.round(stageWidth/2), Math.round(stageHeight/1.5));
-        Integer sizeT2 = Math.toIntExact(Math.round(stageHeight * 0.666));
+        Integer sizeT2 = Math.toIntExact(Math.round(team2.getListePNJ().size() * team2.getListePNJ().get(0).getEntite().getImage().getHeight() * 1.1 *2));
         sizeT2=Math.round(sizeT2/team2.getListePNJ().size());
         for (Pnj pnj: team2.getListePNJ()) {
-            team2Cv.getGraphicsContext2D().drawImage(new ImageView(pnj.getEntite().getImage()).getImage(), stageWidth/2, compteur*sizeT2);
-            if (pnj.getEntite().getImage()==null){
-                System.out.println("AH");
-            }
+            Image img = pnj.getEntite().getImage();
+            team2Cv.getGraphicsContext2D().drawImage(new ImageView(img).getImage(), img.getWidth()/2+stageWidth/4, compteur*sizeT2, img.getWidth()*2, img.getHeight()*2);
             compteur++;
         }
         rootSprites.add(team2Cv, 1, 0);
         root.add(rootSprites, 0, 0);
 
         GridPane rootBtn = new GridPane();
-        rootBtn.add(cbtPane, 0, 0, 2, 4);
+        root.add(cbtPane, 0, 0);
         Button btn1 = new Button();
         btn1.setPrefSize(Math.round(stageWidth/2), Math.round(stageHeight/6));
         btn1.setText("Bouton 1");
@@ -89,7 +90,7 @@ public class TestTomRCombat extends Application {
         rootBtn.add(btn4, 1, 1);
         root.add(rootBtn, 0, 1);
 
-        this.cbtScene= new Scene(root, stageWidth, stageHeight);
+        this.cbtScene= new Scene(root, stageWidth, stageHeight, Color.WHITE);
 
         primStage.setScene(cbtScene);
         primStage.show();
