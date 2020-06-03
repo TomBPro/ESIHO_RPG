@@ -1,7 +1,5 @@
-package Test;
+package Test.oldTestThomas;
 
-import GameData.Combat.Moves.Move;
-import GameData.Combat.Types.Normal;
 import GameData.Ressources.Contenu.InitContenu;
 import GameData.Ressources.Contenu.Pnj;
 import javafx.event.ActionEvent;
@@ -10,11 +8,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Paint;
-import javafx.scene.text.Font;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

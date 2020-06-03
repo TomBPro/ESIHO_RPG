@@ -6,14 +6,13 @@ import java.util.concurrent.ThreadLocalRandom;
 
 import sample.launcher;
 import GameData.Combat.Entities.Team;
-import GameData.Combat.Moves.MoveList;
 import GameData.Combat.Moves.Move;
 import GameData.Combat.Entities.Entity;
 import GameData.Combat.Types.Eau;
 import GameData.Combat.Types.Types;
 import GameData.Default.Items.Item;
 import GameData.Ressources.Contenu.Pnj;
-import Test.TestControleurCombatThomas;
+import Test.oldTestThomas.TestControleurCombatThomas;
 
 public class Combat {
     private Team team1;

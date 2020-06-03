@@ -1,6 +1,5 @@
-package Test;
+package Test.oldTestThomas;
 
-import GameData.Combat.Entities.Entity;
 import GameData.Combat.Entities.Pv;
 import GameData.Combat.Moves.Move;
 import GameData.Combat.Moves.MoveList;
@@ -9,7 +8,6 @@ import GameData.Combat.Types.Normal;
 import GameData.Combat.Types.Types;
 import GameData.Default.Items.Arme;
 import GameData.Default.Items.Armure;
-import GameData.Ressources.Contenu.InitContenu;
 import GameData.Ressources.Contenu.Pnj;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,8 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.Pane;
 
 import javafx.scene.control.TextField;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
+
 import java.io.IOException;
 import java.net.URL;
 import java.nio.file.Path;
