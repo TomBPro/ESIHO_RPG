@@ -79,6 +79,7 @@ public class Entity {
         this.armure = armure;
         this.movesPhy = movesPhy;
         this.movesSpe = movesSpe;
+        this.image = image;
     }
 
 
@@ -254,7 +255,7 @@ public class Entity {
     }
 
     public Image getImage() {
-        return image;
+        return this.image;
     }
 
     public void setImage(Image image) {

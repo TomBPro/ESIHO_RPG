@@ -61,7 +61,7 @@ public class TestTomRCombat extends Application {
         sizeT2=Math.round(sizeT2/team2.getListePNJ().size());
         for (Pnj pnj: team2.getListePNJ()) {
             team2Cv.getGraphicsContext2D().drawImage(new ImageView(pnj.getEntite().getImage()).getImage(), stageWidth/2, compteur*sizeT2);
-            if (new ImageView(pnj.getEntite().getImage()).getImage()==null){
+            if (pnj.getEntite().getImage()==null){
                 System.out.println("AH");
             }
             compteur++;

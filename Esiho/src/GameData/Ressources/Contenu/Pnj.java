@@ -10,8 +10,6 @@ import GameData.Combat.Types.Types;
 import GameData.Default.Items.Arme;
 import GameData.Default.Items.Armure;
 
-import java.awt.*;
-
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 
@@ -189,6 +187,7 @@ public abstract class Pnj {
         Path chemin = Paths.get(System.getProperty("user.dir"));
         Path cheminImage = Paths.get(chemin.toString(), "src", "GameData","Ressources","Images","Entities","PersoRPG","Archer.png");
         Image image = SwingFXUtils.toFXImage(Tileset.toBufferedImage(new ImageIcon(cheminImage.toString()).getImage()), null);//Convertit du awt en javafx
+        System.out.println(image.getWidth());
         Entity entity = new Entity(
                 1, 50, 0,
                 new Feu(),
@@ -198,6 +197,8 @@ public abstract class Pnj {
                 new MoveList(Move.flecheFeu(), Move.cannonEau(), Move.feuillesLancer(), Move.flecheEpines()),
                 image
         );
+        System.out.println(image.getWidth());
+        System.out.println(entity.getImage().getWidth());
         Pnj pnj = new Pnj("P0", "Joueur", listeSprites, entity) {
             @Override
             public void interract() {
@@ -210,7 +211,7 @@ public abstract class Pnj {
     public static Pnj squelette(){
         ArrayList<Tile> listeSprites = Tileset.getTileset(1, "SPRITE").getListeSprites().get(1); //On récupère la liste de sprites
         Path chemin = Paths.get(System.getProperty("user.dir"));
-        Path cheminImage = Paths.get(chemin.toString(), "src", "GameData","Ressources","Images","Entities","PersoRPG","Chevalier Combat.png");
+        Path cheminImage = Paths.get(chemin.toString(), "src", "GameData","Ressources","Images","Entities","PersoRPG","Chevalier_Combat.png");
         Image image = SwingFXUtils.toFXImage(Tileset.toBufferedImage(new ImageIcon(cheminImage.toString()).getImage()), null);//Convertit du awt en javafx
         Entity entity = new Entity(
                 //Lvl / xpmax / xp
@@ -244,7 +245,7 @@ public abstract class Pnj {
     public static Pnj petiDiable(){
         ArrayList<Tile> listeSprites = Tileset.getTileset(1, "SPRITE").getListeSprites().get(1); //On récupère la liste de sprites
         Path chemin = Paths.get(System.getProperty("user.dir"));
-        Path cheminImage = Paths.get(chemin.toString(), "src", "GameData","Ressources","Images","Entities","PersoRPG","Chevalier Combat.png");
+        Path cheminImage = Paths.get(chemin.toString(), "src", "GameData","Ressources","Images","Entities","PersoRPG","Chevalier_Combat.png");
         Image image = SwingFXUtils.toFXImage(Tileset.toBufferedImage(new ImageIcon(cheminImage.toString()).getImage()), null);//Convertit du awt en javafx
         Entity entity = new Entity(
                 //Lvl / xpmax / xp
@@ -278,7 +279,7 @@ public abstract class Pnj {
     public static Pnj rat(){
         ArrayList<Tile> listeSprites = Tileset.getTileset(1, "SPRITE").getListeSprites().get(1); //On récupère la liste de sprites
         Path chemin = Paths.get(System.getProperty("user.dir"));
-        Path cheminImage = Paths.get(chemin.toString(), "src", "GameData","Ressources","Images","Entities","PersoRPG","Chevalier Combat.png");
+        Path cheminImage = Paths.get(chemin.toString(), "src", "GameData","Ressources","Images","Entities","PersoRPG","Chevalier_Combat.png");
         Image image = SwingFXUtils.toFXImage(Tileset.toBufferedImage(new ImageIcon(cheminImage.toString()).getImage()), null);//Convertit du awt en javafx
         Entity entity = new Entity(
                             //Lvl / xpmax / xp
@@ -312,7 +313,7 @@ public abstract class Pnj {
     public static Pnj vieuxFou(){
         ArrayList<Tile> listeSprites = Tileset.getTileset(1, "SPRITE").getListeSprites().get(1); //On récupère la liste de sprites
         Path chemin = Paths.get(System.getProperty("user.dir"));
-        Path cheminImage = Paths.get(chemin.toString(), "src", "GameData","Ressources","Images","Entities","PersoRPG","Chevalier Combat.png");
+        Path cheminImage = Paths.get(chemin.toString(), "src", "GameData","Ressources","Images","Entities","PersoRPG","Chevalier_Combat.png");
         Image image = SwingFXUtils.toFXImage(Tileset.toBufferedImage(new ImageIcon(cheminImage.toString()).getImage()), null);//Convertit du awt en javafx
         Entity entity = new Entity(
                 //Lvl / xpmax / xp
