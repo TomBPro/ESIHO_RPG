@@ -49,7 +49,8 @@ public class TestTomRCombat extends Application {
         GridPane root = new GridPane();
         GridPane rootSprites = new GridPane();
         Integer compteur = 0;
-        team1Cv = new Canvas(Math.round(stageWidth/2), Math.round(stageHeight/1.5));
+        double nbmax1 = team1.getListePNJ().get(0).getEntite().getImage().getHeight() * 2 *team1.getListePNJ().size();
+        team1Cv = new Canvas(Math.round(stageWidth/2), Math.round(nbmax1));
         Integer sizeT1 = Math.toIntExact(Math.round(team1.getListePNJ().size() * team1.getListePNJ().get(0).getEntite().getImage().getHeight() * 1.1 *2));
         for (Pnj pnj: team1.getListePNJ()) {
             Image img = pnj.getEntite().getImage();
@@ -59,7 +60,8 @@ public class TestTomRCombat extends Application {
         rootSprites.add(team1Cv, 0, 0);
 
         compteur = 0;
-        team2Cv = new Canvas(Math.round(stageWidth/2), Math.round(stageHeight/1.5));
+        double nbmax2 = team2.getListePNJ().get(0).getEntite().getImage().getHeight() * 2 *team2.getListePNJ().size();
+        team2Cv = new Canvas(Math.round(stageWidth/2), Math.round(nbmax2));
         Integer sizeT2 = Math.toIntExact(Math.round(team2.getListePNJ().size() * team2.getListePNJ().get(0).getEntite().getImage().getHeight() * 1.1 *2));
         sizeT2=Math.round(sizeT2/team2.getListePNJ().size());
         for (Pnj pnj: team2.getListePNJ()) {
