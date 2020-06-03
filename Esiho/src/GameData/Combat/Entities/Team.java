@@ -35,6 +35,9 @@ public class Team {
     }
 
     public void addPNJ(Pnj pnjAjoute){
+        if (listePNJ==null){
+            listePNJ = new ArrayList<>();
+        }
         this.listePNJ.add(pnjAjoute);
     }
 
