@@ -16,8 +16,8 @@ import GameData.Ressources.Contenu.Pnj;
 import Test.oldTestThomas.TestControleurCombatThomas;
 
 public class Combat {
-    private Team team1;
-    private Team team2;
+    public Team team1;
+    public Team team2;
     private Integer tour;
     private Integer tourDeTable;
     private Boolean fin;
@@ -93,7 +93,10 @@ public class Combat {
             }
         }
         Integer victoire = analyseVictoire(team1, team2);
-
+        if (victoire!=0){
+            this.fin = true;
+            fin(victoire);
+        }
 
         newTour();
         Double reste = 0.0;
@@ -155,110 +158,27 @@ public class Combat {
         return listePnjsVitesse;
     }
 
-    public void fight(){
-        Boolean fin=false;
-        Integer victoire = 0;
-        while (fin!=true){
-            if (fin==true){
-
-            }else{
-                ArrayList<Pnj> listePnjsVitesse = new ArrayList<>();
-
-                for (Pnj pnj:listePnjsVitesse) {
-                    for (Pnj pnjteam1:team1.getListePNJ()) {
-                        if (pnj.equals(pnjteam1) && pnj.getEntite().getPV().getPv()>0 && victoire==0){
-                            Integer selecGenre;
-                            //Ici le joueur choisit le genre d'attaque , il retourne un chiffre entre 0 et 1 (inclus)
-                            selecGenre=1;//Init vide
-                            Integer selecAttaque;
-                            //Ici le joueur choisit l'attaque à lancer, il retourne un chiffre entre 0 et 3 (inclus)
-                            selecAttaque=1;//Init vide
-                            Integer selecCible;
-                            //Ici le joueur choisit la cible de l'attaque, il retourne un chiffre entre 0 et le nb maximal d'adversaire + 1
-                            selecCible=1;//Init vide
-                            boolean selection=false;
-                            while (selection==false){
-                                if (TestControleurCombatThomas.getSelectionAtk()!="RIEN" && selection==false){
-                                    try{
-                                        selecGenre=Integer.parseInt(TestControleurCombatThomas.getSelectionAtk().substring(0,1));
-                                        selecAttaque=Integer.parseInt(TestControleurCombatThomas.getSelectionAtk().substring(1,2));
-                                        selecCible=Integer.parseInt(TestControleurCombatThomas.getSelectionAtk().substring(2,3));
-                                        selection=true;
-                                        TestControleurCombatThomas.setSelectionAtk("RIEN");
-                                    }catch (Exception error_selection_atk){
-                                        //Erreur lors de la selection de l'attaque
-                                    }
-                                }
-                            }
-
-                            Move attaque = new Move("MError","Erreur","Erreur", 0, new Eau(), 0);//Attaque vide. Reste s'il y a une erreur
-                            if (selecGenre==0){
-                                attaque = pnjteam1.getEntite().getMovesPhy().getMove(selecAttaque);
-                            }else{
-                                attaque = pnjteam1.getEntite().getMovesSpe().getMove(selecAttaque);
-                            }
-                            Entity cible = team2.getListePNJ().get(selecCible).getEntite();
-                            useMove(attaque, pnjteam1.getEntite(), cible);
-                            //Ici on lance l'animation, puis l'affichage
-//                            affichage();
-                            victoire = analyseVictoire(team1, team2);
-                        }
-                    }//On fait choisir les attaques par le joueur
-
-                    for (Pnj pnjteam2:team2.getListePNJ()) {
-                        Pnj randomPnj = new Pnj() {
-                            @Override
-                            public void interract() {
-
-                            }
-                        };
-                        if (pnj.equals(pnjteam2) && pnj.getEntite().getPV().getPv()>0 && victoire==0){
-                            boolean finAnalysePv = false;
-                            while (finAnalysePv==false){
-                                if (finAnalysePv==false){
-                                    Integer randomPnjIndex = ThreadLocalRandom.current().nextInt(0, team1.getListePNJ().size()+1);
-                                    randomPnj = team1.getListePNJ().get(randomPnjIndex);
-                                    if (randomPnj.getEntite().getPV().getPv()>0){
-                                        finAnalysePv=true;
-                                    }
-                                }
-                            }//Sélection aléatoire d'un adversaire (s'il est vivant)
-                            Integer randomMoveGenre = ThreadLocalRandom.current().nextInt(0, 2);//Genre aléatoire
-                            Integer randomMoveIndex = ThreadLocalRandom.current().nextInt(0, 4);//Position aléatoire d'attaque
-                            Move randomMove = new Move("MError","Erreur","Erreur", 0, new Eau(), 0);//Attaque vide. Reste s'il y a une erreur
-                            if (randomMoveGenre==0 && !pnjteam2.getEntite().getMovesPhy().getMove(0).equals(null)){
-                                randomMove = pnjteam2.getEntite().getMovesPhy().getMove(randomMoveIndex);
-                            }else if (randomMoveGenre==1 && !pnjteam2.getEntite().getMovesSpe().getMove(0).equals(null)){
-                                randomMove = pnjteam2.getEntite().getMovesSpe().getMove(randomMoveIndex);
-                            }else{
-                                //Rien, car il n'y a aucune attaque, (voir l'attaque vide)
-                            }
-                            useMove(randomMove, pnjteam2.getEntite(), randomPnj.getEntite());
-                            //Ici on lance l'animation, puis l'affichage
-//                            affichage();
-                            victoire = analyseVictoire(team1, team2);
-                        }
-                    }//On fait choisir les attaques de l'adversaire aléatoirement
-                }
-                if (victoire==1){
-                    //Réussite !
-                    for (Item objet:team2.getInventaire().getInventaire()) {
-                        team1.getInventaire().addItem(objet);
-                    }//Pillage des objets de l'équipe adverse
-                    team1.addArgent(team2.getArgent()/2);//Pillage de la moitié de l'argent de l'équipe adverse
-                    Integer xpObtenu = 0;
-                    for (Pnj pnjEnnemis:team2.getListePNJ()) {
-                        xpObtenu+=pnjEnnemis.getEntite().getXp();
-                    }//On récupère la somme d'xp de l'équipe adversaire
-                    for (Pnj pnjAllie:team1.getListePNJ()){
-                        pnjAllie.getEntite().addXp((Integer) xpObtenu/team1.getListePNJ().size());
-                    }//Ajout de l'xp sur chaque entité de l'équipe alliée
-                    fin=true;
-                }else if (victoire==-1){
-                    //Défaite !
-                    fin=true;
-                }
-            }
+    private void fin(Integer victoire){
+        if (victoire==1){
+            //Réussite !
+            for (Item objet:team2.getInventaire().getInventaire()) {
+                team1.getInventaire().addItem(objet);
+            }//Pillage des objets de l'équipe adverse
+            team1.addArgent(team2.getArgent()/2);//Pillage de la moitié de l'argent de l'équipe adverse
+            Integer xpObtenu = 0;
+            for (Pnj pnjEnnemis:team2.getListePNJ()) {
+                xpObtenu+=pnjEnnemis.getEntite().getXp();
+            }//On récupère la somme d'xp de l'équipe adversaire
+            Integer compteur = 0;
+            for (Pnj pnjAllie:team1.getListePNJ()){
+                pnjAllie.getEntite().addXp((Integer) xpObtenu/team1.getListePNJ().size());
+                team1.getListePNJ().set(compteur, pnjAllie);
+                compteur++;
+            }//Ajout de l'xp sur chaque entité de l'équipe alliée
+            fin=true;
+        }else if (victoire==-1){
+            //Défaite !
+            fin=true;
         }
     }
 
