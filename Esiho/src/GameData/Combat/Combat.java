@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
 
+import GameData.Combat.Moves.MoveList;
 import sample.launcher;
 import GameData.Combat.Entities.Team;
 import GameData.Combat.Moves.Move;
@@ -21,6 +22,9 @@ public class Combat {
     private Integer tourDeTable;
     private Boolean fin;
     private ArrayList<Pnj> listeOrdrePnj;
+    private ArrayList<Pnj> pnjsALancer;
+    private ArrayList<Move> movesALancer;
+    private ArrayList<Pnj> pnjsARecevoir;
 
     public Combat(Team team1, Team team2){
         this.team1=team1;
@@ -40,13 +44,57 @@ public class Combat {
 
     private void newTourdeTable(){
         this.listeOrdrePnj = triVitesse();
+        tourDeTable++;
     }
 
-    public void tour(){
-        listeOrdrePnj.get(0);
-
-
+    private void newTour(){
+        this.pnjsALancer = new ArrayList<>();
+        this.movesALancer = new ArrayList<>();
+        this.pnjsARecevoir = new ArrayList<>();
         this.tour++;
+    }
+
+    public Integer tour(){
+        Pnj pnjPlay = listeOrdrePnj.get(tour);
+        Boolean isPnjAllie = false;
+        if (pnjsALancer.contains(pnjPlay)){
+            isPnjAllie=true;
+        }
+        if (pnjPlay.getEntite().getPV().getlvlpv()!=0){
+            if (isPnjAllie){
+                Integer rang = pnjsALancer.indexOf(pnjPlay);
+                team2.getListePNJ().get(team2.getListePNJ().indexOf(pnjsARecevoir.get(rang))).setEntite(useMove(movesALancer.get(rang), pnjsALancer.get(rang).getEntite(), pnjsARecevoir.get(rang).getEntite()));
+            }else{
+                Integer genre = ThreadLocalRandom.current().nextInt(0, 1);
+                MoveList moveList;
+                if (genre == 0){
+                    moveList = pnjPlay.getEntite().getMovesPhy();
+                }else{
+                    moveList = pnjPlay.getEntite().getMovesSpe();
+                }
+                Move move;
+                if (moveList.getSize()!=0){
+                    Integer movePtr = ThreadLocalRandom.current().nextInt(0, moveList.getSize()-1);
+                    move = moveList.getMove(movePtr);
+                }else{
+                    move = Move.coupPoing();
+                }
+                ArrayList<Integer> cibles = new ArrayList<>();
+                Integer compteur = 0;
+                for (Pnj pnj:team1.getListePNJ()){
+                    if (pnj.getEntite().getPV().getlvlpv()>0){
+                        cibles.add(compteur);
+                    }
+                    compteur++;
+                }
+                Integer ciblePtr = ThreadLocalRandom.current().nextInt(0, cibles.size()-1);
+                Pnj cible = team1.getListePNJ().get(compteur);
+            }
+        }
+        Integer victoire = analyseVictoire(team1, team2);
+
+
+        newTour();
         Double reste = 0.0;
         if (listeOrdrePnj.size()!=0){
             reste = new Double(this.tour%listeOrdrePnj.size());
@@ -54,6 +102,13 @@ public class Combat {
         if (reste == 0){
             newTourdeTable();
         }
+        return victoire;
+    }
+
+    public void selectMove(Pnj pnjThrower, Move moveSelected, Pnj pnjReceiver){
+        this.pnjsALancer.add(pnjThrower);
+        this.movesALancer.add(moveSelected);
+        this.pnjsARecevoir.add(pnjReceiver);
     }
 
     private ArrayList<Pnj> triVitesse(){
@@ -236,7 +291,8 @@ public class Combat {
 //        }
 //    }
 
-    public void useMove(Move move, Entity entityThrow, Entity entityReceiver){
+    public Entity useMove(Move move, Entity entityThrow, Entity entityReceiver){
+        Entity entiteModifiee;
         String genre=move.getGenre();
         if (genre.equals("SPECIAL")){
             double dommages=2+(2*entityThrow.getLvl())/5;
@@ -246,6 +302,7 @@ public class Combat {
             dommages+=2;
             dommages*=getModifier(move, entityThrow, entityReceiver);//Faire une méthode analysant les types alliés et ennemis
             entityReceiver.getPV().degatsPVabs((int)dommages);
+            entiteModifiee = entityReceiver;
         }else if (genre.equals("PHYSIQUE")){
             double dommages=2+(2*entityThrow.getLvl())/5;
             dommages*=move.getPuissance();
@@ -254,10 +311,11 @@ public class Combat {
             dommages+=2;
             dommages*=getModifier(move, entityThrow, entityReceiver);//Faire une méthode analysant les types alliés et ennemis
             entityReceiver.getPV().degatsPVabs((int)dommages);
+            entiteModifiee = entityReceiver;
         }else{
-
+            entiteModifiee = entityReceiver;
         }
-
+        return entiteModifiee;
     }
 
     public Double getModifier(Move move, Entity entityThrow, Entity entityReceiver){

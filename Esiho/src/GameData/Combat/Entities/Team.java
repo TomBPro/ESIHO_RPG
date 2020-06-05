@@ -116,6 +116,7 @@ public class Team {
     public static Team teamJoueur(){
         Team team = new Team("T0", 50, new ArrayList<>());
         team.addPNJ(Pnj.joueur("Maurice"));
+        team.addPNJ(Pnj.vieuxFou());
         return team;
     }
 }
