@@ -88,7 +88,8 @@ public class Combat {
                     compteur++;
                 }
                 Integer ciblePtr = ThreadLocalRandom.current().nextInt(0, cibles.size()-1);
-                Pnj cible = team1.getListePNJ().get(compteur);
+                Pnj cible = team1.getListePNJ().get(ciblePtr);
+                team1.getListePNJ().get(team1.getListePNJ().indexOf(cible)).setEntite(useMove(move, pnjPlay.getEntite(), cible.getEntite()));
             }
         }
         Integer victoire = analyseVictoire(team1, team2);
