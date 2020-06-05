@@ -62,7 +62,13 @@ public class Combat {
         if (pnjPlay.getEntite().getPV().getlvlpv()!=0){
             if (isPnjAllie){
                 Integer rang = pnjsALancer.indexOf(pnjPlay);
-                team2.getListePNJ().get(team2.getListePNJ().indexOf(pnjsARecevoir.get(rang))).setEntite(useMove(movesALancer.get(rang), pnjsALancer.get(rang).getEntite(), pnjsARecevoir.get(rang).getEntite()));
+                Integer compteur = 0;
+                for (Pnj pnj:team2.getListePNJ()) {
+                    if (pnj.equals(pnjsARecevoir.get(rang))){
+                        team2.getListePNJ().get(compteur).setEntite(useMove(movesALancer.get(rang), pnjsALancer.get(rang).getEntite(), pnjsARecevoir.get(rang).getEntite()));
+                    }
+                    compteur++;
+                }
             }else{
                 Integer genre = ThreadLocalRandom.current().nextInt(0, 1);
                 MoveList moveList;
@@ -78,17 +84,22 @@ public class Combat {
                 }else{
                     move = Move.coupPoing();
                 }
-                ArrayList<Integer> cibles = new ArrayList<>();
-                Integer compteur = 0;
+                ArrayList<Pnj> cibles = new ArrayList<>();
                 for (Pnj pnj:team1.getListePNJ()){
                     if (pnj.getEntite().getPV().getlvlpv()>0){
-                        cibles.add(compteur);
+                        cibles.add(pnj);
+                    }
+                }
+                Integer ciblePtr = ThreadLocalRandom.current().nextInt(0, cibles.size());
+                Pnj cible = cibles.get(ciblePtr);
+                Integer compteur = 0;
+                for (Pnj pnj:team1.getListePNJ()) {
+                    if (pnj.equals(cible)){
+                        team1.getListePNJ().get(compteur).setEntite(useMove(move, pnjPlay.getEntite(), cible.getEntite()));
+                        System.out.println("AH");
                     }
                     compteur++;
                 }
-                Integer ciblePtr = ThreadLocalRandom.current().nextInt(0, cibles.size());
-                Pnj cible = team1.getListePNJ().get(ciblePtr);
-                team1.getListePNJ().get(team1.getListePNJ().indexOf(cible)).setEntite(useMove(move, pnjPlay.getEntite(), cible.getEntite()));
             }
         }
         Integer victoire = analyseVictoire(team1, team2);
