@@ -185,17 +185,25 @@ public class TestTomRCombat extends Application {
         pnBtn.add(btn4, 1, 1);
 
 
-        if (thrower.getEntite().getMovesPhy().getMove(0)!=null){
+        if (thrower.getEntite().getMovesPhy().getSize()>0){
             btn1.setText(""+thrower.getEntite().getMovesPhy().getMove(0).getNom());
-            if (thrower.getEntite().getMovesPhy().getMove(1)!=null){
+            if (thrower.getEntite().getMovesPhy().getSize()>1){
                 btn2.setText(""+thrower.getEntite().getMovesPhy().getMove(1).getNom());
-                if (thrower.getEntite().getMovesPhy().getMove(2)!=null){
+                if (thrower.getEntite().getMovesPhy().getSize()>2){
                     btn3.setText(""+thrower.getEntite().getMovesPhy().getMove(2).getNom());
-                    if (thrower.getEntite().getMovesPhy().getMove(3)!=null){
+                    if (thrower.getEntite().getMovesPhy().getSize()>3){
                         btn4.setText(""+thrower.getEntite().getMovesPhy().getMove(3).getNom());
+                    }else{
+                        btn4.setText("");
                     }
+                }else{
+                    btn3.setText("");
                 }
+            }else{
+                btn2.setText("");
             }
+        }else{
+            btn1.setText("");
         }
 
 
@@ -316,7 +324,7 @@ public class TestTomRCombat extends Application {
             this.atk=null;
 
 
-            if (pointeurThrower<team1.getListePNJ().size()){
+            if (pointeurThrower<team1.getListePNJ().size()-1){
                 pointeurThrower++;
             }else{
                 pointeurThrower=0;
