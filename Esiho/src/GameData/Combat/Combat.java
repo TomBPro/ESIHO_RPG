@@ -32,14 +32,12 @@ public class Combat {
         this.tour = 0;
         this.tourDeTable = 0;
         this.fin = false;
-        this.listeOrdrePnj = new ArrayList<>();
-    }
-
-//    public void affichage(){//Actualisation des données affichées à l'écran
-//    }
-
-    public void start(){
-        Integer victoire = 0;
+        this.listeOrdrePnj.addAll(team1.getListePNJ());
+        this.listeOrdrePnj.addAll(team2.getListePNJ());
+        this.listeOrdrePnj = triVitesse();
+        this.pnjsALancer = new ArrayList<>();
+        this.movesALancer = new ArrayList<>();
+        this.pnjsARecevoir = new ArrayList<>();
     }
 
     private void newTourdeTable(){
@@ -182,7 +180,7 @@ public class Combat {
         }
     }
 
-    public Integer analyseVictoire(Team team1, Team team2){
+    private Integer analyseVictoire(Team team1, Team team2){
         Integer victoire = 0;
         Integer pvAllie = 0;
         Integer pvEnnemis = 0;
@@ -212,7 +210,7 @@ public class Combat {
 //        }
 //    }
 
-    public Entity useMove(Move move, Entity entityThrow, Entity entityReceiver){
+    private Entity useMove(Move move, Entity entityThrow, Entity entityReceiver){
         Entity entiteModifiee;
         String genre=move.getGenre();
         if (genre.equals("SPECIAL")){
@@ -239,7 +237,7 @@ public class Combat {
         return entiteModifiee;
     }
 
-    public Double getModifier(Move move, Entity entityThrow, Entity entityReceiver){
+    private Double getModifier(Move move, Entity entityThrow, Entity entityReceiver){
         double modifier = 1.0;
         Types moveType = move.getType();
         Types typeReceiver = entityReceiver.getType();
@@ -278,7 +276,7 @@ public class Combat {
         return tour;
     }
 
-    public void setTour(Integer tour) {
-        this.tour = tour;
+    public Boolean getFin() {
+        return fin;
     }
 }

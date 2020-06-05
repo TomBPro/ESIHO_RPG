@@ -41,6 +41,7 @@ public class TestTomRCombat extends Application {
     private Move atk;
     private Pnj thrower;
     private Pnj cible;
+    private Integer pointeurThrower;
 
 //    public TestTomRCombat(Team team1, Team team2){
 //        this.team1 = team1;
@@ -63,7 +64,9 @@ public class TestTomRCombat extends Application {
             this.team2.addPNJ(Pnj.rat());
             this.team2.addPNJ(Pnj.petiDiable());
         }
+        this.thrower = team1.getListePNJ().get(0);
         this.combat = new Combat(team1, team2);
+
         stageWidth=800;
         stageHeight=400;
         cbtPane = new Canvas(stageWidth, stageHeight);
@@ -129,23 +132,69 @@ public class TestTomRCombat extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
                 if (selection){
-
+                    btnAtk(0);
+                    selection();
                 }
             }
         });
         pnBtn.add(btn1, 0, 0);
+
         Button btn2 = new Button();
         btn2.setPrefSize(Math.round(stageWidth/4), Math.round(stageHeight/6));
         btn2.setText("Bouton 2");
+        btn2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (selection){
+                    btnAtk(1);
+                    selection();
+                }
+            }
+        });
         pnBtn.add(btn2, 1, 0);
+
         Button btn3 = new Button();
         btn3.setPrefSize(Math.round(stageWidth/4), Math.round(stageHeight/6));
         btn3.setText("Bouton 3");
+        btn3.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (selection){
+                    btnAtk(2);
+                    selection();
+                }
+            }
+        });
         pnBtn.add(btn3, 0, 1);
+
         Button btn4 = new Button();
         btn4.setPrefSize(Math.round(stageWidth/4), Math.round(stageHeight/6));
         btn4.setText("Bouton 4");
+        btn4.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (selection){
+                    btnAtk(3);
+                    selection();
+                }
+            }
+        });
         pnBtn.add(btn4, 1, 1);
+
+
+        if (thrower.getEntite().getMovesPhy().getMove(0)!=null){
+            btn1.setText(""+thrower.getEntite().getMovesPhy().getMove(0).getNom());
+            if (thrower.getEntite().getMovesPhy().getMove(1)!=null){
+                btn2.setText(""+thrower.getEntite().getMovesPhy().getMove(1).getNom());
+                if (thrower.getEntite().getMovesPhy().getMove(2)!=null){
+                    btn3.setText(""+thrower.getEntite().getMovesPhy().getMove(2).getNom());
+                    if (thrower.getEntite().getMovesPhy().getMove(3)!=null){
+                        btn4.setText(""+thrower.getEntite().getMovesPhy().getMove(3).getNom());
+                    }
+                }
+            }
+        }
+
 
         root.add(pnBtn, 0, 1, 2, 1);
 
@@ -155,6 +204,13 @@ public class TestTomRCombat extends Application {
             Button btn = new Button();
             btn.setText(""+cible.getNom());
             btn.setPrefSize(Math.round(stageWidth/4), Math.round(stageHeight/15));
+            Integer finalCompteur = compteur;
+            btn.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    btnCible(finalCompteur);
+                }
+            });
             btnCibles.add(btn, 0, compteur);
             compteur++;
         }
@@ -170,6 +226,18 @@ public class TestTomRCombat extends Application {
                 if (memoPhy==false){
                     memoPhy=true;
                     memoSpe=false;
+                    if (thrower.getEntite().getMovesPhy().getMove(0)!=null){
+                        btn1.setText(""+thrower.getEntite().getMovesPhy().getMove(0).getNom());
+                        if (thrower.getEntite().getMovesPhy().getMove(1)!=null){
+                            btn2.setText(""+thrower.getEntite().getMovesPhy().getMove(1).getNom());
+                            if (thrower.getEntite().getMovesPhy().getMove(2)!=null){
+                                btn3.setText(""+thrower.getEntite().getMovesPhy().getMove(2).getNom());
+                                if (thrower.getEntite().getMovesPhy().getMove(3)!=null){
+                                    btn4.setText(""+thrower.getEntite().getMovesPhy().getMove(3).getNom());
+                                }
+                            }
+                        }
+                    }
                 }
             }
         });
@@ -184,6 +252,18 @@ public class TestTomRCombat extends Application {
                 if (memoSpe==false){
                     memoSpe=true;
                     memoPhy=false;
+                    if (thrower.getEntite().getMovesSpe().getMove(0)!=null){
+                        btn1.setText(""+thrower.getEntite().getMovesSpe().getMove(0).getNom());
+                        if (thrower.getEntite().getMovesSpe().getMove(1)!=null){
+                            btn2.setText(""+thrower.getEntite().getMovesSpe().getMove(1).getNom());
+                            if (thrower.getEntite().getMovesSpe().getMove(2)!=null){
+                                btn3.setText(""+thrower.getEntite().getMovesSpe().getMove(2).getNom());
+                                if (thrower.getEntite().getMovesSpe().getMove(3)!=null){
+                                    btn4.setText(""+thrower.getEntite().getMovesSpe().getMove(3).getNom());
+                                }
+                            }
+                        }
+                    }
                 }
             }
         });
@@ -203,12 +283,34 @@ public class TestTomRCombat extends Application {
     }
 
     private void selection(){
-        if (this.atk!=null && this.thrower!=null && this.cible!=null){
-            
+        if (this.atk!=null && this.thrower!=null && this.cible!=null && combat.getFin()!=true){
+            combat.selectMove(thrower, atk, cible);
+            combat.tour();
 
+
+            this.team1=combat.team1;
+            this.team2=combat.team2;
             this.atk=null;
-            this.thrower=null;
+
+            if (pointeurThrower<=team1.getListePNJ().size()-1){
+                pointeurThrower++;
+            }else{
+                pointeurThrower=0;
+            }
+            this.thrower= team1.getListePNJ().get(this.pointeurThrower);
             this.cible=null;
         }
+    }
+
+    private void btnAtk(Integer cas){
+        if (memoPhy){
+            this.atk = this.thrower.getEntite().getMovesPhy().getMove(cas);
+        }else{
+            this.atk = this.thrower.getEntite().getMovesSpe().getMove(cas);
+        }
+    }
+
+    private void btnCible(Integer cas){
+        this.cible = team2.getListePNJ().get(cas);
     }
 }
