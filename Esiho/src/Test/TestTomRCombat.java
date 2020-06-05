@@ -2,6 +2,7 @@ package Test;
 
 import GameData.Combat.Combat;
 import GameData.Combat.Entities.Team;
+import GameData.Combat.Moves.Move;
 import GameData.Ressources.Contenu.InitContenu;
 import GameData.Ressources.Contenu.Pnj;
 import javafx.application.Application;
@@ -21,7 +22,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
+
+import java.awt.*;
 
 public class TestTomRCombat extends Application {
     private Combat combat;
@@ -31,6 +35,12 @@ public class TestTomRCombat extends Application {
     private Integer stageWidth, stageHeight;
     private Canvas cbtPane, team1Cv, team2Cv;
     private Boolean fin;
+    private Boolean selection;
+    private Boolean memoPhy;
+    private Boolean memoSpe;
+    private Move atk;
+    private Pnj thrower;
+    private Pnj cible;
 
 //    public TestTomRCombat(Team team1, Team team2){
 //        this.team1 = team1;
@@ -40,14 +50,18 @@ public class TestTomRCombat extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        selection = true;
         this.fin = false;
         InitContenu contenu = new InitContenu();
+        memoPhy = true;
+        memoSpe = false;
         if (team1==null && team2==null){
             System.out.println("Au moins une équipe n'est pas déclarée");
             this.team1 = Team.teamJoueur();
             this.team2 = new Team("T1", 20);
             this.team2.addPNJ(Pnj.squelette());
             this.team2.addPNJ(Pnj.rat());
+            this.team2.addPNJ(Pnj.petiDiable());
         }
         this.combat = new Combat(team1, team2);
         stageWidth=800;
@@ -57,11 +71,6 @@ public class TestTomRCombat extends Application {
         primStage.setTitle("Combat");
         GridPane root = new GridPane();
         Integer compteur = 0;
-//        double nbmax1 = team1.getListePNJ().get(0).getEntite().getImage().getHeight() * 2 *team1.getListePNJ().size();
-//        team1Cv = new Canvas(Math.round(stageWidth/2), Math.round(nbmax1));
-//        Integer sizeT1 = Math.toIntExact(Math.round(team1.getListePNJ().size() * team1.getListePNJ().get(0).getEntite().getImage().getHeight() * 1.1 *2));
-
-
         GridPane team1Gd = new GridPane();
         team1Gd.setAlignment(Pos.CENTER);
         for (Pnj pnj: team1.getListePNJ()) {
@@ -77,20 +86,16 @@ public class TestTomRCombat extends Application {
 
             Image img = pnj.getEntite().getImage();
             Canvas cv = new Canvas(img.getWidth()*2, img.getHeight()*2);
-            cv.getGraphicsContext2D().drawImage(new ImageView(img).getImage(), 0, 0, -img.getWidth()*2, img.getHeight()*2);
+            cv.getGraphicsContext2D().drawImage(new ImageView(img).getImage(), 0, 0, -img.getWidth(), img.getHeight());
 
             gdPn.add(cv, 0, 2);
             team1Gd.add(gdPn, 0, compteur);
             compteur++;
         }
 
-        root.add(team1Gd, 0, 0);
+        root.add(team1Gd, 0, 0, 1, 1);
 
         compteur = 0;
-//        double nbmax2 = team2.getListePNJ().get(0).getEntite().getImage().getHeight() * 2 *team2.getListePNJ().size();
-//        team2Cv = new Canvas(Math.round(stageWidth/2), Math.round(nbmax2));
-//        Integer sizeT2 = Math.toIntExact(Math.round(team2.getListePNJ().size() * team2.getListePNJ().get(0).getEntite().getImage().getHeight() * 1.1 *2));
-//        sizeT2=Math.round(sizeT2/team2.getListePNJ().size());
 
         GridPane team2Gd = new GridPane();
         team2Gd.setAlignment(Pos.CENTER);
@@ -107,36 +112,85 @@ public class TestTomRCombat extends Application {
 
             Image img = pnj.getEntite().getImage();
             Canvas cv = new Canvas(img.getWidth()*2, img.getHeight()*2);
-            cv.getGraphicsContext2D().drawImage(new ImageView(img).getImage(), 0, 0, -img.getWidth()*2, img.getHeight()*2);
+            cv.getGraphicsContext2D().drawImage(new ImageView(img).getImage(), 0, 0, -img.getWidth(), img.getHeight());
 
             gdPn.add(cv, 0, 2);
             team2Gd.add(gdPn, 0, compteur);
             compteur++;
         }
-        root.add(team2Gd, 1, 0);
+        root.add(team2Gd, 1, 0, 1, 1);
+
         GridPane.setValignment(team2Gd, VPos.CENTER);
+        GridPane pnBtn = new GridPane();
         Button btn1 = new Button();
-        btn1.setPrefSize(Math.round(stageWidth/2), Math.round(stageHeight/6));
+        btn1.setPrefSize(Math.round(stageWidth/4), Math.round(stageHeight/6));
         btn1.setText("Bouton 1");
         btn1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                if (selection){
 
+                }
             }
         });
-        root.add(btn1, 0, 1);
+        pnBtn.add(btn1, 0, 0);
         Button btn2 = new Button();
-        btn2.setPrefSize(Math.round(stageWidth/2), Math.round(stageHeight/6));
+        btn2.setPrefSize(Math.round(stageWidth/4), Math.round(stageHeight/6));
         btn2.setText("Bouton 2");
-        root.add(btn2, 1, 1);
+        pnBtn.add(btn2, 1, 0);
         Button btn3 = new Button();
-        btn3.setPrefSize(Math.round(stageWidth/2), Math.round(stageHeight/6));
+        btn3.setPrefSize(Math.round(stageWidth/4), Math.round(stageHeight/6));
         btn3.setText("Bouton 3");
-        root.add(btn3, 0, 2);
+        pnBtn.add(btn3, 0, 1);
         Button btn4 = new Button();
-        btn4.setPrefSize(Math.round(stageWidth/2), Math.round(stageHeight/6));
+        btn4.setPrefSize(Math.round(stageWidth/4), Math.round(stageHeight/6));
         btn4.setText("Bouton 4");
-        root.add(btn4, 1, 2);
+        pnBtn.add(btn4, 1, 1);
+
+        root.add(pnBtn, 0, 1, 2, 1);
+
+        GridPane btnCibles = new GridPane();
+        compteur = 0;
+        for (Pnj cible:team2.getListePNJ()) {
+            Button btn = new Button();
+            btn.setText(""+cible.getNom());
+            btn.setPrefSize(Math.round(stageWidth/4), Math.round(stageHeight/15));
+            btnCibles.add(btn, 0, compteur);
+            compteur++;
+        }
+        pnBtn.add(btnCibles, 2, 0);
+
+        GridPane btnSlPn = new GridPane();
+        Button phy = new Button();
+        phy.setText("Attaques Physiques");
+        phy.setPrefSize(Math.round(stageWidth/4), Math.round(stageHeight/12));
+        phy.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (memoPhy==false){
+                    memoPhy=true;
+                    memoSpe=false;
+                }
+            }
+        });
+        btnSlPn.add(phy, 0, 0);
+
+        Button spe = new Button();
+        spe.setText("Attaques spéciales");
+        spe.setPrefSize(Math.round(stageWidth/4), Math.round(stageHeight/12));
+        spe.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                if (memoSpe==false){
+                    memoSpe=true;
+                    memoPhy=false;
+                }
+            }
+        });
+        btnSlPn.add(spe, 0, 1);
+
+
+        pnBtn.add(btnSlPn,3,0);
 
 
 
@@ -146,5 +200,15 @@ public class TestTomRCombat extends Application {
 
         primStage.setScene(cbtScene);
         primStage.show();
+    }
+
+    private void selection(){
+        if (this.atk!=null && this.thrower!=null && this.cible!=null){
+            
+
+            this.atk=null;
+            this.thrower=null;
+            this.cible=null;
+        }
     }
 }
