@@ -56,8 +56,12 @@ public class Combat {
     public Integer tour(){
         Pnj pnjPlay = listeOrdrePnj.get(tour);
         Boolean isPnjAllie = false;
-        if (pnjsALancer.contains(pnjPlay)){
-            isPnjAllie=true;
+        System.out.println(pnjPlay.getNom());
+        for (Pnj pnj: pnjsALancer){
+            if (pnj.getId()==pnjPlay.getId()){
+                isPnjAllie=true;
+                System.out.println("PnjAllié");
+            }
         }
         if (pnjPlay.getEntite().getPV().getlvlpv()!=0){
             if (isPnjAllie){
@@ -66,6 +70,7 @@ public class Combat {
                 for (Pnj pnj:team2.getListePNJ()) {
                     if (pnj.equals(pnjsARecevoir.get(rang))){
                         team2.getListePNJ().get(compteur).setEntite(useMove(movesALancer.get(rang), pnjsALancer.get(rang).getEntite(), pnjsARecevoir.get(rang).getEntite()));
+                        System.out.println("BRUH");
                     }
                     compteur++;
                 }
@@ -286,5 +291,9 @@ public class Combat {
 
     public Boolean getFin() {
         return fin;
+    }
+
+    public Integer getTourDeTable() {
+        return tourDeTable;
     }
 }

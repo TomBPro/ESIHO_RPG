@@ -311,11 +311,6 @@ public class TestTomRCombat extends Application {
     private void selection(){
         if (this.atk!=null && this.thrower!=null && this.cible!=null && combat.getFin()!=true){
             combat.selectMove(thrower, atk, cible);
-            combat.tour();
-
-
-            this.team1=combat.team1;
-            this.team2=combat.team2;
             this.atk=null;
 
 
@@ -323,9 +318,15 @@ public class TestTomRCombat extends Application {
                 pointeurThrower++;
             }else{
                 pointeurThrower=0;
+                Integer tourTableOld = combat.getTourDeTable();
+                while (combat.getTourDeTable()==tourTableOld){
+                    combat.tour();
+                    this.team1=combat.team1;
+                    this.team2=combat.team2;
+                }
+                System.out.println(team2.getListePNJ().get(2).getEntite().getPV().getlvlpv());
             }
-            this.thrower= team1.getListePNJ().get(this.pointeurThrower);
-            System.out.println(team2.getListePNJ().get(2).getEntite().getPV().getlvlpv());
+            this.thrower = team1.getListePNJ().get(this.pointeurThrower);
             this.indicateur.setText(""+thrower.getNom());
             this.cible=null;
 
