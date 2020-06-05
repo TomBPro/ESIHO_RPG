@@ -184,3 +184,7 @@ ex : T2-28 => Le 28e Tile du tileset 2
 #ThomasDegave#03/06/2020#
 -Création d'une maquette en fxml pour créer l'interface du profile
 -Création et début de l'interface du profile sans fxml
+
+#TomRobette#05/06/2020#
+-Refonte de la classe Combat
+-Interface de combat fonctionnelle mais très basique. Il reste à debugger.
