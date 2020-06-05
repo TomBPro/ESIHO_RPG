@@ -42,6 +42,7 @@ public class TestTomRCombat extends Application {
     private Pnj thrower;
     private Pnj cible;
     private Integer pointeurThrower;
+    private Label indicateur;
 
 //    public TestTomRCombat(Team team1, Team team2){
 //        this.team1 = team1;
@@ -56,6 +57,7 @@ public class TestTomRCombat extends Application {
         InitContenu contenu = new InitContenu();
         memoPhy = true;
         memoSpe = false;
+        pointeurThrower = 0;
         if (team1==null && team2==null){
             System.out.println("Au moins une équipe n'est pas déclarée");
             this.team1 = Team.teamJoueur();
@@ -65,6 +67,7 @@ public class TestTomRCombat extends Application {
             this.team2.addPNJ(Pnj.petiDiable());
         }
         this.thrower = team1.getListePNJ().get(0);
+        this.indicateur = new Label(""+thrower.getNom());
         this.combat = new Combat(team1, team2);
 
         stageWidth=800;
@@ -217,6 +220,10 @@ public class TestTomRCombat extends Application {
         pnBtn.add(btnCibles, 2, 0);
 
         GridPane btnSlPn = new GridPane();
+        btnSlPn.add(this.indicateur, 0, 0);
+
+
+
         Button phy = new Button();
         phy.setText("Attaques Physiques");
         phy.setPrefSize(Math.round(stageWidth/4), Math.round(stageHeight/12));
@@ -226,22 +233,30 @@ public class TestTomRCombat extends Application {
                 if (memoPhy==false){
                     memoPhy=true;
                     memoSpe=false;
-                    if (thrower.getEntite().getMovesPhy().getMove(0)!=null){
+                    if (thrower.getEntite().getMovesPhy().getSize()>0){
                         btn1.setText(""+thrower.getEntite().getMovesPhy().getMove(0).getNom());
-                        if (thrower.getEntite().getMovesPhy().getMove(1)!=null){
+                        if (thrower.getEntite().getMovesPhy().getSize()>1){
                             btn2.setText(""+thrower.getEntite().getMovesPhy().getMove(1).getNom());
-                            if (thrower.getEntite().getMovesPhy().getMove(2)!=null){
+                            if (thrower.getEntite().getMovesPhy().getSize()>2){
                                 btn3.setText(""+thrower.getEntite().getMovesPhy().getMove(2).getNom());
-                                if (thrower.getEntite().getMovesPhy().getMove(3)!=null){
+                                if (thrower.getEntite().getMovesPhy().getSize()>3){
                                     btn4.setText(""+thrower.getEntite().getMovesPhy().getMove(3).getNom());
+                                }else{
+                                    btn4.setText("");
                                 }
+                            }else{
+                                btn3.setText("");
                             }
+                        }else{
+                            btn2.setText("");
                         }
+                    }else{
+                        btn1.setText("");
                     }
                 }
             }
         });
-        btnSlPn.add(phy, 0, 0);
+        btnSlPn.add(phy, 0, 1);
 
         Button spe = new Button();
         spe.setText("Attaques spéciales");
@@ -252,22 +267,30 @@ public class TestTomRCombat extends Application {
                 if (memoSpe==false){
                     memoSpe=true;
                     memoPhy=false;
-                    if (thrower.getEntite().getMovesSpe().getMove(0)!=null){
+                    if (thrower.getEntite().getMovesSpe().getSize()>0){
                         btn1.setText(""+thrower.getEntite().getMovesSpe().getMove(0).getNom());
-                        if (thrower.getEntite().getMovesSpe().getMove(1)!=null){
+                        if (thrower.getEntite().getMovesSpe().getSize()>1){
                             btn2.setText(""+thrower.getEntite().getMovesSpe().getMove(1).getNom());
-                            if (thrower.getEntite().getMovesSpe().getMove(2)!=null){
+                            if (thrower.getEntite().getMovesSpe().getSize()>2){
                                 btn3.setText(""+thrower.getEntite().getMovesSpe().getMove(2).getNom());
-                                if (thrower.getEntite().getMovesSpe().getMove(3)!=null){
+                                if (thrower.getEntite().getMovesSpe().getSize()>3){
                                     btn4.setText(""+thrower.getEntite().getMovesSpe().getMove(3).getNom());
+                                }else{
+                                    btn4.setText("");
                                 }
+                            }else{
+                                btn3.setText("");
                             }
+                        }else{
+                            btn2.setText("");
                         }
+                    }else{
+                        btn1.setText("");
                     }
                 }
             }
         });
-        btnSlPn.add(spe, 0, 1);
+        btnSlPn.add(spe, 0, 2);
 
 
         pnBtn.add(btnSlPn,3,0);
@@ -292,12 +315,14 @@ public class TestTomRCombat extends Application {
             this.team2=combat.team2;
             this.atk=null;
 
-            if (pointeurThrower<=team1.getListePNJ().size()-1){
+
+            if (pointeurThrower<team1.getListePNJ().size()){
                 pointeurThrower++;
             }else{
                 pointeurThrower=0;
             }
             this.thrower= team1.getListePNJ().get(this.pointeurThrower);
+            this.indicateur.setText(""+thrower.getNom());
             this.cible=null;
         }
     }

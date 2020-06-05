@@ -32,6 +32,7 @@ public class Combat {
         this.tour = 0;
         this.tourDeTable = 0;
         this.fin = false;
+        this.listeOrdrePnj = new ArrayList<>();
         this.listeOrdrePnj.addAll(team1.getListePNJ());
         this.listeOrdrePnj.addAll(team2.getListePNJ());
         this.listeOrdrePnj = triVitesse();
@@ -72,7 +73,7 @@ public class Combat {
                 }
                 Move move;
                 if (moveList.getSize()!=0){
-                    Integer movePtr = ThreadLocalRandom.current().nextInt(0, moveList.getSize()-1);
+                    Integer movePtr = ThreadLocalRandom.current().nextInt(0, moveList.getSize());
                     move = moveList.getMove(movePtr);
                 }else{
                     move = Move.coupPoing();
@@ -85,7 +86,7 @@ public class Combat {
                     }
                     compteur++;
                 }
-                Integer ciblePtr = ThreadLocalRandom.current().nextInt(0, cibles.size()-1);
+                Integer ciblePtr = ThreadLocalRandom.current().nextInt(0, cibles.size());
                 Pnj cible = team1.getListePNJ().get(ciblePtr);
                 team1.getListePNJ().get(team1.getListePNJ().indexOf(cible)).setEntite(useMove(move, pnjPlay.getEntite(), cible.getEntite()));
             }
@@ -127,29 +128,25 @@ public class Combat {
              listePnjsVitesse = this.listeOrdrePnj;
         }
 
-        Integer compteurCompare = 0;
-        for (Pnj pnjCompare:listePnjsVitesse) {
-            Integer compteurComparant = 0;
-            Integer vitesseCompare = pnjCompare.getEntite().getVitesse();
-            for (Pnj pnjComparant:listePnjsVitesse) {
-                Integer vitesseComparante = pnjComparant.getEntite().getVitesse();
-                if (vitesseCompare>=vitesseComparante){
-                    Pnj comparant = pnjComparant;
-                    Pnj compare = pnjCompare;
-                    listePnjsVitesse.remove(pnjComparant);
-                    listePnjsVitesse.add(compteurComparant, pnjCompare);
-                    listePnjsVitesse.remove(pnjCompare);
-                    listePnjsVitesse.add(compteurCompare, pnjComparant);
-                }/*Si la vitesse comparante est supérieure ou égale*/else if (vitesseCompare<vitesseComparante){
-                    Pnj comparant = pnjComparant;
-                    Pnj compare = pnjCompare;
-                    listePnjsVitesse.remove(pnjComparant);
-                    listePnjsVitesse.add(compteurCompare, pnjCompare);
-                    listePnjsVitesse.remove(pnjCompare);
-                    listePnjsVitesse.add(compteurComparant, pnjComparant);
-                }//Si la vitesse comparée est supérieure
-                compteurComparant++;
+
+        Pnj pnjComparant = new Pnj() {
+            @Override
+            public void interract() {
+
             }
+        };
+        pnjComparant.setEntite(Pnj.joueur("").getEntite());
+        pnjComparant.getEntite().setVitesse(0);
+        Integer compteurCompare = 0;
+        Integer old = 0;
+        for (Pnj pnjCompare:listePnjsVitesse) {
+            if (pnjCompare.getEntite().getVitesse() > pnjComparant.getEntite().getVitesse()){
+                listePnjsVitesse.set(compteurCompare, pnjCompare);
+                listePnjsVitesse.set(old, pnjComparant);
+                pnjComparant = pnjCompare;
+                old = compteurCompare;
+            }
+
             compteurCompare++;
         }//On trie les PNJs dans l'ordre de leur attaques pour savoir qui est plus ou moins rapide
 
