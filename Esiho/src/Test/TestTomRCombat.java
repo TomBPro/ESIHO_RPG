@@ -30,6 +30,7 @@ public class TestTomRCombat extends Application {
     private Stage primStage;
     private Integer stageWidth, stageHeight;
     private Canvas cbtPane, team1Cv, team2Cv;
+    private Boolean fin;
 
 //    public TestTomRCombat(Team team1, Team team2){
 //        this.team1 = team1;
@@ -39,6 +40,7 @@ public class TestTomRCombat extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        this.fin = false;
         InitContenu contenu = new InitContenu();
         if (team1==null && team2==null){
             System.out.println("Au moins une équipe n'est pas déclarée");
@@ -119,7 +121,7 @@ public class TestTomRCombat extends Application {
         btn1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                combat
+
             }
         });
         root.add(btn1, 0, 1);

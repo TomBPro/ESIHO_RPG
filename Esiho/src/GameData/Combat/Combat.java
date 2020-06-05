@@ -17,20 +17,86 @@ import Test.oldTestThomas.TestControleurCombatThomas;
 public class Combat {
     private Team team1;
     private Team team2;
-    private Integer compteur;
     private Integer tour;
-
-
-
-    private ArrayList<JButton> tabouton;
+    private Integer tourDeTable;
+    private Boolean fin;
+    private ArrayList<Pnj> listeOrdrePnj;
 
     public Combat(Team team1, Team team2){
         this.team1=team1;
         this.team2=team2;
         this.tour = 0;
+        this.tourDeTable = 0;
+        this.fin = false;
+        this.listeOrdrePnj = new ArrayList<>();
     }
 
-    public void affichage(){//Actualisation des données affichées à l'écran
+//    public void affichage(){//Actualisation des données affichées à l'écran
+//    }
+
+    public void start(){
+        Integer victoire = 0;
+    }
+
+    private void newTourdeTable(){
+        this.listeOrdrePnj = triVitesse();
+    }
+
+    public void tour(){
+        listeOrdrePnj.get(0);
+
+
+        this.tour++;
+        Double reste = 0.0;
+        if (listeOrdrePnj.size()!=0){
+            reste = new Double(this.tour%listeOrdrePnj.size());
+        }
+        if (reste == 0){
+            newTourdeTable();
+        }
+    }
+
+    private ArrayList<Pnj> triVitesse(){
+        ArrayList<Pnj> listePnjsVitesse;
+        if (this.listeOrdrePnj.size()==0){
+            listePnjsVitesse = new ArrayList<>();
+            for (Pnj pnjAjoute:team1.getListePNJ()) {
+                listePnjsVitesse.add(pnjAjoute);
+            }
+            for (Pnj pnjAjoute:team2.getListePNJ()) {
+                listePnjsVitesse.add(pnjAjoute);
+            }
+        }else{
+             listePnjsVitesse = this.listeOrdrePnj;
+        }
+
+        Integer compteurCompare = 0;
+        for (Pnj pnjCompare:listePnjsVitesse) {
+            Integer compteurComparant = 0;
+            Integer vitesseCompare = pnjCompare.getEntite().getVitesse();
+            for (Pnj pnjComparant:listePnjsVitesse) {
+                Integer vitesseComparante = pnjComparant.getEntite().getVitesse();
+                if (vitesseCompare>=vitesseComparante){
+                    Pnj comparant = pnjComparant;
+                    Pnj compare = pnjCompare;
+                    listePnjsVitesse.remove(pnjComparant);
+                    listePnjsVitesse.add(compteurComparant, pnjCompare);
+                    listePnjsVitesse.remove(pnjCompare);
+                    listePnjsVitesse.add(compteurCompare, pnjComparant);
+                }/*Si la vitesse comparante est supérieure ou égale*/else if (vitesseCompare<vitesseComparante){
+                    Pnj comparant = pnjComparant;
+                    Pnj compare = pnjCompare;
+                    listePnjsVitesse.remove(pnjComparant);
+                    listePnjsVitesse.add(compteurCompare, pnjCompare);
+                    listePnjsVitesse.remove(pnjCompare);
+                    listePnjsVitesse.add(compteurComparant, pnjComparant);
+                }//Si la vitesse comparée est supérieure
+                compteurComparant++;
+            }
+            compteurCompare++;
+        }//On trie les PNJs dans l'ordre de leur attaques pour savoir qui est plus ou moins rapide
+
+        return listePnjsVitesse;
     }
 
     public void fight(){
@@ -41,37 +107,7 @@ public class Combat {
 
             }else{
                 ArrayList<Pnj> listePnjsVitesse = new ArrayList<>();
-                for (Pnj pnjAjoute:team1.getListePNJ()) {
-                    listePnjsVitesse.add(pnjAjoute);
-                }
-                for (Pnj pnjAjoute:team2.getListePNJ()) {
-                    listePnjsVitesse.add(pnjAjoute);
-                }
-                Integer compteurCompare = 0;
-                for (Pnj pnjCompare:listePnjsVitesse) {
-                    Integer compteurComparant = 0;
-                    Integer vitesseCompare = pnjCompare.getEntite().getVitesse();
-                    for (Pnj pnjComparant:listePnjsVitesse) {
-                        Integer vitesseComparante = pnjComparant.getEntite().getVitesse();
-                        if (vitesseCompare>=vitesseComparante){
-                            Pnj comparant = pnjComparant;
-                            Pnj compare = pnjCompare;
-                            listePnjsVitesse.remove(pnjComparant);
-                            listePnjsVitesse.add(compteurComparant, pnjCompare);
-                            listePnjsVitesse.remove(pnjCompare);
-                            listePnjsVitesse.add(compteurCompare, pnjComparant);
-                        }/*Si la vitesse comparante est supérieure ou égale*/else if (vitesseCompare<vitesseComparante){
-                            Pnj comparant = pnjComparant;
-                            Pnj compare = pnjCompare;
-                            listePnjsVitesse.remove(pnjComparant);
-                            listePnjsVitesse.add(compteurCompare, pnjCompare);
-                            listePnjsVitesse.remove(pnjCompare);
-                            listePnjsVitesse.add(compteurComparant, pnjComparant);
-                        }//Si la vitesse comparée est supérieure
-                        compteurComparant++;
-                    }
-                    compteurCompare++;
-                }//On trie les PNJs dans l'ordre de leur attaques pour savoir qui est plus ou moins rapide
+
                 for (Pnj pnj:listePnjsVitesse) {
                     for (Pnj pnjteam1:team1.getListePNJ()) {
                         if (pnj.equals(pnjteam1) && pnj.getEntite().getPV().getPv()>0 && victoire==0){
@@ -108,7 +144,7 @@ public class Combat {
                             Entity cible = team2.getListePNJ().get(selecCible).getEntite();
                             useMove(attaque, pnjteam1.getEntite(), cible);
                             //Ici on lance l'animation, puis l'affichage
-                            affichage();
+//                            affichage();
                             victoire = analyseVictoire(team1, team2);
                         }
                     }//On fait choisir les attaques par le joueur
@@ -143,7 +179,7 @@ public class Combat {
                             }
                             useMove(randomMove, pnjteam2.getEntite(), randomPnj.getEntite());
                             //Ici on lance l'animation, puis l'affichage
-                            affichage();
+//                            affichage();
                             victoire = analyseVictoire(team1, team2);
                         }
                     }//On fait choisir les attaques de l'adversaire aléatoirement
@@ -194,11 +230,11 @@ public class Combat {
         return victoire;
     }
 
-    public void testMort(){
-        if (analyseVictoire(team1,team2)==-1){
-            launcher.ecranMortRespawn();
-        }
-    }
+//    public void testMort(){
+//        if (analyseVictoire(team1,team2)==-1){
+//            launcher.ecranMortRespawn();
+//        }
+//    }
 
     public void useMove(Move move, Entity entityThrow, Entity entityReceiver){
         String genre=move.getGenre();
