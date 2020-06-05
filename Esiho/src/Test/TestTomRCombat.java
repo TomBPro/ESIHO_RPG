@@ -5,7 +5,10 @@ import GameData.Combat.Entities.Team;
 import GameData.Ressources.Contenu.InitContenu;
 import GameData.Ressources.Contenu.Pnj;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -54,8 +57,11 @@ public class TestTomRCombat extends Application {
         Integer compteur = 0;
 //        double nbmax1 = team1.getListePNJ().get(0).getEntite().getImage().getHeight() * 2 *team1.getListePNJ().size();
 //        team1Cv = new Canvas(Math.round(stageWidth/2), Math.round(nbmax1));
-        GridPane team1Gd = new GridPane();
 //        Integer sizeT1 = Math.toIntExact(Math.round(team1.getListePNJ().size() * team1.getListePNJ().get(0).getEntite().getImage().getHeight() * 1.1 *2));
+
+
+        GridPane team1Gd = new GridPane();
+        team1Gd.setAlignment(Pos.CENTER);
         for (Pnj pnj: team1.getListePNJ()) {
             GridPane gdPn = new GridPane();
 
@@ -72,7 +78,6 @@ public class TestTomRCombat extends Application {
             cv.getGraphicsContext2D().drawImage(new ImageView(img).getImage(), 0, 0, -img.getWidth()*2, img.getHeight()*2);
 
             gdPn.add(cv, 0, 2);
-            gdPn.add(new Label("TEST"), 0, 3);
             team1Gd.add(gdPn, 0, compteur);
             compteur++;
         }
@@ -86,6 +91,7 @@ public class TestTomRCombat extends Application {
 //        sizeT2=Math.round(sizeT2/team2.getListePNJ().size());
 
         GridPane team2Gd = new GridPane();
+        team2Gd.setAlignment(Pos.CENTER);
         for (Pnj pnj: team2.getListePNJ()) {
             GridPane gdPn = new GridPane();
 
@@ -102,14 +108,20 @@ public class TestTomRCombat extends Application {
             cv.getGraphicsContext2D().drawImage(new ImageView(img).getImage(), 0, 0, -img.getWidth()*2, img.getHeight()*2);
 
             gdPn.add(cv, 0, 2);
-            gdPn.add(new Label("TEST"), 0, 3);
             team2Gd.add(gdPn, 0, compteur);
             compteur++;
         }
         root.add(team2Gd, 1, 0);
+        GridPane.setValignment(team2Gd, VPos.CENTER);
         Button btn1 = new Button();
         btn1.setPrefSize(Math.round(stageWidth/2), Math.round(stageHeight/6));
         btn1.setText("Bouton 1");
+        btn1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                combat
+            }
+        });
         root.add(btn1, 0, 1);
         Button btn2 = new Button();
         btn2.setPrefSize(Math.round(stageWidth/2), Math.round(stageHeight/6));
@@ -124,31 +136,7 @@ public class TestTomRCombat extends Application {
         btn4.setText("Bouton 4");
         root.add(btn4, 1, 2);
 
-        root.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                switch (keyEvent.getCode()){
-                    case Q:
-                        root.getChildren().get(0).setVisible(false);
-                        break;
-                    case E:
-                        root.getChildren().get(1).setVisible(false);
-                }
-            }
-        });
 
-        root.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                switch (keyEvent.getCode()){
-                    case Q:
-                        root.getChildren().get(0).setVisible(true);
-                        break;
-                    case E:
-                        root.getChildren().get(1).setVisible(true);
-                }
-            }
-        });
 
         this.cbtScene= new Scene(root, stageWidth, stageHeight, Color.WHITE);
 
