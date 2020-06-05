@@ -33,7 +33,6 @@ public class TestTomRCombat extends Application {
     private Scene cbtScene;
     private Stage primStage;
     private Integer stageWidth, stageHeight;
-    private Canvas cbtPane, team1Cv, team2Cv;
     private Boolean fin;
     private Boolean selection;
     private Boolean memoPhy;
@@ -43,12 +42,7 @@ public class TestTomRCombat extends Application {
     private Pnj cible;
     private Integer pointeurThrower;
     private Label indicateur;
-
-//    public TestTomRCombat(Team team1, Team team2){
-//        this.team1 = team1;
-//        this.team2 = team2;
-//    }
-
+    private GridPane team1Gd, team2Gd;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -72,13 +66,13 @@ public class TestTomRCombat extends Application {
 
         stageWidth=800;
         stageHeight=400;
-        cbtPane = new Canvas(stageWidth, stageHeight);
         this.primStage = stage;
         primStage.setTitle("Combat");
         GridPane root = new GridPane();
         Integer compteur = 0;
-        GridPane team1Gd = new GridPane();
+        team1Gd = new GridPane();
         team1Gd.setAlignment(Pos.CENTER);
+        team1Gd.setMaxSize(new Double(stageWidth/2), new Double(stageHeight/3)*2);
         for (Pnj pnj: team1.getListePNJ()) {
             GridPane gdPn = new GridPane();
 
@@ -103,8 +97,9 @@ public class TestTomRCombat extends Application {
 
         compteur = 0;
 
-        GridPane team2Gd = new GridPane();
+        team2Gd = new GridPane();
         team2Gd.setAlignment(Pos.CENTER);
+        team2Gd.setMaxSize(new Double(stageWidth/2), new Double(stageHeight/3)*2);
         for (Pnj pnj: team2.getListePNJ()) {
             GridPane gdPn = new GridPane();
 
@@ -330,8 +325,10 @@ public class TestTomRCombat extends Application {
                 pointeurThrower=0;
             }
             this.thrower= team1.getListePNJ().get(this.pointeurThrower);
+            System.out.println(team2.getListePNJ().get(2).getEntite().getPV().getlvlpv());
             this.indicateur.setText(""+thrower.getNom());
             this.cible=null;
+
         }
     }
 
