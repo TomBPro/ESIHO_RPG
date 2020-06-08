@@ -15,6 +15,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.effect.Bloom;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -43,6 +44,8 @@ public class TestTomRCombat extends Application {
     private GridPane team1Gd, team2Gd;
     private ArrayList<ProgressBar> barAllies;
     private ArrayList<ProgressBar> barEnnemies;
+    private ArrayList<Button> boutonsCibles;
+    private ArrayList<Button> boutonsAtks;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -54,6 +57,8 @@ public class TestTomRCombat extends Application {
         barAllies = new ArrayList<>();
         barEnnemies = new ArrayList<>();
         pointeurThrower = 0;
+        boutonsCibles = new ArrayList<>();
+        boutonsAtks = new ArrayList<>();
         if (team1==null && team2==null){
             System.out.println("Au moins une équipe n'est pas déclarée");
             this.team1 = Team.teamJoueur();
@@ -127,82 +132,56 @@ public class TestTomRCombat extends Application {
 
         GridPane.setValignment(team2Gd, VPos.CENTER);
         GridPane pnBtn = new GridPane();
-        Button btn1 = new Button();
-        btn1.setPrefSize(Math.round(stageWidth/4), Math.round(stageHeight/6));
-        btn1.setText("Bouton 1");
-        btn1.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                if (selection){
-                    btnAtk(0);
-                    selection();
+        int comptA = 0;
+        int comptB = 0;
+        for (int a = 0; a<4; a++){
+            Button btn = new Button();
+            btn.setPrefSize(Math.round(stageWidth/4), Math.round(stageHeight/6));
+            btn.setText("Bouton "+a);
+            int finalA = a;
+            btn.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent actionEvent) {
+                    if (selection){
+                        btnAtk(finalA);
+                        selection();
+                        TestTomRCombat.effectBloom(boutonsAtks);
+                        btn.setEffect(new Bloom());
+                    }
                 }
+            });
+            this.boutonsAtks.add(btn);
+            pnBtn.add(this.boutonsAtks.get(a), comptA, comptB);
+            if (comptA == 0){
+                comptA++;
+            }else{
+                comptA=0;
             }
-        });
-        pnBtn.add(btn1, 0, 0);
-
-        Button btn2 = new Button();
-        btn2.setPrefSize(Math.round(stageWidth/4), Math.round(stageHeight/6));
-        btn2.setText("Bouton 2");
-        btn2.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                if (selection){
-                    btnAtk(1);
-                    selection();
-                }
+            if (a==1){
+                comptB++;
             }
-        });
-        pnBtn.add(btn2, 1, 0);
-
-        Button btn3 = new Button();
-        btn3.setPrefSize(Math.round(stageWidth/4), Math.round(stageHeight/6));
-        btn3.setText("Bouton 3");
-        btn3.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                if (selection){
-                    btnAtk(2);
-                    selection();
-                }
-            }
-        });
-        pnBtn.add(btn3, 0, 1);
-
-        Button btn4 = new Button();
-        btn4.setPrefSize(Math.round(stageWidth/4), Math.round(stageHeight/6));
-        btn4.setText("Bouton 4");
-        btn4.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                if (selection){
-                    btnAtk(3);
-                    selection();
-                }
-            }
-        });
-        pnBtn.add(btn4, 1, 1);
+        }
 
 
         if (thrower.getEntite().getMovesPhy().getSize()>0){
-            btn1.setText(""+thrower.getEntite().getMovesPhy().getMove(0).getNom());
+            boutonsAtks.get(0).setText(""+thrower.getEntite().getMovesPhy().getMove(0).getNom());
             if (thrower.getEntite().getMovesPhy().getSize()>1){
-                btn2.setText(""+thrower.getEntite().getMovesPhy().getMove(1).getNom());
+                boutonsAtks.get(1).setText(""+thrower.getEntite().getMovesPhy().getMove(1).getNom());
                 if (thrower.getEntite().getMovesPhy().getSize()>2){
-                    btn3.setText(""+thrower.getEntite().getMovesPhy().getMove(2).getNom());
+                    boutonsAtks.get(2).setText(""+thrower.getEntite().getMovesPhy().getMove(2).getNom());
                     if (thrower.getEntite().getMovesPhy().getSize()>3){
-                        btn4.setText(""+thrower.getEntite().getMovesPhy().getMove(3).getNom());
+                        boutonsAtks.get(3).setText(""+thrower.getEntite().getMovesPhy().getMove(3).getNom());
                     }else{
-                        btn4.setText("");
+                        boutonsAtks.get(3).setText("");
                     }
                 }else{
-                    btn3.setText("");
+                    boutonsAtks.get(2).setText("");
                 }
             }else{
-                btn2.setText("");
+                boutonsAtks.get(1).setText("");
             }
         }else{
-            btn1.setText("");
+            boutonsAtks.get(0).setText("");
         }
 
 
@@ -219,9 +198,12 @@ public class TestTomRCombat extends Application {
                 @Override
                 public void handle(ActionEvent actionEvent) {
                     btnCible(finalCompteur);
+                    TestTomRCombat.effectBloom(boutonsCibles);
+                    btn.setEffect(new Bloom());
                 }
             });
-            btnCibles.add(btn, 0, compteur);
+            this.boutonsCibles.add(btn);
+            btnCibles.add(this.boutonsCibles.get(compteur), 0, compteur);
             compteur++;
         }
         pnBtn.add(btnCibles, 2, 0);
@@ -241,24 +223,24 @@ public class TestTomRCombat extends Application {
                     memoPhy=true;
                     memoSpe=false;
                     if (thrower.getEntite().getMovesPhy().getSize()>0){
-                        btn1.setText(""+thrower.getEntite().getMovesPhy().getMove(0).getNom());
+                        boutonsAtks.get(0).setText(""+thrower.getEntite().getMovesPhy().getMove(0).getNom());
                         if (thrower.getEntite().getMovesPhy().getSize()>1){
-                            btn2.setText(""+thrower.getEntite().getMovesPhy().getMove(1).getNom());
+                            boutonsAtks.get(1).setText(""+thrower.getEntite().getMovesPhy().getMove(1).getNom());
                             if (thrower.getEntite().getMovesPhy().getSize()>2){
-                                btn3.setText(""+thrower.getEntite().getMovesPhy().getMove(2).getNom());
+                                boutonsAtks.get(2).setText(""+thrower.getEntite().getMovesPhy().getMove(2).getNom());
                                 if (thrower.getEntite().getMovesPhy().getSize()>3){
-                                    btn4.setText(""+thrower.getEntite().getMovesPhy().getMove(3).getNom());
+                                    boutonsAtks.get(3).setText(""+thrower.getEntite().getMovesPhy().getMove(3).getNom());
                                 }else{
-                                    btn4.setText("");
+                                    boutonsAtks.get(3).setText("");
                                 }
                             }else{
-                                btn3.setText("");
+                                boutonsAtks.get(2).setText("");
                             }
                         }else{
-                            btn2.setText("");
+                            boutonsAtks.get(1).setText("");
                         }
                     }else{
-                        btn1.setText("");
+                        boutonsAtks.get(0).setText("");
                     }
                 }
             }
@@ -275,24 +257,24 @@ public class TestTomRCombat extends Application {
                     memoSpe=true;
                     memoPhy=false;
                     if (thrower.getEntite().getMovesSpe().getSize()>0){
-                        btn1.setText(""+thrower.getEntite().getMovesSpe().getMove(0).getNom());
+                        boutonsAtks.get(0).setText(""+thrower.getEntite().getMovesSpe().getMove(0).getNom());
                         if (thrower.getEntite().getMovesSpe().getSize()>1){
-                            btn2.setText(""+thrower.getEntite().getMovesSpe().getMove(1).getNom());
+                            boutonsAtks.get(1).setText(""+thrower.getEntite().getMovesSpe().getMove(1).getNom());
                             if (thrower.getEntite().getMovesSpe().getSize()>2){
-                                btn3.setText(""+thrower.getEntite().getMovesSpe().getMove(2).getNom());
+                                boutonsAtks.get(2).setText(""+thrower.getEntite().getMovesSpe().getMove(2).getNom());
                                 if (thrower.getEntite().getMovesSpe().getSize()>3){
-                                    btn4.setText(""+thrower.getEntite().getMovesSpe().getMove(3).getNom());
+                                    boutonsAtks.get(3).setText(""+thrower.getEntite().getMovesSpe().getMove(3).getNom());
                                 }else{
-                                    btn4.setText("");
+                                    boutonsAtks.get(3).setText("");
                                 }
                             }else{
-                                btn3.setText("");
+                                boutonsAtks.get(2).setText("");
                             }
                         }else{
-                            btn2.setText("");
+                            boutonsAtks.get(1).setText("");
                         }
                     }else{
-                        btn1.setText("");
+                        boutonsAtks.get(0).setText("");
                     }
                 }
             }
@@ -343,8 +325,12 @@ public class TestTomRCombat extends Application {
                     }
                 }
             }
-            this.thrower = team1.getListePNJ().get(this.pointeurThrower);
-            this.indicateur.setText(""+thrower.getNom());
+            if (team1.getListePNJ().get(this.pointeurThrower).getEntite().getPV().getlvlpv()>0){
+                this.thrower = team1.getListePNJ().get(this.pointeurThrower);
+                this.indicateur.setText(""+thrower.getNom());
+                effectBloom(boutonsAtks);
+                effectBloom(boutonsCibles);
+            }
             this.cible=null;
 
         }
@@ -375,6 +361,12 @@ public class TestTomRCombat extends Application {
             endScene = new Scene(endRt, stageWidth, stageHeight, Color.WHITE);
             primStage.setScene(endScene);
             primStage.show();
+        }
+    }
+
+    public static void effectBloom(ArrayList<Button> liste){
+        for (Button btn:liste) {
+            btn.setEffect(null);
         }
     }
 
