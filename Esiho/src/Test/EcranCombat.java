@@ -23,10 +23,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-public class TestTomRCombat extends Application {
+public class EcranCombat extends Application {
     private Combat combat;
     private Team team1, team2;
     private Scene cbtScene, endScene;
@@ -46,9 +47,44 @@ public class TestTomRCombat extends Application {
     private ArrayList<ProgressBar> barEnnemies;
     private ArrayList<Button> boutonsCibles;
     private ArrayList<Button> boutonsAtks;
+    private Stage oldStage;
 
     @Override
     public void start(Stage stage) throws Exception {
+        primStage = lancement(stage);
+        primStage.show();
+
+    }
+
+    public EcranCombat(){}
+
+    public Stage lancement(Stage stage, Team team1, Team team2) {
+        Stage sortie = stage;
+        try{
+             sortie = main(stage, team1, team2);
+        }catch (Exception erreur_combat){
+            System.out.println("Il y a eu une erreur lors du combat");
+        }
+        return sortie;
+    }
+
+    public Stage lancement(Stage stage) throws Exception{
+        if (team1==null && team2==null){
+            System.out.println("Au moins une équipe n'est pas déclarée");
+            this.team1 = Team.teamJoueur();
+            this.team2 = new Team("T1", 20);
+            this.team2.addPNJ(Pnj.squelette());
+            this.team2.addPNJ(Pnj.rat());
+            this.team2.addPNJ(Pnj.petiDiable());
+        }
+        Stage sortie = main(stage, team1, team2);
+        return sortie;
+    }
+
+    private Stage main(Stage stage, Team teamOne, Team teamTwo) throws FileNotFoundException {
+        this.oldStage = stage;
+        team1 = teamOne;
+        team2 = teamTwo;
         selection = true;
         this.fin = false;
         InitContenu contenu = new InitContenu();
@@ -59,14 +95,6 @@ public class TestTomRCombat extends Application {
         pointeurThrower = 0;
         boutonsCibles = new ArrayList<>();
         boutonsAtks = new ArrayList<>();
-        if (team1==null && team2==null){
-            System.out.println("Au moins une équipe n'est pas déclarée");
-            this.team1 = Team.teamJoueur();
-            this.team2 = new Team("T1", 20);
-            this.team2.addPNJ(Pnj.squelette());
-            this.team2.addPNJ(Pnj.rat());
-            this.team2.addPNJ(Pnj.petiDiable());
-        }
         this.thrower = team1.getListePNJ().get(0);
         this.indicateur = new Label(""+thrower.getNom());
         this.combat = new Combat(team1, team2);
@@ -145,7 +173,7 @@ public class TestTomRCombat extends Application {
                     if (selection){
                         btnAtk(finalA);
                         selection();
-                        TestTomRCombat.effectBloom(boutonsAtks);
+                        EcranCombat.effectBloom(boutonsAtks);
                         btn.setEffect(new Bloom());
                     }
                 }
@@ -198,7 +226,7 @@ public class TestTomRCombat extends Application {
                 @Override
                 public void handle(ActionEvent actionEvent) {
                     btnCible(finalCompteur);
-                    TestTomRCombat.effectBloom(boutonsCibles);
+                    EcranCombat.effectBloom(boutonsCibles);
                     btn.setEffect(new Bloom());
                 }
             });
@@ -291,8 +319,7 @@ public class TestTomRCombat extends Application {
 
 
         primStage.setScene(cbtScene);
-        primStage.show();
-
+        return primStage;
     }
 
     private void selection(){
@@ -360,6 +387,9 @@ public class TestTomRCombat extends Application {
             endRt.getChildren().add(new Label(text));
             endScene = new Scene(endRt, stageWidth, stageHeight, Color.WHITE);
             primStage.setScene(endScene);
+            primStage.show();
+            timer(1000);
+            primStage = oldStage;
             primStage.show();
         }
     }

@@ -11,7 +11,6 @@ public class MainActivity extends Application {
     //public InitContenu contenuJeu;
     private Stage primeStage;
     private Scene sceneTitre, sceneCredits, sceneNewGame, sceneOptions;
-    //private Engine cheat;
 
     @Override
     public void start(Stage primaryStage) throws Exception{

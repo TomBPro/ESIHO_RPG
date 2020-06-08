@@ -96,14 +96,16 @@ public class Combat {
                         cibles.add(pnj);
                     }
                 }
-                Integer ciblePtr = ThreadLocalRandom.current().nextInt(0, cibles.size());
-                Pnj cible = cibles.get(ciblePtr);
-                Integer compteur = 0;
-                for (Pnj pnj:team1.getListePNJ()) {
-                    if (pnj.equals(cible)){
-                        team1.getListePNJ().get(compteur).setEntite(useMove(move, pnjPlay.getEntite(), cible.getEntite()));
+                if (cibles.size()!=0){
+                    Integer ciblePtr = ThreadLocalRandom.current().nextInt(0, cibles.size());
+                    Pnj cible = cibles.get(ciblePtr);
+                    Integer compteur = 0;
+                    for (Pnj pnj:team1.getListePNJ()) {
+                        if (pnj.equals(cible)){
+                            team1.getListePNJ().get(compteur).setEntite(useMove(move, pnjPlay.getEntite(), cible.getEntite()));
+                        }
+                        compteur++;
                     }
-                    compteur++;
                 }
             }
         }

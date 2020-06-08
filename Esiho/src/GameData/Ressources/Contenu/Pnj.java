@@ -2,20 +2,17 @@ package GameData.Ressources.Contenu;
 
 import GameData.Combat.Entities.Entity;
 import GameData.Combat.Entities.Pv;
+import GameData.Combat.Entities.Team;
 import GameData.Combat.Moves.Move;
 import GameData.Combat.Moves.MoveList;
 import GameData.Combat.Types.Feu;
-import GameData.Combat.Types.Plante;
-import GameData.Combat.Types.Types;
-import GameData.Default.Items.Arme;
-import GameData.Default.Items.Armure;
 
+import Test.EcranCombat;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 import javax.swing.*;
-import java.awt.image.ImageObserver;
-import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -40,6 +37,8 @@ public abstract class Pnj {
     }
 
     public abstract void interract();
+
+    public abstract Stage interract(Stage stage, EcranCombat ec);
 
     public String getId() {
         return id;
@@ -201,6 +200,11 @@ public abstract class Pnj {
             public void interract() {
                 //RIEN
             }
+
+            @Override
+            public Stage interract(Stage stage, EcranCombat ec) {
+                return null;
+            }
         };
         return pnj;
     }
@@ -233,7 +237,16 @@ public abstract class Pnj {
         Pnj pnj = new Pnj("P1", "Squelette", listeSprites, entity) {
             @Override
             public void interract() {
+
+            }
+
+            @Override
+            public Stage interract(Stage stage, EcranCombat ec) {
                 System.out.println("Vous venez de parler au "+this.getNom());
+                if (ec!=null && stage!=null){
+                    stage = ec.lancement(stage, Team.teamJoueur(), Team.teamJoueur());
+                }
+                return stage;
             }
         };
         return pnj;
@@ -269,6 +282,11 @@ public abstract class Pnj {
             public void interract() {
                 System.out.println("Vous venez de parler au "+this.getNom());
             }
+
+            @Override
+            public Stage interract(Stage stage, EcranCombat ec) {
+                return null;
+            }
         };
         return pnj;
     }
@@ -303,6 +321,11 @@ public abstract class Pnj {
             public void interract() {
                 System.out.println("Vous venez de parler au "+this.getNom());
             }
+
+            @Override
+            public Stage interract(Stage stage, EcranCombat ec) {
+                return null;
+            }
         };
         return pnj;
     }
@@ -336,6 +359,11 @@ public abstract class Pnj {
             @Override
             public void interract() {
                 System.out.println("Vous venez de parler au "+this.getNom());
+            }
+
+            @Override
+            public Stage interract(Stage stage, EcranCombat ec) {
+                return null;
             }
         };
         return pnj;

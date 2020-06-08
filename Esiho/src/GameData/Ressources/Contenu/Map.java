@@ -1,5 +1,8 @@
 package GameData.Ressources.Contenu;
 
+import Test.EcranCombat;
+import javafx.stage.Stage;
+
 import java.util.ArrayList;
 
 public class Map {
@@ -157,20 +160,24 @@ public class Map {
         }
         switch (idMap){
             case 0:
-                map = Map.getMapTest();
+                map = Map.getMapTest(null, null);
                 break;
             case 1:
                 map = Map.getMapMaison();
                 break;
             default:
-                map = Map.getMapTest();
+                map = Map.getMapTest(null, null);
         }
         return map;
     }
 
-    public static Map getMapTest(){
+    public static Map getMapTest(EcranCombat ec, Stage stage){
         Map map = new Map("M0", "test", 32,32);
-        map.getCoucheFin().get(6).add(12, Pnj.getPnj("P1"));
+        if (ec!=null && stage!=null){
+            map.getCoucheFin().get(6).add(12, Pnj.squelette());
+        }else{
+            map.getCoucheFin().get(6).set(12, Pnj.getPnj("P1"));
+        }
         map.getCoucheFin().get(6).get(12).setAngle(1, 0);
         map.refreshCollision();
         map.addTpPoint(10, 10);
@@ -183,7 +190,7 @@ public class Map {
         return map;
     }
 
-    public void onInterraction(Integer x, Integer y){
+    public Stage onInterraction(Integer x, Integer y, Stage stage, EcranCombat ec){
         if (this.getCoucheFin().get(x).get(y)!= null){
             this.getCoucheFin().get(x).get(y).interract();
         }else{
@@ -194,7 +201,7 @@ public class Map {
                             if (this.getCoucheFin().get(a+x).get(b+y)!=null){
                                 Pnj pnj = this.getCoucheFin().get(a+x).get(b+y);
                                 if (a+x+pnj.getAngleX() == x && b+y+pnj.getAngleY() == y){
-                                    pnj.interract();
+                                    return pnj.interract(stage, ec);
                                 }
                             }
                         }catch (Exception erreur_y_out_of_bounds){
@@ -206,5 +213,6 @@ public class Map {
                 }
             }
         }
+        return null;
     }
 }

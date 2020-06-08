@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class TestTomR extends Application {
+public class ShowMap extends Application {
     private Scene sceneMap;
     private Stage primStage;
     private Map map;
@@ -44,6 +44,17 @@ public class TestTomR extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        primStage = lancement(stage, Map.getMapTest(new EcranCombat(), stage));
+        ecranMap();
+    }
+
+    public static void main(String[] args){
+        launch(args);
+    }
+
+    public ShowMap(){}
+
+    public Stage lancement(Stage stage, Map map) throws Exception{
         InitContenu contenu = new InitContenu();
         stageWidth=800;
         stageHeight=400;
@@ -60,7 +71,7 @@ public class TestTomR extends Application {
         StackPane root = new StackPane();
         mapPane = new Canvas(stageWidth,stageHeight);
         keyPressed = false;
-        this.map = Map.getMap("M0");
+        this.map = Map.getMapTest(new EcranCombat(), primStage);
         Integer[] position = map.getTpPoint(0);
         System.out.println(position[0]+" "+position[1]);
         dx = 4*16;
@@ -85,7 +96,7 @@ public class TestTomR extends Application {
         textArea.setMaxSize(stageWidth*0.2, stageHeight*0.1);
         cheatRoot.add(textArea, 0, 0);
         root.getChildren().add(cheatRoot);
-            root.getChildren().get(2).setVisible(false);
+        root.getChildren().get(2).setVisible(false);
 
 
         this.sceneMap= new Scene(root, stageWidth, stageHeight, Color.BLACK);
@@ -200,7 +211,10 @@ public class TestTomR extends Application {
                                 y=-1;
                         }
                         try{
-                            map.onInterraction(x+dx/16, y+dy/16);
+                            Stage newStage = map.onInterraction(x+dx/16, y+dy/16, primStage, new EcranCombat());
+                            if (newStage!=null){
+                                primStage = newStage;
+                            }
                         }catch (Exception erreur_interraction_no_Pnj){
                             System.out.println("RIEN");
                             x = x+dx/16;
@@ -244,12 +258,7 @@ public class TestTomR extends Application {
         timer.start();
 
         primStage.setScene(sceneMap);
-
-        ecranMap();
-    }
-
-    public static void main(String[] args){
-        launch(args);
+        return primStage;
     }
 
     private void showLayers(){
