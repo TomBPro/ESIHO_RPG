@@ -23,6 +23,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class TestTomRCombat extends Application {
     private Combat combat;
@@ -88,7 +89,7 @@ public class TestTomRCombat extends Application {
 
             Image img = pnj.getEntite().getImage();
             Canvas cv = new Canvas(img.getWidth()*2, img.getHeight()*2);
-            cv.getGraphicsContext2D().drawImage(new ImageView(img).getImage(), 0, 0, -img.getWidth(), img.getHeight());
+            cv.getGraphicsContext2D().drawImage(new ImageView(img).getImage(), 0, 0, 32, 32, 64, 0, -128/team1.getListePNJ().size(), 128/team1.getListePNJ().size());
 
             gdPn.add(cv, 0, 2);
             team1Gd.add(gdPn, 0, compteur);
@@ -116,7 +117,7 @@ public class TestTomRCombat extends Application {
 
             Image img = pnj.getEntite().getImage();
             Canvas cv = new Canvas(img.getWidth()*2, img.getHeight()*2);
-            cv.getGraphicsContext2D().drawImage(new ImageView(img).getImage(), 0, 0, -img.getWidth(), img.getHeight());
+            cv.getGraphicsContext2D().drawImage(new ImageView(img).getImage(), 0, 0, Math.round(128/team2.getListePNJ().size()), Math.round(128/team2.getListePNJ().size()));
 
             gdPn.add(cv, 0, 2);
             team2Gd.add(gdPn, 0, compteur);
@@ -314,7 +315,6 @@ public class TestTomRCombat extends Application {
 
     private void selection(){
         if (this.atk!=null && this.thrower!=null && this.cible!=null && combat.getFin()!=true){
-            System.out.println(thrower.getNom());
             combat.selectMove(thrower, atk, cible);
             this.atk=null;
 
@@ -375,6 +375,15 @@ public class TestTomRCombat extends Application {
             endScene = new Scene(endRt, stageWidth, stageHeight, Color.WHITE);
             primStage.setScene(endScene);
             primStage.show();
+        }
+    }
+
+    private void timer(Integer duree){
+        try{
+            TimeUnit.MILLISECONDS.sleep(duree);
+        }catch(InterruptedException ex){
+            System.out.println("AH");
+            ex.printStackTrace();
         }
     }
 }

@@ -3,6 +3,7 @@ package GameData.Combat;
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 
 import GameData.Combat.Moves.MoveList;
 import sample.launcher;
@@ -278,6 +279,14 @@ public class Combat {
         }//Coefficient de l'arme appliqué
 
         return modifier;
+    }
+
+    private void timer(Integer duree){
+        try{
+            TimeUnit.MILLISECONDS.sleep(duree);
+        }catch(InterruptedException ex){
+            ex.printStackTrace();
+        }
     }
 
     public Integer getTour() {
