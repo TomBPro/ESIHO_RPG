@@ -310,6 +310,7 @@ public class TestTomRCombat extends Application {
 
     private void selection(){
         if (this.atk!=null && this.thrower!=null && this.cible!=null && combat.getFin()!=true){
+            System.out.println(thrower.getNom());
             combat.selectMove(thrower, atk, cible);
             this.atk=null;
 
