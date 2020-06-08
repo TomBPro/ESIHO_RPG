@@ -58,7 +58,6 @@ public class Combat {
         System.out.println(""+listeOrdrePnj.size()+"  "+tour);
         Pnj pnjPlay = listeOrdrePnj.get(tour);
         Boolean isPnjAllie = false;
-        System.out.println(pnjPlay.getId());
         for (Pnj pnj: pnjsALancer){
             if (pnj.getId()==pnjPlay.getId()){
                 isPnjAllie=true;
@@ -226,7 +225,6 @@ public class Combat {
             dommages/=50;
             dommages+=2;
             dommages*=getModifier(move, entityThrow, entityReceiver);//Faire une méthode analysant les types alliés et ennemis
-            System.out.println("Move "+move.getNom()+" do DOMMAGES SPE : "+dommages);
             entityReceiver.getPV().degatsPVabs((int)dommages);
             entiteModifiee = entityReceiver;
         }else if (genre=="PHYSIQUE"){
@@ -236,7 +234,6 @@ public class Combat {
             dommages/=50;
             dommages+=2;
             dommages*=getModifier(move, entityThrow, entityReceiver);//Faire une méthode analysant les types alliés et ennemis
-            System.out.println("Move "+move.getNom()+" do DOMMAGES PHY : "+dommages);
             entityReceiver.getPV().degatsPVabs((int)dommages);
             entiteModifiee = entityReceiver;
         }else{

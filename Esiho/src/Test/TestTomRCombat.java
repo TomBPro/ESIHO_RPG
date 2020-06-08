@@ -12,20 +12,16 @@ import javafx.geometry.Pos;
 import javafx.geometry.VPos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
-import java.awt.*;
+import java.util.ArrayList;
 
 public class TestTomRCombat extends Application {
     private Combat combat;
@@ -43,6 +39,8 @@ public class TestTomRCombat extends Application {
     private Integer pointeurThrower;
     private Label indicateur;
     private GridPane team1Gd, team2Gd;
+    private ArrayList<ProgressBar> barAllies;
+    private ArrayList<ProgressBar> barEnnemies;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -51,6 +49,8 @@ public class TestTomRCombat extends Application {
         InitContenu contenu = new InitContenu();
         memoPhy = true;
         memoSpe = false;
+        barAllies = new ArrayList<>();
+        barEnnemies = new ArrayList<>();
         pointeurThrower = 0;
         if (team1==null && team2==null){
             System.out.println("Au moins une équipe n'est pas déclarée");
@@ -82,7 +82,8 @@ public class TestTomRCombat extends Application {
 
             ProgressBar bar = new ProgressBar();
             bar.setProgress(pnj.getEntite().getPV().getPv());
-            gdPn.add(bar, 0, 1);
+            barAllies.add(bar);
+            gdPn.add(barAllies.get(compteur), 0, 1);
 
             Image img = pnj.getEntite().getImage();
             Canvas cv = new Canvas(img.getWidth()*2, img.getHeight()*2);
@@ -109,7 +110,8 @@ public class TestTomRCombat extends Application {
 
             ProgressBar bar = new ProgressBar();
             bar.setProgress(pnj.getEntite().getPV().getPv());
-            gdPn.add(bar, 0, 1);
+            barEnnemies.add(bar);
+            gdPn.add(barEnnemies.get(compteur), 0, 1);
 
             Image img = pnj.getEntite().getImage();
             Canvas cv = new Canvas(img.getWidth()*2, img.getHeight()*2);
@@ -324,8 +326,18 @@ public class TestTomRCombat extends Application {
                     combat.tour();
                     this.team1=combat.team1;
                     this.team2=combat.team2;
+
                 }
-                System.out.println(team2.getListePNJ().get(2).getEntite().getPV().getlvlpv());
+                Integer compteur = 0;
+                for (ProgressBar bar:barAllies) {
+                    bar.setProgress(team1.getListePNJ().get(compteur).getEntite().getPV().getlvlpv());
+                    compteur++;
+                }
+                compteur = 0;
+                for (ProgressBar bar: barEnnemies) {
+                    bar.setProgress(team2.getListePNJ().get(compteur).getEntite().getPV().getlvlpv());
+                    compteur++;
+                }
             }
             this.thrower = team1.getListePNJ().get(this.pointeurThrower);
             this.indicateur.setText(""+thrower.getNom());
