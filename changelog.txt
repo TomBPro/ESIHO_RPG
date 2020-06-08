@@ -188,3 +188,6 @@ ex : T2-28 => Le 28e Tile du tileset 2
 #TomRobette#05/06/2020#
 -Refonte de la classe Combat
 -Interface de combat fonctionnelle mais très basique. Il reste à debugger.
+
+#TomRobette#08/06/2020#
+-L'interface de combat fonctionne !
