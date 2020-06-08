@@ -18,6 +18,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -26,7 +27,7 @@ import java.util.ArrayList;
 public class TestTomRCombat extends Application {
     private Combat combat;
     private Team team1, team2;
-    private Scene cbtScene;
+    private Scene cbtScene, endScene;
     private Stage primStage;
     private Integer stageWidth, stageHeight;
     private Boolean fin;
@@ -308,6 +309,7 @@ public class TestTomRCombat extends Application {
 
         primStage.setScene(cbtScene);
         primStage.show();
+
     }
 
     private void selection(){
@@ -326,17 +328,19 @@ public class TestTomRCombat extends Application {
                     combat.tour();
                     this.team1=combat.team1;
                     this.team2=combat.team2;
-
-                }
-                Integer compteur = 0;
-                for (ProgressBar bar:barAllies) {
-                    bar.setProgress(team1.getListePNJ().get(compteur).getEntite().getPV().getlvlpv());
-                    compteur++;
-                }
-                compteur = 0;
-                for (ProgressBar bar: barEnnemies) {
-                    bar.setProgress(team2.getListePNJ().get(compteur).getEntite().getPV().getlvlpv());
-                    compteur++;
+                    Integer compteur = 0;
+                    for (ProgressBar bar:barAllies) {
+                        bar.setProgress(team1.getListePNJ().get(compteur).getEntite().getPV().getlvlpv());
+                        compteur++;
+                    }
+                    compteur = 0;
+                    for (ProgressBar bar: barEnnemies) {
+                        bar.setProgress(team2.getListePNJ().get(compteur).getEntite().getPV().getlvlpv());
+                        compteur++;
+                    }
+                    if (combat.getFin()){
+                        fin(combat.getVictoire());
+                    }
                 }
             }
             this.thrower = team1.getListePNJ().get(this.pointeurThrower);
@@ -356,5 +360,21 @@ public class TestTomRCombat extends Application {
 
     private void btnCible(Integer cas){
         this.cible = team2.getListePNJ().get(cas);
+    }
+
+    private void fin(Integer victory){
+        if (victory==1 || victory==-1){
+            String text = "";
+            if (victory==1){
+                text = "VICTOIRE !";
+            }else {
+                text = "DÉFAITE...";
+            }
+            StackPane endRt = new StackPane();
+            endRt.getChildren().add(new Label(text));
+            endScene = new Scene(endRt, stageWidth, stageHeight, Color.WHITE);
+            primStage.setScene(endScene);
+            primStage.show();
+        }
     }
 }

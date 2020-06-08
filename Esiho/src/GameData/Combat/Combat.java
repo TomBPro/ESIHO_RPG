@@ -25,6 +25,7 @@ public class Combat {
     private ArrayList<Pnj> pnjsALancer;
     private ArrayList<Move> movesALancer;
     private ArrayList<Pnj> pnjsARecevoir;
+    private Integer victoire;
 
     public Combat(Team team1, Team team2){
         this.team1=team1;
@@ -39,6 +40,7 @@ public class Combat {
         this.pnjsALancer = new ArrayList<>();
         this.movesALancer = new ArrayList<>();
         this.pnjsARecevoir = new ArrayList<>();
+        victoire=0;
     }
 
     private void newTourdeTable(){
@@ -55,7 +57,6 @@ public class Combat {
     }
 
     public Integer tour(){
-        System.out.println(""+listeOrdrePnj.size()+"  "+tour);
         Pnj pnjPlay = listeOrdrePnj.get(tour);
         Boolean isPnjAllie = false;
         for (Pnj pnj: pnjsALancer){
@@ -179,9 +180,11 @@ public class Combat {
                 compteur++;
             }//Ajout de l'xp sur chaque entité de l'équipe alliée
             fin=true;
+            this.victoire = 1;
         }else if (victoire==-1){
             //Défaite !
             fin=true;
+            this.victoire = -1;
         }
     }
 
@@ -287,5 +290,9 @@ public class Combat {
 
     public Integer getTourDeTable() {
         return tourDeTable;
+    }
+
+    public Integer getVictoire() {
+        return victoire;
     }
 }
