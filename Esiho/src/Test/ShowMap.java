@@ -44,7 +44,7 @@ public class ShowMap extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        primStage = lancement(stage, Map.getMapTest(new EcranCombat(), stage));
+        lancement(stage);
         ecranMap();
     }
 
@@ -54,7 +54,7 @@ public class ShowMap extends Application {
 
     public ShowMap(){}
 
-    public Stage lancement(Stage stage, Map map) throws Exception{
+    public void lancement(Stage stage) throws Exception{
         InitContenu contenu = new InitContenu();
         stageWidth=800;
         stageHeight=400;
@@ -258,7 +258,6 @@ public class ShowMap extends Application {
         timer.start();
 
         primStage.setScene(sceneMap);
-        return primStage;
     }
 
     private void showLayers(){
@@ -358,8 +357,6 @@ public class ShowMap extends Application {
     }
 
     private void ecranMap() throws Exception{
-        primStage = new Stage();
-        primStage.setScene(sceneMap);
         primStage.show();
     }
 }
